@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-HK" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagoya & Hokuriku Winter Photography Tour 2027</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+            background-color: #0b1120;
+            color: #f1f5f9;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(15, 23, 42, 0.8) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-hover:hover {
+            background: rgba(30, 41, 59, 0.85);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.2);
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Neon Accent Badges */
+        .neon-border-cyan {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+            border: 1px solid rgba(6, 182, 212, 0.5);
+        }
+
+        .neon-text-cyan {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0284c7;
+        }
+
+        /* Checklist checked styling */
+        .checklist-item input:checked + label {
+            text-decoration: line-through;
+            color: #64748b;
+        }
+        .checklist-item input:checked ~ .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Top Sticky Navigation -->
+    <nav class="sticky top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 font-black text-lg sm:text-xl tracking-wider text-white">
+                    <span class="bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">SNOWScape</span>
+                    <span class="text-xs px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">2027</span>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-1 text-sm font-semibold">
+                    <a href="#overview" class="px-3 py-2 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition">總覽</a>
+                    <a href="#itinerary" class="px-3 py-2 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition">每日行程</a>
+                    <a href="#photo-strategy" class="px-3 py-2 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition">iPhone 攝影攻略</a>
+                    <a href="#checklist" class="px-3 py-2 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition">裝備 Checklist</a>
+                    <a href="#transport" class="px-3 py-2 rounded-lg text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 transition">交通交通</a>
+                </div>
+
+                <!-- CTA Status -->
+                <div class="hidden sm:flex items-center gap-2 text-xs font-mono bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-slate-300">路線 A・北陸環線Confirmed</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner Header -->
+    <header id="overview" class="relative py-12 sm:py-20 px-4 sm:px-6 max-w-6xl mx-auto w-full">
+        <div class="glass-panel rounded-3xl p-6 sm:p-10 relative overflow-hidden neon-border-cyan">
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-4">
+                        <i class="fa-solid fa-snowflake"></i> 冬季攝影限定 7 天 6 夜
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        名古屋・高山・白川鄉・金澤<br>
+                        <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 text-transparent bg-clip-text">
+                            北陸雪國極致攝影之旅
+                        </span>
+                    </h1>
+                    <p class="mt-4 text-slate-400 text-sm sm:text-base max-w-2xl leading-relaxed">
+                        全程避開一日團人潮，專注於白川鄉藍調亮燈、新穗高阿爾卑斯 200mm 背景壓縮感，以及兼六園冬日雪吊。配合 iPhone 17 Pro 48MP ProRAW 與 MagSafe CPL 濾鏡，打造極致零重量大片行程。
+                    </p>
+                </div>
+
+                <!-- Flight & Quick Stats Card -->
+                <div class="w-full md:w-auto glass-panel p-4 rounded-2xl border border-slate-700/50 space-y-3 min-w-[280px]">
+                    <div class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+                        <span><i class="fa-solid fa-plane mr-1 text-cyan-400"></i> 國泰航空 CX</span>
+                        <span class="text-cyan-400">CX536 / CX539</span>
+                    </div>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between text-slate-300">
+                            <span>去程: 1/27 (三)</span>
+                            <span class="font-mono text-white">09:35 HKG ➔ 14:10 NGO</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>回程: 2/02 (二)</span>
+                            <span class="font-mono text-white">15:15 NGO ➔ 19:10 HKG</span>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-slate-700/50 flex justify-between items-center text-xs text-slate-400">
+                        <span><i class="fa-solid fa-hotel mr-1 text-amber-400"></i> 酒店轉移:</span>
+                        <span class="text-amber-300 font-semibold">僅換 3 間 (高山➔金澤➔名古屋)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation Sections -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 space-y-16 w-full mb-16">
+
+        <!-- SECTION 1: ITINERARY BY DAY -->
+        <section id="itinerary" class="space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-3">
+                        <i class="fa-regular fa-calendar-check text-cyan-400"></i> 7 Days Detailed Itinerary
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-400 mt-1">點擊下方日期分頁即可查看當日攝影攻略與時間表</p>
+                </div>
+
+                <!-- Interactive Day Filter Buttons -->
+                <div class="flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 no-scrollbar">
+                    <button onclick="filterDay('all')" class="day-btn active px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500 text-slate-950 transition shadow-lg shadow-cyan-500/20">All</button>
+                    <button onclick="filterDay('d1')" class="day-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">D1</button>
+                    <button onclick="filterDay('d2')" class="day-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">D2</button>
+                    <button onclick="filterDay('d3')" class="day-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">D3</button>
+                    <button onclick="filterDay('d4')" class="day-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">D4</button>
+                    <button onclick="filterDay('d5')" class="day-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">D5</button>
+                    <button onclick="filterDay('d6')" class="day-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">D6</button>
+                    <button onclick="filterDay('d7')" class="day-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">D7</button>
+                </div>
+            </div>
+
+            <!-- Day Cards Container -->
+            <div class="space-y-6">
+
+                <!-- DAY 1 CARD -->
+                <div class="day-card d1 glass-panel rounded-2xl p-6 glass-panel-hover transition-all duration-300">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/60 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">DAY 01</span>
+                            <span class="text-xs text-slate-400 font-mono">2027.01.27 (三)</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white">香港 ➔ 名古屋 ➔ 直奔飛驒高山</h3>
+                        </div>
+                        <span class="text-xs px-3 py-1 rounded-full bg-slate-800 text-amber-300 border border-slate-700">
+                            <i class="fa-solid fa-bed mr-1"></i> 宿：高山櫻庵 / 高山溫泉酒店 (第 1 晚)
+                        </span>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 space-y-3 text-sm text-slate-300">
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">09:35</span>
+                                <div><strong>CX536 啟程：</strong>香港 (HKG) 飛往 中部國際機場 (NGO) 特選經濟艙，14:10 抵達。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">15:00</span>
+                                <div><strong>名鐵電車 ➔ 名古屋站：</strong>兌換「昇龍道 3 日巴士周遊券」或乘搭 JR 特急 Wide View Hida (飛驒號)。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">18:30</span>
+                                <div><strong>抵達高山 & 飯店 Check-in：</strong>入住溫泉飯店洗去疲勞，享用高山名物 A5 飛驒牛燒肉或朴葉味噌牛肉。</div>
+                            </div>
+                        </div>
+
+                        <!-- Photo & Spot Highlights -->
+                        <div class="glass-panel p-4 rounded-xl border border-slate-700/50 space-y-2 text-xs">
+                            <div class="font-bold text-cyan-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-camera-retro"></i> 拍攝實戰Tips
+                            </div>
+                            <p class="text-slate-400 leading-relaxed">
+                                JR 特急 Hida 穿越飛驒川溪谷時，可將 iPhone 17 Pro 貼近車窗，用 5x (100mm) 捕捉兩岸雪樹與溪流，開啟 ProRAW 記錄高光。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 2 CARD -->
+                <div class="day-card d2 glass-panel rounded-2xl p-6 glass-panel-hover transition-all duration-300">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/60 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">DAY 02</span>
+                            <span class="text-xs text-slate-400 font-mono">2027.01.28 (四)</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white">新穗高雙層纜車 ➔ 高山老街三町筋</h3>
+                        </div>
+                        <span class="text-xs px-3 py-1 rounded-full bg-slate-800 text-amber-300 border border-slate-700">
+                            <i class="fa-solid fa-bed mr-1"></i> 宿：高山櫻庵 (連住免搬行李)
+                        </span>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 space-y-3 text-sm text-slate-300">
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">08:40</span>
+                                <div><strong>濃飛巴士出發：</strong>高山濃飛巴士總站乘搭奧飛驒線（約 90 分鐘）直達新穗高纜車站。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">10:30</span>
+                                <div><strong>新穗高雙層纜車：</strong>直登 2,156 米西穗高口山頂展望台，360 度無死角俯瞰阿爾卑斯連綿雪山。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">15:00</span>
+                                <div><strong>高山老街 (Sanmachi Suji)：</strong>返回高山漫步古街，試食飛驒牛握壽司、飛驒牛串燒及熱甘酒。</div>
+                            </div>
+                        </div>
+
+                        <!-- Photo Tip -->
+                        <div class="glass-panel p-4 rounded-xl border border-sky-500/30 bg-sky-950/20 space-y-2 text-xs">
+                            <div class="font-bold text-sky-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-mountain text-sky-400"></i> 阿爾卑斯雪山壓縮感
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">
+                                吸上 <strong>MagSafe CPL 偏光鏡</strong> 旋轉切除雪面反射強光，使用 <strong>5x - 10x 變焦</strong> 拉近對岸山脊與雲海，創造磅礡山脈貼近人像效果！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 3 CARD -->
+                <div class="day-card d3 glass-panel rounded-2xl p-6 glass-panel-hover transition-all duration-300 border border-indigo-500/40">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/60 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-lg bg-indigo-500/30 text-indigo-300 text-xs font-bold border border-indigo-500/40">DAY 03</span>
+                            <span class="text-xs text-slate-400 font-mono">2027.01.29 (五)</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white">白川鄉合掌村（避開團客 + 藍調亮燈）➔ 金澤</h3>
+                        </div>
+                        <span class="text-xs px-3 py-1 rounded-full bg-slate-800 text-indigo-300 border border-indigo-700">
+                            <i class="fa-solid fa-bed mr-1"></i> 宿：金澤站前 Hotel (第 3 晚)
+                        </span>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 space-y-3 text-sm text-slate-300">
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">09:00</span>
+                                <div><strong>宮川朝市：</strong>晨間包場高山老街與朝市，拍攝雪中高山紅橋。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-indigo-400 text-xs mt-1 w-12">12:00</span>
+                                <div><strong>濃飛巴士進駐白川鄉：</strong>乘搭 12:00 巴士前往（避開 11:00-14:30 旅遊巴高峰期），行李寄存在總站 Locker。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-indigo-400 text-xs mt-1 w-12">15:30</span>
+                                <div><strong>荻町城跡展望台 (日光照)：</strong>團客開始散去，登台拍 5x 日光合掌村俯瞰圖。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-indigo-300 text-xs mt-1 w-12 font-bold">17:00</span>
+                                <div><strong class="text-indigo-300">★ 關鍵 Moment (Blue Hour 亮燈)：</strong>日落藍調天空與木屋黃色窗光交織，拍下童話大片！</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">18:15</span>
+                                <div><strong>晚班巴士 ➔ 金澤：</strong>乘搭北陸鐵道/濃飛巴士直達金澤站（約 85 分鐘），入住金澤站前酒店。</div>
+                            </div>
+                        </div>
+
+                        <!-- Photo Strategy Highlight -->
+                        <div class="glass-panel p-4 rounded-xl border border-indigo-500/50 bg-indigo-950/40 space-y-2 text-xs">
+                            <div class="font-bold text-indigo-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-moon text-indigo-400"></i> 白川鄉藍調大片攻略
+                            </div>
+                            <p class="text-slate-300 leading-relaxed">
+                                開啟 <strong>ProRAW Max (48MP)</strong>，預設「攝影風格」冷色調 (Tone +0.2, Color -0.1)。鎖定白平衡避免忽冷忽暖。配合 MagSafe 手柄穩定快門，直出媲美單反！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 4 CARD -->
+                <div class="day-card d4 glass-panel rounded-2xl p-6 glass-panel-hover transition-all duration-300">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/60 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">DAY 04</span>
+                            <span class="text-xs text-slate-400 font-mono">2027.01.30 (六)</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white">金澤名園雪吊（兼六園・金澤城・東茶屋街）</h3>
+                        </div>
+                        <span class="text-xs px-3 py-1 rounded-full bg-slate-800 text-indigo-300 border border-slate-700">
+                            <i class="fa-solid fa-bed mr-1"></i> 宿：金澤站前 Hotel (連住免搬行李)
+                        </span>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 space-y-3 text-sm text-slate-300">
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">09:00</span>
+                                <div><strong>兼六園 (Kenroku-en)：</strong>日本三大名園，欣賞冬日限定「雪吊」吊繩保護唐崎松之奇景。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">11:30</span>
+                                <div><strong>金澤城公園：</strong>走訪菱櫓與五十間長屋，拍攝白瓦雪牆的日式幾何建築美學。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">14:00</span>
+                                <div><strong>東茶屋街：</strong>江戶古建築群漫步，試食「箔一」金箔軟雪膏。晚間品嚐香林坊金澤關東煮。</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-4 rounded-xl border border-slate-700/50 space-y-2 text-xs">
+                            <div class="font-bold text-amber-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-camera"></i> 園林構圖 Tips
+                            </div>
+                            <p class="text-slate-400 leading-relaxed">
+                                使用 5x 長焦避開地面遊人，將「雪吊」放射狀繩索與徽軫燈籠作為前景，呈現極具古典美感的雪景幾何圖案。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 5 CARD -->
+                <div class="day-card d5 glass-panel rounded-2xl p-6 glass-panel-hover transition-all duration-300">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/60 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">DAY 05</span>
+                            <span class="text-xs text-slate-400 font-mono">2027.01.31 (日)</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white">近江町市場海鮮暴擊 ➔ 返回名古屋</h3>
+                        </div>
+                        <span class="text-xs px-3 py-1 rounded-full bg-slate-800 text-emerald-300 border border-slate-700">
+                            <i class="fa-solid fa-bed mr-1"></i> 宿：名古屋榮町 / 名古屋站前 (第 5 晚)
+                        </span>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 space-y-3 text-sm text-slate-300">
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">08:30</span>
+                                <div><strong>近江町市場 (Omicho Market)：</strong>品嚐冬蟹（加能蟹）、寒鰤魚、海膽豪快海鮮丼。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">13:00</span>
+                                <div><strong>金澤站「鼓門」合照 ➔ JR Shirasagi 特急：</strong>乘車返回名古屋站（約 2.5 小時）。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">18:00</span>
+                                <div><strong>名古屋榮町購物 & 名物鰻魚飯：</strong>晚餐享用蓬萊軒鰻魚飯三吃 (Hitsumabushi)。</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-4 rounded-xl border border-slate-700/50 space-y-2 text-xs">
+                            <div class="font-bold text-emerald-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-utensils"></i> 味覺亮點
+                            </div>
+                            <p class="text-slate-400 leading-relaxed">
+                                1 月底北陸松葉蟹（加能蟹）與寒鰤魚脂肪最厚，近江町市場現剝生牡蠣與炙燒鰤魚壽司是不容錯過的美味！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 6 CARD -->
+                <div class="day-card d6 glass-panel rounded-2xl p-6 glass-panel-hover transition-all duration-300">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/60 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">DAY 06</span>
+                            <span class="text-xs text-slate-400 font-mono">2027.02.01 (一)</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white">名古屋市區時尚購物 & 城市夜景</h3>
+                        </div>
+                        <span class="text-xs px-3 py-1 rounded-full bg-slate-800 text-emerald-300 border border-slate-700">
+                            <i class="fa-solid fa-bed mr-1"></i> 宿：名古屋市區 (連住免搬行李)
+                        </span>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 space-y-3 text-sm text-slate-300">
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">10:00</span>
+                                <div><strong>大須商店街 & JR 高島屋/Bic Camera：</strong>採購日本潮流服裝、藥妝與數碼配件補貨。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">17:30</span>
+                                <div><strong>綠洲 21 (Oasis 21) & 名古屋電視塔：</strong>拍攝宇宙船造型綠洲 21 水鏡夜景。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">19:30</span>
+                                <div><strong>名古屋美食暴擊：</strong>矢場炸豬排（味噌豬扒）、世界的山將手羽先（雞翼）。</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-4 rounded-xl border border-slate-700/50 space-y-2 text-xs">
+                            <div class="font-bold text-purple-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-city"></i> 夜景攝影 Tips
+                            </div>
+                            <p class="text-slate-400 leading-relaxed">
+                                在綠洲 21 水上玻璃水池，開啟 iPhone 夜景模式（持穩 2 秒），利用水面倒影拍攝炫彩電視塔。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 7 CARD -->
+                <div class="day-card d7 glass-panel rounded-2xl p-6 glass-panel-hover transition-all duration-300">
+                    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-700/60 pb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="px-3 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 text-xs font-bold border border-cyan-500/30">DAY 07</span>
+                            <span class="text-xs text-slate-400 font-mono">2027.02.02 (二)</span>
+                            <h3 class="text-lg sm:text-xl font-bold text-white">常滑招財貓小鎮 ➔ 中部機場 ➔ 返港</h3>
+                        </div>
+                        <span class="text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+                            <i class="fa-solid fa-plane-departure mr-1"></i> 圓滿返港
+                        </span>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="md:col-span-2 space-y-3 text-sm text-slate-300">
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">10:00</span>
+                                <div><strong>常滑陶瓷散步道 (Tokoname)：</strong>乘名鐵電車前往，拍攝龐大巨大招財貓 Tokonyan 與復古陶瓷煙囪。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">13:00</span>
+                                <div><strong>中部國際機場 (NGO) & JAL Sakura Lounge：</strong>辦理登機手續，參觀 Flight of Dreams 波音 787 展區。</div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="font-mono text-cyan-400 text-xs mt-1 w-12">15:15</span>
+                                <div><strong>CX539 啟程返港：</strong>國泰商務艙 15:15 起飛，19:10 抵達香港 (HKG)。</div>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-4 rounded-xl border border-slate-700/50 space-y-2 text-xs">
+                            <div class="font-bold text-emerald-300 flex items-center gap-1.5">
+                                <i class="fa-solid fa-bag-shopping"></i> 機場最後買手信
+                            </div>
+                            <p class="text-slate-400 leading-relaxed">
+                                機場免稅店必買：常滑坂角總本鋪蝦餅、赤福餅，以及飛驒高山地酒清酒。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 2: IPHONE PHOTOGRAPHY STRATEGY -->
+        <section id="photo-strategy" class="glass-panel rounded-3xl p-6 sm:p-8 neon-border-cyan space-y-6">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-4">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold text-lg">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white">iPhone 17 Pro 雪國攝影神級設定</h2>
+                    <p class="text-xs text-slate-400">出發前於相機設定調整，確保雪景不曝光、色彩不忽冷忽暖</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="glass-panel p-4 rounded-2xl border border-slate-700/60 space-y-2">
+                    <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Setting 01</span>
+                    <h4 class="font-bold text-white text-base">ProRAW Max (48MP)</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        設定 ➔ 相機 ➔ 格式 ➔ 開啟 ProRAW Max。拍攝白川鄉與雪山大景時點亮 RAW 標籤，保留最豐富雪地高光細節。
+                    </p>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl border border-slate-700/60 space-y-2">
+                    <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Setting 02</span>
+                    <h4 class="font-bold text-white text-base">鎖定白平衡 (Lock WB)</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        設定 ➔ 相機 ➔ 錄影 ➔ 開啟「鎖定白平衡」。防止雪地強反光導致手機相機白平衡忽藍忽黃。
+                    </p>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl border border-slate-700/60 space-y-2">
+                    <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider">Setting 03</span>
+                    <h4 class="font-bold text-white text-base">冷色調攝影風格</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        預設 Photographic Style 切換至 Cool / Tone +0.2, Color -0.1，讓白雪透亮不發黃，畫面線條更立體。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: CHECKLIST (TAOBAO & PACKING) -->
+        <section id="checklist" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold text-lg">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-white">裝備與出發前 Checklist</h2>
+                        <p class="text-xs text-slate-400">點擊方格可實時標記準備進度</p>
+                    </div>
+                </div>
+                <button onclick="resetChecklist()" class="text-xs text-slate-400 hover:text-cyan-400 transition">Reset</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Taobao Gear -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-bold text-cyan-400 flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping"></i> 淘寶攝影配件必備清單
+                    </h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="checklist-item flex items-center gap-3 p-2.5 rounded-xl glass-panel border border-slate-800 hover:border-slate-700 transition">
+                            <input type="checkbox" id="item1" class="w-4 h-4 accent-cyan-500 rounded cursor-pointer">
+                            <label for="item1" class="cursor-pointer text-slate-300 flex-1">52mm MagSafe 磁吸 CPL 偏光鏡 (Kase / Ulanzi)</label>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-2.5 rounded-xl glass-panel border border-slate-800 hover:border-slate-700 transition">
+                            <input type="checkbox" id="item2" class="w-4 h-4 accent-cyan-500 rounded cursor-pointer">
+                            <label for="item2" class="cursor-pointer text-slate-300 flex-1">MagSafe 藍牙快門相機手柄 (帶手腕防掉繩孔)</label>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-2.5 rounded-xl glass-panel border border-slate-800 hover:border-slate-700 transition">
+                            <input type="checkbox" id="item3" class="w-4 h-4 accent-cyan-500 rounded cursor-pointer">
+                            <label for="item3" class="cursor-pointer text-slate-300 flex-1">手提電話保暖袋 / 內口袋防寒保暖貼</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Winter Clothing & Pass -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-bold text-indigo-400 flex items-center gap-2">
+                        <i class="fa-solid fa-passport"></i> 票券與雪地禦寒裝備
+                    </h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="checklist-item flex items-center gap-3 p-2.5 rounded-xl glass-panel border border-slate-800 hover:border-slate-700 transition">
+                            <input type="checkbox" id="item4" class="w-4 h-4 accent-indigo-500 rounded cursor-pointer">
+                            <label for="item4" class="cursor-pointer text-slate-300 flex-1">昇龍道巴士 3 日周遊券 (提前於網上預訂)</label>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-2.5 rounded-xl glass-panel border border-slate-800 hover:border-slate-700 transition">
+                            <input type="checkbox" id="item5" class="w-4 h-4 accent-indigo-500 rounded cursor-pointer">
+                            <label for="item5" class="cursor-pointer text-slate-300 flex-1">高山 ⇄ 白川鄉 ⇄ 金澤 濃飛巴士指定席預約</label>
+                        </div>
+                        <div class="checklist-item flex items-center gap-3 p-2.5 rounded-xl glass-panel border border-slate-800 hover:border-slate-700 transition">
+                            <input type="checkbox" id="item6" class="w-4 h-4 accent-indigo-500 rounded cursor-pointer">
+                            <label for="item6" class="cursor-pointer text-slate-300 flex-1">防滑防水雪靴 / 觸控式防寒保暖厚手套</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: TRANSPORTATION STRATEGY -->
+        <section id="transport" class="glass-panel rounded-3xl p-6 sm:p-8 space-y-4">
+            <div class="flex items-center gap-3 border-b border-slate-800 pb-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-lg">
+                    <i class="fa-solid fa-bus-simple"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white">交通指南與周遊券攻略</h2>
+                    <p class="text-xs text-slate-400">零自駕風險，完美銜接北陸高速巴士</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-slate-300">
+                <div class="glass-panel p-4 rounded-xl border border-slate-800 space-y-2">
+                    <h4 class="font-bold text-cyan-300 text-sm">昇龍道巴士 3 日券 (高山・白川鄉・金澤)</h4>
+                    <p class="leading-relaxed text-slate-400">
+                        覆蓋名古屋 ⇄ 高山、高山 ⇄ 白川鄉、白川鄉 ⇄ 金澤之高速巴士。比單買車票節省約 30% 費用。
+                    </p>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border border-slate-800 space-y-2">
+                    <h4 class="font-bold text-indigo-300 text-sm">濃飛巴士指定席預約提醒</h4>
+                    <p class="leading-relaxed text-slate-400">
+                        高山往白川鄉（如 12:00 班次）與白川鄉往金澤（如 18:15 班次）為熱門指定席，請於<strong>搭乘前 1 個月</strong>至日本 JAPAN BUS ONLINE 官網預約！
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-8 text-center text-xs text-slate-500 bg-slate-950/80">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>Nagoya & Hokuriku Winter Photography Itinerary 2027 • Designed for iPhone 17 Pro Snowscape Strategy</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Floating Button -->
+    <a href="#overview" class="fixed bottom-6 right-6 w-10 h-10 rounded-full glass-panel flex items-center justify-center text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-slate-950 transition shadow-lg z-50">
+        <i class="fa-solid fa-arrow-up text-sm"></i>
+    </a>
+
+    <!-- Interactive Filter Script -->
+    <script>
+        function filterDay(dayClass) {
+            // Update Active Button Style
+            const buttons = document.querySelectorAll('.day-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-cyan-500', 'text-slate-950', 'shadow-lg', 'shadow-cyan-500/20');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+
+            event.currentTarget.classList.remove('bg-slate-800', 'text-slate-300');
+            event.currentTarget.classList.add('bg-cyan-500', 'text-slate-950', 'shadow-lg', 'shadow-cyan-500/20');
+
+            // Show / Hide Day Cards
+            const cards = document.querySelectorAll('.day-card');
+            cards.forEach(card => {
+                if (dayClass === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    if (card.classList.contains(dayClass)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        function resetChecklist() {
+            const checkboxes = document.querySelectorAll('.checklist-item input');
+            checkboxes.forEach(cb => cb.checked = false);
+        }
+    </script>
+</body>
+</html>
