@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中部冬日雪國之旅 2027 ❄️</title>
+    <title>中部北陸冬日雪國之旅 2027 ❄️</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: M PLUS Rounded 1c & Nunito -->
@@ -17,24 +17,23 @@
         /* 日系 Soft Cream 奶油風格核心 CSS */
         body {
             font-family: 'M PLUS Rounded 1c', 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #FBF9F4; /* 奶白色底 */
+            background-color: #FBF9F4;
             color: #2B2B2B;
         }
 
-        /* 經典可愛厚圓角手繪質感卡片 */
+        /* 厚圓角手繪質感卡片 */
         .cute-card {
             background-color: #FFFFFF;
             border: 2.5px solid #2B2B2B;
-            border-radius: 24px;
-            box-shadow: 0 6px 0px #2B2B2B;
+            border-radius: 20px;
+            box-shadow: 0 5px 0px #2B2B2B;
             transition: all 0.2s ease-in-out;
         }
 
-        .cute-card-sm {
-            background-color: #FFFFFF;
+        .cute-card-inner {
+            background-color: #FFFDF9;
             border: 2px solid #2B2B2B;
-            border-radius: 18px;
-            box-shadow: 0 4px 0px #2B2B2B;
+            border-radius: 14px;
         }
 
         .cute-button {
@@ -48,482 +47,463 @@
             box-shadow: 0 1px 0px #2B2B2B;
         }
 
-        /* 顏色標籤配色 (配色系統) */
+        .btn-action {
+            border: 1.5px solid #2B2B2B;
+            border-radius: 8px;
+            box-shadow: 0 2px 0px #2B2B2B;
+            transition: all 0.1s ease;
+        }
+        .btn-action:active {
+            transform: translateY(1px);
+            box-shadow: 0 1px 0px #2B2B2B;
+        }
+
+        /* 顏色標籤配色 */
         .tag-salmon { background-color: #E88282; color: #FFFFFF; border: 1.5px solid #2B2B2B; }
         .tag-teal { background-color: #74B9BE; color: #FFFFFF; border: 1.5px solid #2B2B2B; }
         .tag-yellow { background-color: #F3CD7B; color: #2B2B2B; border: 1.5px solid #2B2B2B; }
-        .tag-purple { background-color: #C3A6FF; color: #FFFFFF; border: 1.5px solid #2B2B2B; }
-        .tag-green { background-color: #92D0A2; color: #FFFFFF; border: 1.5px solid #2B2B2B; }
+        .tag-purple { background-color: #C6A0D2; color: #FFFFFF; border: 1.5px solid #2B2B2B; }
+        .tag-green { background-color: #A3C9A8; color: #FFFFFF; border: 1.5px solid #2B2B2B; }
         .tag-grey { background-color: #EFECE6; color: #555555; border: 1.5px solid #2B2B2B; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            height: 8px;
-            width: 8px;
+        /* 隱藏滾動條 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-        ::-webkit-scrollbar-track {
-            background: #FBF9F4;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #D5CFC4;
-            border-radius: 999px;
-            border: 2px solid #2B2B2B;
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
-        /* Strike-through for checklist */
-        .checklist-item input:checked + label {
+        /* Checklist 刪除劃線 */
+        .todo-text.completed {
             text-decoration: line-through;
             color: #A09D96;
         }
     </style>
 </head>
-<body class="min-h-screen pb-12">
+<body class="min-h-screen pb-16">
 
-    <!-- 頂部浮動膠囊選單 (Navigation Menu) -->
-    <header class="sticky top-3 z-50 px-4 max-w-5xl mx-auto">
-        <nav class="bg-white/90 backdrop-blur-md border-2 border-[#2B2B2B] rounded-full p-2 shadow-[0_4px_0_#2B2B2B]">
-            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 px-1 font-bold text-xs sm:text-sm">
-                <a href="#overview" class="cute-button tag-yellow px-3.5 py-1.5 whitespace-nowrap flex items-center gap-1">
+    <!-- 頂部浮動導航膠囊 (Sticky Navigation) -->
+    <header class="sticky top-3 z-50 px-4 max-w-2xl mx-auto">
+        <nav class="bg-[#FBF9F4]/90 backdrop-blur-md border-2 border-[#2B2B2B] rounded-full p-2 shadow-[0_4px_0_#2B2B2B]">
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 px-1 font-black text-xs">
+                <a href="#overview" class="cute-button tag-yellow px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
                     <span>🏠</span> 首頁
                 </a>
-                <a href="#flight-info" class="cute-button bg-white text-[#2B2B2B] hover:bg-slate-100 px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
+                <a href="#flights" class="cute-button bg-white text-[#2B2B2B] px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
                     <span>✈️</span> 航班
                 </a>
-                <a href="#itinerary" class="cute-button bg-white text-[#2B2B2B] hover:bg-slate-100 px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
+                <a href="#itinerary" class="cute-button bg-white text-[#2B2B2B] px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
                     <span>📅</span> 行程
                 </a>
-                <a href="#photo-guide" class="cute-button bg-white text-[#2B2B2B] hover:bg-slate-100 px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
-                    <span>📸</span> 攝影
+                <a href="#restaurants" class="cute-button bg-white text-[#2B2B2B] px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
+                    <span>🍽️</span> 餐廳
                 </a>
-                <a href="#transport" class="cute-button bg-white text-[#2B2B2B] hover:bg-slate-100 px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
+                <a href="#transport" class="cute-button bg-white text-[#2B2B2B] px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
                     <span>🚌</span> 交通
                 </a>
-                <a href="#hotels" class="cute-button bg-white text-[#2B2B2B] hover:bg-slate-100 px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
+                <a href="#hotels" class="cute-button bg-white text-[#2B2B2B] px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
                     <span>🏨</span> 住宿
                 </a>
-                <a href="#todo" class="cute-button bg-white text-[#2B2B2B] hover:bg-slate-100 px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
-                    <span>☑️</span> 待辦
+                <a href="#todo" class="cute-button bg-white text-[#2B2B2B] px-3 py-1.5 whitespace-nowrap flex items-center gap-1">
+                    <span>☑️</span> 備忘
                 </a>
             </div>
         </nav>
     </header>
 
-    <main class="max-w-3xl mx-auto px-4 mt-6 space-y-8">
+    <main class="max-w-2xl mx-auto px-4 mt-6 space-y-7">
 
-        <!-- 1. Hero 倒數計時 Header (中部冬日雪國之旅) -->
-        <section id="overview" class="cute-card p-6 sm:p-8 text-center relative overflow-hidden">
-            <!-- 手繪風格山嶺小圖標 -->
-            <div class="flex justify-center mb-3">
-                <svg width="80" height="50" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20 50L40 15L60 50H20Z" fill="#74B9BE" stroke="#2B2B2B" stroke-width="3" stroke-linejoin="round"/>
-                    <path d="M40 15L48 27L40 24L32 27L40 15Z" fill="white" stroke="#2B2B2B" stroke-width="2"/>
-                    <path d="M45 50L68 10L90 50H45Z" fill="#F3CD7B" stroke="#2B2B2B" stroke-width="3" stroke-linejoin="round"/>
-                    <path d="M68 10L76 22L68 19L60 22L68 10Z" fill="white" stroke="#2B2B2B" stroke-width="2"/>
+        <!-- 1. Banner & 倒數計時器 -->
+        <section id="overview" class="cute-card p-6 text-center relative">
+            <div class="flex justify-center mb-2">
+                <svg width="70" height="42" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 50L40 15L60 50H20Z" fill="#74B9BE" stroke="#2B2B2B" stroke-width="3.5" stroke-linejoin="round"/>
+                    <path d="M40 15L48 27L40 24L32 27L40 15Z" fill="white" stroke="#2B2B2B" stroke-width="2.5"/>
+                    <path d="M45 50L68 10L90 50H45Z" fill="#F3CD7B" stroke="#2B2B2B" stroke-width="3.5" stroke-linejoin="round"/>
+                    <path d="M68 10L76 22L68 19L60 22L68 10Z" fill="white" stroke="#2B2B2B" stroke-width="2.5"/>
                 </svg>
             </div>
 
-            <h1 class="text-2xl sm:text-3xl font-black text-[#2B2B2B] tracking-wide">
-                中部冬日雪國之旅 ❄️
+            <h1 class="text-2xl font-black tracking-wide text-[#2B2B2B]">
+                中部北陸冬日雪國之旅 ❄️
             </h1>
-            <p class="text-xs sm:text-sm font-bold text-slate-500 mt-2">
+            <p class="text-xs font-bold text-slate-500 mt-1">
                 2027.01.27 - 02.02 (7 Days)
             </p>
 
-            <!-- 動態倒數計時器 (Countdown Box) -->
-            <div class="mt-6 flex justify-center items-center gap-2 sm:gap-3 text-[#2B2B2B]">
-                <div class="cute-card-sm bg-[#FBF9F4] px-3 py-2 min-w-[60px]">
-                    <span id="cd-days" class="block font-black text-xl sm:text-2xl">00</span>
-                    <span class="text-[10px] font-bold text-slate-400">天</span>
+            <!-- 倒數計時黑框組 -->
+            <div class="mt-5 flex justify-center items-center gap-2 text-[#2B2B2B]">
+                <div class="border-2 border-[#2B2B2B] rounded-xl bg-[#FBF9F4] px-3 py-1.5 min-w-[55px] shadow-[0_2px_0_#2B2B2B]">
+                    <span id="cd-days" class="block font-black text-xl">90</span>
+                    <span class="text-[9px] font-bold text-slate-400 block -mt-1">天</span>
                 </div>
                 <span class="font-black text-lg">:</span>
-                <div class="cute-card-sm bg-[#FBF9F4] px-3 py-2 min-w-[60px]">
-                    <span id="cd-hours" class="block font-black text-xl sm:text-2xl">00</span>
-                    <span class="text-[10px] font-bold text-slate-400">時</span>
+                <div class="border-2 border-[#2B2B2B] rounded-xl bg-[#FBF9F4] px-3 py-1.5 min-w-[55px] shadow-[0_2px_0_#2B2B2B]">
+                    <span id="cd-hours" class="block font-black text-xl">07</span>
+                    <span class="text-[9px] font-bold text-slate-400 block -mt-1">時</span>
                 </div>
                 <span class="font-black text-lg">:</span>
-                <div class="cute-card-sm bg-[#FBF9F4] px-3 py-2 min-w-[60px]">
-                    <span id="cd-mins" class="block font-black text-xl sm:text-2xl">00</span>
-                    <span class="text-[10px] font-bold text-slate-400">分</span>
+                <div class="border-2 border-[#2B2B2B] rounded-xl bg-[#FBF9F4] px-3 py-1.5 min-w-[55px] shadow-[0_2px_0_#2B2B2B]">
+                    <span id="cd-mins" class="block font-black text-xl">57</span>
+                    <span class="text-[9px] font-bold text-slate-400 block -mt-1">分</span>
                 </div>
                 <span class="font-black text-lg">:</span>
-                <div class="cute-card-sm bg-[#FBF9F4] px-3 py-2 min-w-[60px]">
-                    <span id="cd-secs" class="block font-black text-xl sm:text-2xl text-salmon">00</span>
-                    <span class="text-[10px] font-bold text-slate-400">秒</span>
+                <div class="border-2 border-[#2B2B2B] rounded-xl bg-[#FBF9F4] px-3 py-1.5 min-w-[55px] shadow-[0_2px_0_#2B2B2B]">
+                    <span id="cd-secs" class="block font-black text-xl text-red-500">38</span>
+                    <span class="text-[9px] font-bold text-slate-400 block -mt-1">秒</span>
                 </div>
             </div>
         </section>
 
-        <!-- 2. 航班資訊 Card (Flight Info) -->
-        <section id="flight-info" class="cute-card p-6 space-y-5">
-            <div class="flex items-center gap-2 border-b-2 border-dashed border-slate-200 pb-3">
-                <span class="text-xl">✈️</span>
-                <h2 class="text-lg font-black text-[#2B2B2B]">航班資訊</h2>
+        <!-- 2. 航班資訊 (Flight Info) -->
+        <section id="flights" class="cute-card p-5 space-y-4">
+            <div class="flex items-center gap-2 border-b-2 border-dashed border-slate-200 pb-2.5">
+                <span class="text-lg">✈️</span>
+                <h2 class="text-base font-black text-[#2B2B2B]">航班資訊</h2>
             </div>
 
-            <!-- 去程 Flight Outbound -->
-            <div class="space-y-2">
-                <div class="flex items-center justify-between text-xs font-bold">
-                    <span class="tag-salmon px-3 py-1 rounded-full text-xs">去程 · 1月27日 (三)</span>
-                    <span class="text-slate-500">國泰航空 CX536 (特選經濟)</span>
+            <!-- 去程 -->
+            <div class="space-y-1.5">
+                <div class="flex items-center justify-between">
+                    <span class="tag-salmon px-2.5 py-0.5 rounded-full text-[11px] font-bold">去程 · 1月27日 (三)</span>
+                    <span class="text-xs font-bold text-slate-500">國泰航空 CX536</span>
                 </div>
-                <div class="flex items-center justify-between font-black text-base sm:text-lg pt-1">
+                <div class="flex items-center justify-between font-black text-base pt-1">
                     <div>
-                        <span class="block text-xl sm:text-2xl">HKG</span>
-                        <span class="text-xs text-slate-400 font-normal">09:35 起飛</span>
+                        <span class="block text-xl">HKG</span>
+                        <span class="text-[11px] text-slate-400 font-normal">09:35 起飛</span>
                     </div>
                     <div class="flex-1 text-center px-4">
-                        <span class="block text-slate-300 text-xs">────────────────</span>
-                        <span class="text-lg">➔</span>
+                        <span class="block text-slate-300 text-xs">----------------</span>
+                        <span class="text-base">➔</span>
                     </div>
                     <div class="text-right">
-                        <span class="block text-xl sm:text-2xl">NGO</span>
-                        <span class="text-xs text-slate-400 font-normal">14:10 抵達</span>
+                        <span class="block text-xl">NGO</span>
+                        <span class="text-[11px] text-slate-400 font-normal">14:10 抵達</span>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-slate-100 my-2"></div>
+            <div class="border-t border-slate-200 my-2"></div>
 
-            <!-- 回程 Flight Inbound -->
-            <div class="space-y-2">
-                <div class="flex items-center justify-between text-xs font-bold">
-                    <span class="tag-teal px-3 py-1 rounded-full text-xs">回程 · 2月2日 (二)</span>
-                    <span class="text-slate-500">國泰航空 CX539 (商務艙)</span>
+            <!-- 回程 -->
+            <div class="space-y-1.5">
+                <div class="flex items-center justify-between">
+                    <span class="tag-teal px-2.5 py-0.5 rounded-full text-[11px] font-bold">回程 · 2月2日 (二)</span>
+                    <span class="text-xs font-bold text-slate-500">國泰航空 CX539 (商務艙)</span>
                 </div>
-                <div class="flex items-center justify-between font-black text-base sm:text-lg pt-1">
+                <div class="flex items-center justify-between font-black text-base pt-1">
                     <div>
-                        <span class="block text-xl sm:text-2xl">NGO</span>
-                        <span class="text-xs text-slate-400 font-normal">15:15 起飛</span>
+                        <span class="block text-xl">NGO</span>
+                        <span class="text-[11px] text-slate-400 font-normal">15:15 起飛</span>
                     </div>
                     <div class="flex-1 text-center px-4">
-                        <span class="block text-slate-300 text-xs">────────────────</span>
-                        <span class="text-lg">➔</span>
+                        <span class="block text-slate-300 text-xs">----------------</span>
+                        <span class="text-base">➔</span>
                     </div>
                     <div class="text-right">
-                        <span class="block text-xl sm:text-2xl">HKG</span>
-                        <span class="text-xs text-slate-400 font-normal">19:10 抵達</span>
+                        <span class="block text-xl">HKG</span>
+                        <span class="text-[11px] text-slate-400 font-normal">19:10 抵達</span>
                     </div>
                 </div>
             </div>
 
-            <div class="pt-2 text-center">
-                <a href="https://www.cathaypacific.com" target="_blank" class="inline-flex items-center gap-2 cute-button bg-[#FBF9F4] text-[#2B2B2B] text-xs font-bold px-4 py-2 hover:bg-slate-100">
+            <div class="pt-1 text-center">
+                <a href="https://www.cathaypacific.com" target="_blank" class="inline-flex items-center gap-1.5 cute-button bg-[#FBF9F4] text-[#2B2B2B] text-xs font-bold px-3.5 py-1.5">
                     <span>🔗</span> 國泰航空官網 / 管理預訂
                 </a>
             </div>
         </section>
 
         <!-- 3. 每日行程與攻略 (Daily Itinerary) -->
-        <section id="itinerary" class="cute-card p-6 space-y-6">
-            <div class="flex items-center justify-between border-b-2 border-dashed border-slate-200 pb-3">
+        <section id="itinerary" class="cute-card p-5 space-y-5">
+            <div class="flex items-center justify-between border-b-2 border-dashed border-slate-200 pb-2.5">
                 <div class="flex items-center gap-2">
-                    <span class="text-xl">📅</span>
-                    <h2 class="text-lg font-black text-[#2B2B2B]">每日行程與攻略</h2>
+                    <span class="text-lg">📅</span>
+                    <h2 class="text-base font-black text-[#2B2B2B]">每日行程與攻略</h2>
                 </div>
                 <span class="text-xs font-bold text-slate-400">Route A 環線</span>
             </div>
 
-            <!-- Day Tabs Filter (Horizontal Scrollable) -->
-            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2">
-                <button onclick="switchDay('d1')" id="tab-d1" class="day-tab cute-button tag-salmon px-3.5 py-1.5 text-xs font-black whitespace-nowrap">Day 1 (1/27)</button>
-                <button onclick="switchDay('d2')" id="tab-d2" class="day-tab cute-button bg-white text-[#2B2B2B] px-3.5 py-1.5 text-xs font-bold whitespace-nowrap">Day 2 (1/28)</button>
-                <button onclick="switchDay('d3')" id="tab-d3" class="day-tab cute-button bg-white text-[#2B2B2B] px-3.5 py-1.5 text-xs font-bold whitespace-nowrap">Day 3 (1/29)</button>
-                <button onclick="switchDay('d4')" id="tab-d4" class="day-tab cute-button bg-white text-[#2B2B2B] px-3.5 py-1.5 text-xs font-bold whitespace-nowrap">Day 4 (1/30)</button>
-                <button onclick="switchDay('d5')" id="tab-d5" class="day-tab cute-button bg-white text-[#2B2B2B] px-3.5 py-1.5 text-xs font-bold whitespace-nowrap">Day 5 (1/31)</button>
-                <button onclick="switchDay('d6')" id="tab-d6" class="day-tab cute-button bg-white text-[#2B2B2B] px-3.5 py-1.5 text-xs font-bold whitespace-nowrap">Day 6 (2/1)</button>
-                <button onclick="switchDay('d7')" id="tab-d7" class="day-tab cute-button bg-white text-[#2B2B2B] px-3.5 py-1.5 text-xs font-bold whitespace-nowrap">Day 7 (2/2)</button>
+            <!-- Day Filter Tabs -->
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1">
+                <button onclick="switchDay('d1')" id="tab-d1" class="day-tab cute-button tag-salmon px-3 py-1 text-xs font-black whitespace-nowrap">Day 1 (1/27)</button>
+                <button onclick="switchDay('d2')" id="tab-d2" class="day-tab cute-button bg-white text-[#2B2B2B] px-3 py-1 text-xs font-bold whitespace-nowrap">Day 2 (1/28)</button>
+                <button onclick="switchDay('d3')" id="tab-d3" class="day-tab cute-button bg-white text-[#2B2B2B] px-3 py-1 text-xs font-bold whitespace-nowrap">Day 3 (1/29)</button>
+                <button onclick="switchDay('d4')" id="tab-d4" class="day-tab cute-button bg-white text-[#2B2B2B] px-3 py-1 text-xs font-bold whitespace-nowrap">Day 4 (1/30)</button>
+                <button onclick="switchDay('d5')" id="tab-d5" class="day-tab cute-button bg-white text-[#2B2B2B] px-3 py-1 text-xs font-bold whitespace-nowrap">Day 5 (1/31)</button>
+                <button onclick="switchDay('d6')" id="tab-d6" class="day-tab cute-button bg-white text-[#2B2B2B] px-3 py-1 text-xs font-bold whitespace-nowrap">Day 6 (2/1)</button>
+                <button onclick="switchDay('d7')" id="tab-d7" class="day-tab cute-button bg-white text-[#2B2B2B] px-3 py-1 text-xs font-bold whitespace-nowrap">Day 7 (2/2)</button>
             </div>
 
-            <!-- Day Content Containers -->
-            <div id="day-contents" class="space-y-4">
-
-                <!-- DAY 1 -->
-                <div id="content-d1" class="day-content space-y-4">
-                    <div class="flex items-center justify-between bg-[#FBF9F4] p-3 rounded-xl border border-slate-300">
-                        <span class="font-black text-sm text-[#2B2B2B]">📍 DAY 1：香港 ➔ 名古屋 ➔ 直奔高山</span>
-                        <span class="tag-salmon text-[10px] px-2.5 py-0.5 rounded-full font-bold">宿：高山櫻庵</span>
+            <!-- Day Contents -->
+            <div id="day-contents" class="space-y-3">
+                <div id="content-d1" class="day-content space-y-3">
+                    <div class="bg-[#FBF9F4] p-2.5 rounded-xl border border-slate-300 flex justify-between items-center text-xs font-bold">
+                        <span>📍 DAY 1：香港 ➔ 名古屋 ➔ 直奔高山</span>
+                        <span class="tag-salmon px-2 py-0.5 rounded text-[10px]">宿：高山櫻庵</span>
                     </div>
-
-                    <div class="space-y-3 text-xs sm:text-sm">
-                        <div class="flex gap-3">
-                            <span class="tag-teal px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">09:35</span>
-                            <div><strong>CX536 啟程：</strong>國泰特選經濟前往中部國際機場 (NGO)，14:10 抵達。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-green px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">15:00</span>
-                            <div><strong>名鐵電車 ➔ JR 高山：</strong>兌換昇龍道周遊券或乘搭 JR 特急 Hida 飛驒號（約 2.5 小時）。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-yellow px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">18:30</span>
-                            <div><strong>高山飯店 Check-in & 晚餐：</strong>入住「高山櫻庵」泡日式溫泉，晚餐享用極品 A5 飛驒牛燒肉與朴葉味噌。</div>
-                        </div>
-                    </div>
+                    <ul class="space-y-2 text-xs">
+                        <li><strong>09:35 - 14:10</strong>：CX536 前往中部國際機場 (NGO)。</li>
+                        <li><strong>15:00 - 18:00</strong>：名鐵電車 ➔ JR 高山站 (搭乘 JR 特急 Hida 飛驒號)。</li>
+                        <li><strong>18:30 晚餐</strong>：享用 A5 飛驒牛燒肉 (味藏天國)，夜泡高山櫻庵露天溫泉。</li>
+                    </ul>
                 </div>
 
-                <!-- DAY 2 -->
-                <div id="content-d2" class="day-content hidden space-y-4">
-                    <div class="flex items-center justify-between bg-[#FBF9F4] p-3 rounded-xl border border-slate-300">
-                        <span class="font-black text-sm text-[#2B2B2B]">📍 DAY 2：新穗高雙層纜車 ➔ 高山老街</span>
-                        <span class="tag-salmon text-[10px] px-2.5 py-0.5 rounded-full font-bold">宿：高山櫻庵 (連住)</span>
+                <div id="content-d2" class="day-content hidden space-y-3">
+                    <div class="bg-[#FBF9F4] p-2.5 rounded-xl border border-slate-300 flex justify-between items-center text-xs font-bold">
+                        <span>📍 DAY 2：新穗高雙層纜車 ➔ 高山老街</span>
+                        <span class="tag-salmon px-2 py-0.5 rounded text-[10px]">宿：高山櫻庵</span>
                     </div>
-
-                    <div class="space-y-3 text-xs sm:text-sm">
-                        <div class="flex gap-3">
-                            <span class="tag-green px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">08:40</span>
-                            <div><strong>濃飛巴士前往新穗高：</strong>高山總站乘車直達新穗高纜車站（約 90 分鐘）。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-teal px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">10:30</span>
-                            <div><strong>新穗高纜車 (海拔 2,156m)：</strong>直上山頂展望台，360 度觀賞北阿爾卑斯山脈壯麗雪山。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-yellow px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">15:00</span>
-                            <div><strong>高山老街 (三町筋)：</strong>漫步古建築群，試食現做飛驒牛握壽司與熱甘酒。</div>
-                        </div>
-                    </div>
-
-                    <div class="cute-card-sm bg-sky-50 p-3 text-xs text-sky-900 border-sky-300">
-                        <strong>📸 iPhone 拍攝攻略：</strong>吸上 MagSafe CPL 濾鏡切除雪山強強光，使用 5x - 10x 變焦拍攝雪山背景壓縮感！
-                    </div>
+                    <ul class="space-y-2 text-xs">
+                        <li><strong>08:40 - 10:30</strong>：高山總站搭濃飛巴士前往新穗高纜車站。</li>
+                        <li><strong>10:30 - 13:30</strong>：搭雙層纜車登上 2,156m 展望台，觀賞 360 度北阿爾卑斯雪山。</li>
+                        <li><strong>15:00 - 18:00</strong>：返高山老街 (三町筋) 漫步、食飛驒牛壽喜燒 (丸明)。</li>
+                    </ul>
                 </div>
 
-                <!-- DAY 3 -->
-                <div id="content-d3" class="day-content hidden space-y-4">
-                    <div class="flex items-center justify-between bg-[#FBF9F4] p-3 rounded-xl border border-slate-300">
-                        <span class="font-black text-sm text-[#2B2B2B]">📍 DAY 3：宮川朝市 ➔ 白川鄉藍調亮燈 ➔ 金澤</span>
-                        <span class="tag-teal text-[10px] px-2.5 py-0.5 rounded-full font-bold">宿：金澤站前 Hotel</span>
+                <div id="content-d3" class="day-content hidden space-y-3">
+                    <div class="bg-[#FBF9F4] p-2.5 rounded-xl border border-slate-300 flex justify-between items-center text-xs font-bold">
+                        <span>📍 DAY 3：宮川朝市 ➔ 白川鄉藍調亮燈 ➔ 金澤</span>
+                        <span class="tag-teal px-2 py-0.5 rounded text-[10px]">宿：金澤站前飯店</span>
                     </div>
-
-                    <div class="space-y-3 text-xs sm:text-sm">
-                        <div class="flex gap-3">
-                            <span class="tag-yellow px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">09:00</span>
-                            <div><strong>宮川朝市：</strong>清晨漫步宮川河畔，拍雪中紅橋。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-green px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">12:00</span>
-                            <div><strong>進駐白川鄉 (避開團客)：</strong>搭乘 12:00 濃飛巴士前往（成功避開 11:00-14:30 旅遊巴大軍）。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-salmon px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">17:00</span>
-                            <div><strong>★ 藍調亮燈 Moment (Blue Hour)：</strong>展望台捕捉日落深藍天空與合掌屋暖黃窗光交織！</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-green px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">18:15</span>
-                            <div><strong>晚班巴士前往金澤：</strong>搭乘北陸鐵道巴士直達金澤站（約 85 分鐘）。</div>
-                        </div>
-                    </div>
-
-                    <div class="cute-card-sm bg-rose-50 p-3 text-xs text-rose-900 border-rose-300">
-                        <strong>📸 藍調拍攝關鍵：</strong>點亮 48MP ProRAW Max，鎖定白平衡與冷色調風格，使用 MagSafe 手柄穩定快門。
-                    </div>
+                    <ul class="space-y-2 text-xs">
+                        <li><strong>09:00 - 11:30</strong>：逛宮川朝市與高山陣屋。</li>
+                        <li><strong>12:00 - 12:50</strong>：搭濃飛巴士進駐白川鄉 (完美避開團客)。</li>
+                        <li><strong>15:30 - 17:30</strong>：展望台觀賞 17:00 白川鄉藍調亮燈 (Blue Hour)。</li>
+                        <li><strong>18:15 - 19:40</strong>：搭晚班巴士直達金澤站前飯店。</li>
+                    </ul>
                 </div>
 
-                <!-- DAY 4 -->
-                <div id="content-d4" class="day-content hidden space-y-4">
-                    <div class="flex items-center justify-between bg-[#FBF9F4] p-3 rounded-xl border border-slate-300">
-                        <span class="font-black text-sm text-[#2B2B2B]">📍 DAY 4：兼六園雪吊 ➔ 金澤城 ➔ 東茶屋街</span>
-                        <span class="tag-teal text-[10px] px-2.5 py-0.5 rounded-full font-bold">宿：金澤站前 Hotel</span>
+                <div id="content-d4" class="day-content hidden space-y-3">
+                    <div class="bg-[#FBF9F4] p-2.5 rounded-xl border border-slate-300 flex justify-between items-center text-xs font-bold">
+                        <span>📍 DAY 4：兼六園雪吊 ➔ 金澤城 ➔ 東茶屋街</span>
+                        <span class="tag-teal px-2 py-0.5 rounded text-[10px]">宿：金澤站前飯店</span>
                     </div>
-
-                    <div class="space-y-3 text-xs sm:text-sm">
-                        <div class="flex gap-3">
-                            <span class="tag-yellow px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">09:00</span>
-                            <div><strong>兼六園 (Kenroku-en)：</strong>日本三大名園，拍攝冬日限定「雪吊」繩索典雅畫面。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-teal px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">11:30</span>
-                            <div><strong>金澤城公園：</strong>走訪菱櫓與五十間長屋，拍攝白瓦雪牆線條美。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-purple px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">14:00</span>
-                            <div><strong>東茶屋街：</strong>古街漫步品嚐「箔一」金箔軟雪膏，晚餐享用香林坊金澤關東煮。</div>
-                        </div>
-                    </div>
+                    <ul class="space-y-2 text-xs">
+                        <li><strong>09:00 - 11:30</strong>：遊覽兼六園，拍攝冬季限定「雪吊」典雅景色。</li>
+                        <li><strong>11:30 - 13:30</strong>：金澤城公園菱櫓白瓦雪牆。</li>
+                        <li><strong>14:00 - 17:30</strong>：東茶屋街食金箔軟雪膏，晚上香林坊食關東煮。</li>
+                    </ul>
                 </div>
 
-                <!-- DAY 5 -->
-                <div id="content-d5" class="day-content hidden space-y-4">
-                    <div class="flex items-center justify-between bg-[#FBF9F4] p-3 rounded-xl border border-slate-300">
-                        <span class="font-black text-sm text-[#2B2B2B]">📍 DAY 5：近江町市場冬蟹 ➔ 返回名古屋</span>
-                        <span class="tag-purple text-[10px] px-2.5 py-0.5 rounded-full font-bold">宿：名古屋榮町 / 名驛</span>
+                <div id="content-d5" class="day-content hidden space-y-3">
+                    <div class="bg-[#FBF9F4] p-2.5 rounded-xl border border-slate-300 flex justify-between items-center text-xs font-bold">
+                        <span>📍 DAY 5：近江町市場冬蟹 ➔ 返回名古屋</span>
+                        <span class="tag-purple px-2 py-0.5 rounded text-[10px]">宿：名古屋飯店</span>
                     </div>
-
-                    <div class="space-y-3 text-xs sm:text-sm">
-                        <div class="flex gap-3">
-                            <span class="tag-salmon px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">08:30</span>
-                            <div><strong>近江町市場海鮮暴擊：</strong>品嚐冬蟹（加能蟹）、寒鰤魚與豪快海膽丼。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-green px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">13:00</span>
-                            <div><strong>JR Shirasagi 特急 ➔ 名古屋：</strong>從金澤站乘列車返回名古屋站（約 2.5 小時）。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-yellow px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">18:00</span>
-                            <div><strong>名古屋榮町購物 & 蓬萊軒：</strong>晚宴享用正宗蓬萊軒鰻魚飯三吃 (Hitsumabushi)。</div>
-                        </div>
-                    </div>
+                    <ul class="space-y-2 text-xs">
+                        <li><strong>08:30 - 11:30</strong>：近江町市場海鮮暴擊 (加能蟹、寒鰤魚、海膽丼)。</li>
+                        <li><strong>13:00 - 15:30</strong>：搭 JR Shirasagi 特急返回名古屋。</li>
+                        <li><strong>18:00</strong>：榮町購物，享用正宗蓬萊軒鰻魚飯三吃。</li>
+                    </ul>
                 </div>
 
-                <!-- DAY 6 -->
-                <div id="content-d6" class="day-content hidden space-y-4">
-                    <div class="flex items-center justify-between bg-[#FBF9F4] p-3 rounded-xl border border-slate-300">
-                        <span class="font-black text-sm text-[#2B2B2B]">📍 DAY 6：名古屋市區購物 & 綠洲 21 夜景</span>
-                        <span class="tag-purple text-[10px] px-2.5 py-0.5 rounded-full font-bold">宿：名古屋市區</span>
+                <div id="content-d6" class="day-content hidden space-y-3">
+                    <div class="bg-[#FBF9F4] p-2.5 rounded-xl border border-slate-300 flex justify-between items-center text-xs font-bold">
+                        <span>📍 DAY 6：名古屋市區購物 & 綠洲 21 夜景</span>
+                        <span class="tag-purple px-2 py-0.5 rounded text-[10px]">宿：名古屋飯店</span>
                     </div>
+                    <ul class="space-y-2 text-xs">
+                        <li><strong>10:00 - 16:30</strong>：大須觀音商店街、Bic Camera 藥妝與數碼買物。</li>
+                        <li><strong>17:30 - 19:30</strong>：綠洲 21 水鏡夜景，晚餐矢場炸豬排與手羽先。</li>
+                    </ul>
+                </div>
 
-                    <div class="space-y-3 text-xs sm:text-sm">
-                        <div class="flex gap-3">
-                            <span class="tag-purple px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">10:00</span>
-                            <div><strong>大須觀音商店街 & 高島屋/Bic Camera：</strong>潮流服裝、藥妝與數碼配件大補貨。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-teal px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">17:30</span>
-                            <div><strong>綠洲 21 (Oasis 21) & 名古屋電視塔：</strong>宇宙船玻璃水鏡夜景拍攝。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-yellow px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">19:30</span>
-                            <div><strong>美食：</strong>矢場炸豬排（味噌豬扒）與世界的山將手羽先（雞翼）。</div>
-                        </div>
+                <div id="content-d7" class="day-content hidden space-y-3">
+                    <div class="bg-[#FBF9F4] p-2.5 rounded-xl border border-slate-300 flex justify-between items-center text-xs font-bold">
+                        <span>📍 DAY 7：常滑招財貓小鎮 ➔ 中部機場 ➔ 返港</span>
+                        <span class="tag-grey px-2 py-0.5 rounded text-[10px]">返港</span>
                     </div>
-                </div>
-
-                <!-- DAY 7 -->
-                <div id="content-d7" class="day-content hidden space-y-4">
-                    <div class="flex items-center justify-between bg-[#FBF9F4] p-3 rounded-xl border border-slate-300">
-                        <span class="font-black text-sm text-[#2B2B2B]">📍 DAY 7：常滑招財貓小鎮 ➔ 中部機場 ➔ 返港</span>
-                        <span class="tag-grey text-[10px] px-2.5 py-0.5 rounded-full font-bold">返港</span>
-                    </div>
-
-                    <div class="space-y-3 text-xs sm:text-sm">
-                        <div class="flex gap-3">
-                            <span class="tag-yellow px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">10:00</span>
-                            <div><strong>常滑陶瓷散步道：</strong>拍攝巨大招財貓 Tokonyan 與復古陶瓷煙囪。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-teal px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">13:00</span>
-                            <div><strong>中部國際機場 (NGO) & JAL Sakura Lounge：</strong>辦理登機，買常滑坂角總本鋪蝦餅手信。</div>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="tag-salmon px-2 py-0.5 rounded font-mono text-xs font-bold h-fit">15:15</span>
-                            <div><strong>CX539 返港：</strong>國泰商務艙 15:15 起飛，19:10 安全抵達香港 (HKG)。</div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 4. iPhone 17 Pro 雪國攝影攻略 (Photo Strategy) -->
-        <section id="photo-guide" class="cute-card p-6 space-y-4">
-            <div class="flex items-center gap-2 border-b-2 border-dashed border-slate-200 pb-3">
-                <span class="text-xl">📸</span>
-                <h2 class="text-lg font-black text-[#2B2B2B]">iPhone 17 Pro 雪國攝影攻略</h2>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <div class="cute-card-sm p-3.5 space-y-1">
-                    <span class="font-black text-[#2B2B2B] block">1. MagSafe 52mm CPL 偏光鏡</span>
-                    <p class="text-slate-500">輕旋轉消除雪地強光反射，讓藍天更純粹、積雪線條更立體。</p>
-                </div>
-                <div class="cute-card-sm p-3.5 space-y-1">
-                    <span class="font-black text-[#2B2B2B] block">2. 48MP ProRAW Max (最高畫質)</span>
-                    <p class="text-slate-500">於設定中預設開啟 ProRAW Max，合掌村大景點亮 RAW 標籤拍攝。</p>
-                </div>
-                <div class="cute-card-sm p-3.5 space-y-1">
-                    <span class="font-black text-[#2B2B2B] block">3. 「冷色調」攝影風格預設</span>
-                    <p class="text-slate-500">Photographic Style 設為 Cool (Tone +0.2, Color -0.1)，白雪透亮不發黃。</p>
-                </div>
-                <div class="cute-card-sm p-3.5 space-y-1">
-                    <span class="font-black text-[#2B2B2B] block">4. 5x - 10x 光學背景壓縮</span>
-                    <p class="text-slate-500">利用長焦拉近遠處雪山與合掌屋，創造震撼包圍感。</p>
+                    <ul class="space-y-2 text-xs">
+                        <li><strong>10:00 - 12:30</strong>：常滑散步道拍巨大招財貓與陶瓷煙囪。</li>
+                        <li><strong>13:00 - 15:15</strong>：機場 JAL Lounge 休息，CX539 商務艙 15:15 飛返香港。</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- 5. 待辦 Checklist (Todo) -->
-        <section id="todo" class="cute-card p-6 space-y-4">
-            <div class="flex items-center justify-between border-b-2 border-dashed border-slate-200 pb-3">
+        <!-- 4. 🍽️ 餐廳總整理 (已確認必去) -->
+        <section id="restaurants" class="cute-card p-5 space-y-4">
+            <div class="flex items-center justify-between border-b-2 border-dashed border-slate-200 pb-2.5">
                 <div class="flex items-center gap-2">
-                    <span class="text-xl">☑️</span>
-                    <h2 class="text-lg font-black text-[#2B2B2B]">出發前準備 & 淘寶配件 Checklist</h2>
+                    <span class="text-lg">🍽️</span>
+                    <h2 class="text-base font-black text-[#2B2B2B]">餐廳總整理 (已確認必去)</h2>
                 </div>
             </div>
 
-            <div class="space-y-2 text-xs sm:text-sm">
-                <div class="checklist-item flex items-center gap-2.5 p-2 bg-[#FBF9F4] rounded-xl border border-slate-200">
-                    <input type="checkbox" id="chk1" onchange="saveChecklist()" class="w-4 h-4 accent-salmon cursor-pointer">
-                    <label for="chk1" class="cursor-pointer font-bold text-[#2B2B2B]">淘寶：52mm MagSafe 磁吸 CPL 偏光鏡 (Kase / Ulanzi)</label>
+            <div class="space-y-3">
+                <!-- 味藏天國 -->
+                <div class="cute-card-inner p-3.5 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-black text-sm text-[#2B2B2B]">🥩 味藏天國 (A5 飛驒牛燒肉)</span>
+                        <span class="tag-salmon text-[10px] px-2 py-0.5 rounded font-bold">Day 1 晚餐</span>
+                    </div>
+                    <p class="text-xs font-bold text-red-500">
+                        • 狀態：⚠️ 16:30 必須現場抽號碼牌
+                    </p>
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-action bg-white px-3 py-1 text-xs font-bold flex items-center gap-1">
+                            🔗 Tabelog
+                        </a>
+                        <a href="https://maps.google.com" target="_blank" class="btn-action bg-white px-3 py-1 text-xs font-bold flex items-center gap-1">
+                            🗺️ Google 地圖
+                        </a>
+                    </div>
                 </div>
-                <div class="checklist-item flex items-center gap-2.5 p-2 bg-[#FBF9F4] rounded-xl border border-slate-200">
-                    <input type="checkbox" id="chk2" onchange="saveChecklist()" class="w-4 h-4 accent-salmon cursor-pointer">
-                    <label for="chk2" class="cursor-pointer font-bold text-[#2B2B2B]">淘寶：MagSafe 藍牙手柄 (必揀帶防手滑掛繩孔)</label>
+
+                <!-- 丸明 -->
+                <div class="cute-card-inner p-3.5 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-black text-sm text-[#2B2B2B]">🍲 丸明 高山店 (飛驒牛壽喜燒/朴葉燒)</span>
+                        <span class="tag-salmon text-[10px] px-2 py-0.5 rounded font-bold">Day 2 晚餐</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-600">
+                        • 狀態：現場排隊 / 飯店代訂
+                    </p>
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://tabelog.com/gifu/A2104/A210401/21000042/" target="_blank" class="btn-action bg-white px-3 py-1 text-xs font-bold flex items-center gap-1">
+                            🔗 Tabelog
+                        </a>
+                        <a href="https://maps.google.com" target="_blank" class="btn-action bg-white px-3 py-1 text-xs font-bold flex items-center gap-1">
+                            🗺️ Google 地圖
+                        </a>
+                    </div>
                 </div>
-                <div class="checklist-item flex items-center gap-2.5 p-2 bg-[#FBF9F4] rounded-xl border border-slate-200">
-                    <input type="checkbox" id="chk3" onchange="saveChecklist()" class="w-4 h-4 accent-salmon cursor-pointer">
-                    <label for="chk3" class="cursor-pointer font-bold text-[#2B2B2B]">網購：昇龍道巴士 3 日周遊券 (高山・白川鄉・金澤)</label>
+
+                <!-- 近江町市場 -->
+                <div class="cute-card-inner p-3.5 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-black text-sm text-[#2B2B2B]">🍣 近江町市場 (冬蟹/寒鰤魚/海鮮丼)</span>
+                        <span class="tag-teal text-[10px] px-2 py-0.5 rounded font-bold">Day 5 午餐</span>
+                    </div>
+                    <p class="text-xs font-bold text-slate-600">
+                        • 狀態：現場挑選新鮮刺身 & 蟹宴
+                    </p>
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://tabelog.com" target="_blank" class="btn-action bg-white px-3 py-1 text-xs font-bold flex items-center gap-1">
+                            🔗 Tabelog
+                        </a>
+                        <a href="https://maps.google.com" target="_blank" class="btn-action bg-white px-3 py-1 text-xs font-bold flex items-center gap-1">
+                            🗺️ Google 地圖
+                        </a>
+                    </div>
                 </div>
-                <div class="checklist-item flex items-center gap-2.5 p-2 bg-[#FBF9F4] rounded-xl border border-slate-200">
-                    <input type="checkbox" id="chk4" onchange="saveChecklist()" class="w-4 h-4 accent-salmon cursor-pointer">
-                    <label for="chk4" class="cursor-pointer font-bold text-[#2B2B2B]">預約：高山 ➔ 白川鄉 ➔ 金澤 濃飛巴士指定席 (提前1個月)</label>
+
+                <!-- 蓬萊軒 -->
+                <div class="cute-card-inner p-3.5 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="font-black text-sm text-[#2B2B2B]">🍱 あつた蓬萊軒 (鰻魚飯三吃)</span>
+                        <span class="tag-purple text-[10px] px-2 py-0.5 rounded font-bold">Day 6 午餐</span>
+                    </div>
+                    <p class="text-xs font-bold text-red-500">
+                        • 狀態：⚠️ 11:00 前現場領號碼牌
+                    </p>
+                    <div class="flex gap-2 pt-1">
+                        <a href="https://tabelog.com/aichi/A2301/A230112/23000003/" target="_blank" class="btn-action bg-white px-3 py-1 text-xs font-bold flex items-center gap-1">
+                            🔗 Tabelog
+                        </a>
+                        <a href="https://maps.google.com" target="_blank" class="btn-action bg-white px-3 py-1 text-xs font-bold flex items-center gap-1">
+                            🗺️ Google 地圖
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 6. 住宿與交通摘要 (Hotels & Transport) -->
-        <section id="hotels" class="cute-card p-6 space-y-4">
-            <div class="flex items-center gap-2 border-b-2 border-dashed border-slate-200 pb-3">
-                <span class="text-xl">🏨</span>
-                <h2 class="text-lg font-black text-[#2B2B2B]">住宿安排 (僅換 3 間)</h2>
+        <!-- 5. 🚌 交通買飛策略指南 -->
+        <section id="transport" class="cute-card p-5 space-y-3">
+            <div class="flex items-center gap-2 border-b-2 border-dashed border-slate-200 pb-2.5">
+                <span class="text-lg">🚌</span>
+                <h2 class="text-base font-black text-[#2B2B2B]">交通買飛策略指南</h2>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                <div class="cute-card-sm p-3 bg-amber-50 border-amber-300">
-                    <span class="tag-salmon text-[10px] px-2 py-0.5 rounded font-bold">D1 - D2 (連住)</span>
-                    <h4 class="font-bold text-[#2B2B2B] mt-1">飛驒高山</h4>
-                    <p class="text-slate-500 mt-0.5">高山櫻庵 / 溫泉飯店</p>
+
+            <div class="bg-[#FFFDF9] border-2 border-[#2B2B2B] rounded-xl p-3.5 space-y-2 text-xs">
+                <p class="font-black text-sm text-[#2B2B2B]">🎫 全行程只需買 3 - 4 套車票/Pass：</p>
+                <ol class="list-decimal list-inside space-y-1 font-bold text-slate-700">
+                    <li>JR 飛驒特急指定席 (名古屋 ⇄ 高山)</li>
+                    <li>濃飛巴士/北陸鐵道巴士指定席 (高山 ➔ 白川鄉 ➔ 金澤)</li>
+                    <li>奧飛驒 2 日巴士 + 新穗高纜車套票 (高山站現場買)</li>
+                    <li>JR 特急 Shirasagi / 北陸新幹線 (金澤 ➔ 名古屋)</li>
+                </ol>
+                <p class="text-[11px] font-bold text-slate-500 pt-1 border-t border-slate-200">
+                    *其餘市內地鐵、名鐵、便利店全用 Apple Wallet Suica 企鵝卡 (建議預先增值 ¥15,000)！
+                </p>
+            </div>
+        </section>
+
+        <!-- 6. 🏨 住宿安排 -->
+        <section id="hotels" class="cute-card p-5 space-y-3">
+            <div class="flex items-center gap-2 border-b-2 border-dashed border-slate-200 pb-2.5">
+                <span class="text-lg">🏨</span>
+                <h2 class="text-base font-black text-[#2B2B2B]">住宿安排</h2>
+            </div>
+
+            <div class="space-y-2.5 text-xs">
+                <div class="bg-[#FFFDF9] border-2 border-[#2B2B2B] rounded-xl p-3">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="tag-salmon text-[10px] px-2 py-0.5 rounded font-bold">Day 1, 2 (2晚)</span>
+                        <span class="text-green-600 font-black">已確定</span>
+                    </div>
+                    <h3 class="font-black text-sm text-[#2B2B2B]">高山櫻庵 Takayama Ouan</h3>
+                    <p class="text-slate-500 text-[11px] mt-0.5">高山站步行 3 分鐘，頂樓露天溫泉 + 免費夜鳴拉麵 (含每日早餐)。</p>
                 </div>
-                <div class="cute-card-sm p-3 bg-sky-50 border-sky-300">
-                    <span class="tag-teal text-[10px] px-2 py-0.5 rounded font-bold">D3 - D4 (連住)</span>
-                    <h4 class="font-bold text-[#2B2B2B] mt-1">金澤</h4>
-                    <p class="text-slate-500 mt-0.5">金澤站前 Hotel</p>
+
+                <div class="bg-[#FFFDF9] border-2 border-[#2B2B2B] rounded-xl p-3">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="tag-teal text-[10px] px-2 py-0.5 rounded font-bold">Day 3, 4 (2晚)</span>
+                        <span class="text-amber-600 font-black">建議預訂</span>
+                    </div>
+                    <h3 class="font-black text-sm text-[#2B2B2B]">金澤站前飯店</h3>
+                    <p class="text-slate-500 text-[11px] mt-0.5">近江町市場與兼六園交通超方便。</p>
                 </div>
-                <div class="cute-card-sm p-3 bg-purple-50 border-purple-300">
-                    <span class="tag-purple text-[10px] px-2 py-0.5 rounded font-bold">D5 - D6 (連住)</span>
-                    <h4 class="font-bold text-[#2B2B2B] mt-1">名古屋</h4>
-                    <p class="text-slate-500 mt-0.5">榮町 / 名古屋站附近</p>
+
+                <div class="bg-[#FFFDF9] border-2 border-[#2B2B2B] rounded-xl p-3">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="tag-purple text-[10px] px-2 py-0.5 rounded font-bold">Day 5, 6 (2晚)</span>
+                        <span class="text-slate-400 font-black">待定</span>
+                    </div>
+                    <h3 class="font-black text-sm text-[#2B2B2B]">名古屋飯店</h3>
+                    <p class="text-slate-500 text-[11px] mt-0.5">建議選擇名古屋站附近飯店，方便搭乘 JR 與機場線。</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- 7. ☑️ 備忘與搶票清單 -->
+        <section id="todo" class="cute-card p-5 space-y-4">
+            <div class="flex items-center justify-between border-b-2 border-dashed border-slate-200 pb-2.5">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">☑️</span>
+                    <h2 class="text-base font-black text-[#2B2B2B]">備忘與搶票清單</h2>
+                </div>
+            </div>
+
+            <!-- Dynamic Todo List Container -->
+            <div id="todo-list" class="space-y-2">
+                <!-- Javascript will render item cards here -->
             </div>
         </section>
 
     </main>
 
-    <!-- JS Interactive Logic -->
     <script>
-        // 1. Day Filter Switching Logic
+        // --- 1. Day Switching Logic ---
         function switchDay(dayId) {
-            // Reset all tabs to inactive (white)
-            const tabs = document.querySelectorAll('.day-tab');
-            tabs.forEach(tab => {
-                tab.className = 'day-tab cute-button bg-white text-[#2B2B2B] px-3.5 py-1.5 text-xs font-bold whitespace-nowrap';
+            document.querySelectorAll('.day-tab').forEach(tab => {
+                tab.className = 'day-tab cute-button bg-white text-[#2B2B2B] px-3 py-1 text-xs font-bold whitespace-nowrap';
             });
-
-            // Set clicked tab to active (salmon tag)
             const activeTab = document.getElementById('tab-' + dayId);
             if (activeTab) {
-                activeTab.className = 'day-tab cute-button tag-salmon px-3.5 py-1.5 text-xs font-black whitespace-nowrap';
+                activeTab.className = 'day-tab cute-button tag-salmon px-3 py-1 text-xs font-black whitespace-nowrap';
             }
-
-            // Hide all day contents
-            const contents = document.querySelectorAll('.day-content');
-            contents.forEach(content => content.classList.add('hidden'));
-
-            // Show target content
+            document.querySelectorAll('.day-content').forEach(c => c.classList.add('hidden'));
             const targetContent = document.getElementById('content-' + dayId);
-            if (targetContent) {
-                targetContent.classList.remove('hidden');
-            }
+            if (targetContent) targetContent.classList.remove('hidden');
         }
 
-        // 2. Countdown Timer Logic
+        // --- 2. Countdown Timer Logic ---
         function updateCountdown() {
             const targetDate = new Date('2027-01-27T09:35:00').getTime();
             const now = new Date().getTime();
@@ -544,28 +524,75 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // 3. Checklist LocalStorage Save Logic
-        function saveChecklist() {
-            const checks = ['chk1', 'chk2', 'chk3', 'chk4'];
-            checks.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    localStorage.setItem('snow_trip_' + id, el.checked);
-                }
+        // --- 3. Interactive Todo List (Up/Down/Delete/Checkbox) ---
+        let defaultTodos = [
+            { id: 1, text: "出發前 1 個月：預約濃飛巴士 (高山 ➔ 白川鄉 ➔ 金澤)", done: false },
+            { id: 2, text: "11/10 13:00：搶吉卜力公園 Premium 門票（海外通道）", done: false },
+            { id: 3, text: "買日本 eSIM 卡", done: false },
+            { id: 4, text: "買旅遊保險", done: false },
+            { id: 5, text: "兌換日圓現鈔 (高山/白川鄉部分小店只收現鈔)", done: false }
+        ];
+
+        function getTodos() {
+            const saved = localStorage.getItem('snow_trip_todos');
+            return saved ? JSON.parse(saved) : defaultTodos;
+        }
+
+        function saveTodos(todos) {
+            localStorage.setItem('snow_trip_todos', JSON.stringify(todos));
+            renderTodos();
+        }
+
+        function renderTodos() {
+            const todos = getTodos();
+            const listEl = document.getElementById('todo-list');
+            listEl.innerHTML = '';
+
+            todos.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = "flex items-center justify-between p-2.5 bg-[#FFFDF9] rounded-xl border-2 border-[#2B2B2B] text-xs font-bold gap-2";
+                
+                row.innerHTML = `
+                    <div class="flex items-center gap-2.5 flex-1 min-w-0">
+                        <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleTodo(${index})" class="w-4 h-4 accent-red-500 cursor-pointer">
+                        <span class="todo-text ${item.done ? 'completed' : ''} truncate">${item.text}</span>
+                    </div>
+                    <div class="flex items-center gap-1 shrink-0">
+                        <button onclick="moveTodo(${index}, -1)" class="btn-action bg-white px-2 py-0.5 text-[10px]">⬆️</button>
+                        <button onclick="moveTodo(${index}, 1)" class="btn-action bg-white px-2 py-0.5 text-[10px]">⬇️</button>
+                        <button onclick="deleteTodo(${index})" class="btn-action bg-white px-2 py-0.5 text-[10px] text-red-500">❌</button>
+                    </div>
+                `;
+                listEl.appendChild(row);
             });
         }
 
-        function loadChecklist() {
-            const checks = ['chk1', 'chk2', 'chk3', 'chk4'];
-            checks.forEach(id => {
-                const el = document.getElementById(id);
-                const saved = localStorage.getItem('snow_trip_' + id);
-                if (el && saved !== null) {
-                    el.checked = (saved === 'true');
-                }
-            });
+        function toggleTodo(index) {
+            const todos = getTodos();
+            todos[index].done = !todos[index].done;
+            saveTodos(todos);
         }
-        window.onload = loadChecklist;
+
+        function moveTodo(index, direction) {
+            const todos = getTodos();
+            const newIndex = index + direction;
+            if (newIndex >= 0 && newIndex < todos.length) {
+                const temp = todos[index];
+                todos[index] = todos[newIndex];
+                todos[newIndex] = temp;
+                saveTodos(todos);
+            }
+        }
+
+        function deleteTodo(index) {
+            const todos = getTodos();
+            todos.splice(index, 1);
+            saveTodos(todos);
+        }
+
+        window.onload = function() {
+            renderTodos();
+        };
     </script>
 </body>
 </html>
