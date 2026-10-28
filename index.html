@@ -35,21 +35,32 @@
       padding: 15px;
       max-width: 600px;
       margin: 0 auto;
-      padding-bottom: 50px;
+      padding-bottom: 80px; /* 留出空間防止內容被底部導航遮住 */
     }
 
-    /* Sticky Nav */
+    /* 底部固定膠囊導航欄 (Bottom Sticky Nav) */
     .nav-bar {
-      position: sticky;
-      top: 10px;
-      z-index: 100;
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 580px;
+      z-index: 1000;
       display: flex;
       gap: 8px;
       overflow-x: auto;
       background: rgba(251, 249, 244, 0.95);
-      padding: 6px 4px;
-      margin-bottom: 20px;
-      backdrop-filter: blur(5px);
+      padding: 8px 10px;
+      border: 2px solid var(--border-color);
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-bar::-webkit-scrollbar {
+      display: none; /* 隱藏滾動條 */
     }
 
     .nav-btn {
@@ -61,13 +72,13 @@
       font-weight: 700;
       white-space: nowrap;
       cursor: pointer;
-      box-shadow: 0 3px 0px var(--border-color);
+      box-shadow: 0 2px 0px var(--border-color);
       transition: all 0.1s ease;
     }
 
     .nav-btn.active {
       background: var(--tag-yellow);
-      transform: translateY(2px);
+      transform: translateY(1px);
       box-shadow: 0 1px 0px var(--border-color);
     }
 
@@ -216,7 +227,7 @@
 
     .day-tab.active { background: var(--tag-red); color: white; }
 
-    /* Timeline Vertical Layout (截圖樣式還原) */
+    /* Timeline Vertical Layout */
     .timeline {
       position: relative;
       padding-left: 28px;
@@ -313,18 +324,6 @@
 </head>
 <body>
 
-  <!-- 膠囊導航欄 -->
-  <div class="nav-bar">
-    <button class="nav-btn active" onclick="scrollToSec('sec-home')">🏠 首頁</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-flights')">✈️ 航班</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-itinerary')">📅 行程</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-pending')">❓ 待定</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-food')">🍽️ 餐廳</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-transport')">🚌 交通</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-hotel')">🏨 住宿</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-todo')">☑️ 待辦</button>
-  </div>
-
   <!-- 首頁與倒數卡片 -->
   <div id="sec-home" class="card header-card">
     <div style="font-size: 35px; margin-bottom: 5px;">🏔️⛺</div>
@@ -365,7 +364,7 @@
     <a href="https://www.cathaypacific.com" target="_blank" class="btn-sm">🔗 國泰航空官網 / 管理預訂</a>
   </div>
 
-  <!-- 每日行程與攻略 (Timeline 樣式還原) -->
+  <!-- 每日行程與攻略 -->
   <div id="sec-itinerary" class="card">
     <div class="card-title">📅 每日行程與攻略</div>
     
@@ -479,7 +478,7 @@
             <span class="timeline-title">入住：高山櫻庵溫泉飯店</span>
             <span class="tag tag-green">已預訂</span>
           </div>
-          <div class="timeline-desc"> Check-in 全館榻榻米日式溫泉旅館，享受頂樓露天風呂。</div>
+          <div class="timeline-desc">Check-in 全館榻榻米日式溫泉旅館，享受頂樓露天風呂。</div>
         </div>
 
         <div class="timeline-item">
@@ -675,7 +674,7 @@
     </div>
   </div>
 
-  <!-- 待定事項總覽 (截圖還原卡片) -->
+  <!-- 待定事項總覽 -->
   <div id="sec-pending" class="card">
     <div class="card-title">❓ 待定事項總覽 (出發前進度追蹤)</div>
     <div style="font-size: 12px; color: var(--text-sub); margin-bottom: 12px;">以下為尚未鎖定的住宿與餐飲，隨時可以填補確定！</div>
@@ -822,6 +821,18 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- 固定喺底部嘅膠囊導航欄 (Bottom Fixed Navigation) -->
+  <div class="nav-bar">
+    <button class="nav-btn active" onclick="scrollToSec('sec-home')">🏠 首頁</button>
+    <button class="nav-btn" onclick="scrollToSec('sec-flights')">✈️ 航班</button>
+    <button class="nav-btn" onclick="scrollToSec('sec-itinerary')">📅 行程</button>
+    <button class="nav-btn" onclick="scrollToSec('sec-pending')">❓ 待定</button>
+    <button class="nav-btn" onclick="scrollToSec('sec-food')">🍽️ 餐廳</button>
+    <button class="nav-btn" onclick="scrollToSec('sec-transport')">🚌 交通</button>
+    <button class="nav-btn" onclick="scrollToSec('sec-hotel')">🏨 住宿</button>
+    <button class="nav-btn" onclick="scrollToSec('sec-todo')">☑️ 待辦</button>
   </div>
 
   <script>
