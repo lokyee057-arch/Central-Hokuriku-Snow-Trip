@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>購物與格價清單 · Winter Loop 2027</title>
+  <title>購物與格價清單 · Central-Hokuriku-Snow-Trip</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
@@ -16,216 +16,15 @@
       --tag-green: #74B9BE;
       --tag-yellow: #F3CD7B;
       --tag-purple: #B39DDB;
-      --tag-gray: #E0E0E0;
       --text-main: #2B2B2B;
       --text-sub: #666666;
       --shadow: 0 5px 0px #2B2B2B;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Zen Maru Gothic', sans-serif;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Zen Maru Gothic', sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text-main); padding: 15px; max-width: 600px; margin: 0 auto; padding-bottom: 90px; }
 
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      padding: 15px;
-      max-width: 600px;
-      margin: 0 auto;
-      padding-bottom: 90px;
-    }
-
-    /* 頂部 Header */
-    .header-card {
-      background: var(--card-bg);
-      border: 2.5px solid var(--border-color);
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .page-title {
-      font-size: 20px;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
-      color: #2E7D32;
-      background: #E8F5E9;
-      padding: 3px 10px;
-      border-radius: 12px;
-      border: 1px solid #A5D6A7;
-      margin-top: 8px;
-      font-weight: 700;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      background-color: #4CAF50;
-      border-radius: 50%;
-    }
-
-    /* 購物項目主卡片 */
-    .card {
-      background: var(--card-bg);
-      border: 2.5px solid var(--border-color);
-      border-radius: 20px;
-      padding: 18px;
-      margin-bottom: 15px;
-      box-shadow: var(--shadow);
-    }
-
-    .shop-group-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .shop-group-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-icon {
-      background: #E3F2FD;
-      border: 2px solid var(--border-color);
-      border-radius: 12px;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 14px;
-    }
-
-    .brand-name {
-      font-size: 16px;
-      font-weight: 900;
-    }
-
-    .progress-pill {
-      background: var(--bg-color);
-      border: 1.5px solid var(--border-color);
-      border-radius: 15px;
-      padding: 4px 10px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    /* 展開後的細項列表 */
-    .shop-items-container {
-      margin-top: 15px;
-      border-top: 2px dashed #E0E0E0;
-      padding-top: 15px;
-    }
-
-    .shop-item {
-      background: var(--bg-color);
-      border: 2px solid var(--border-color);
-      border-radius: 14px;
-      padding: 12px;
-      margin-bottom: 10px;
-    }
-
-    .shop-item-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .item-name-input {
-      border: none;
-      background: transparent;
-      font-size: 14px;
-      font-weight: 900;
-      color: var(--text-main);
-      width: 100%;
-      outline: none;
-    }
-
-    .price-input-group {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 8px;
-      font-size: 12px;
-      color: var(--text-sub);
-    }
-
-    .price-input {
-      border: 1.5px solid var(--border-color);
-      border-radius: 8px;
-      padding: 4px 8px;
-      width: 90px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    /* 圖片上傳區域 */
-    .img-upload-box {
-      margin-top: 8px;
-      border: 1.5px dashed var(--border-color);
-      border-radius: 10px;
-      padding: 8px;
-      text-align: center;
-      background: #FFF;
-      cursor: pointer;
-      font-size: 11px;
-      color: var(--text-sub);
-      font-weight: 700;
-    }
-
-    .preview-img {
-      max-width: 100%;
-      max-height: 120px;
-      border-radius: 8px;
-      border: 1.5px solid var(--border-color);
-      margin-top: 6px;
-      object-fit: cover;
-    }
-
-    /* 新增按鈕 */
-    .add-btn {
-      width: 100%;
-      background: var(--tag-yellow);
-      border: 2.5px solid var(--border-color);
-      border-radius: 16px;
-      padding: 12px;
-      font-size: 14px;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .add-btn:active {
-      transform: translateY(2px);
-      box-shadow: 0 2px 0px var(--border-color);
-    }
-
-    /* 固定底部導航欄 */
+    /* 底部固定膠囊導航欄 */
     .nav-bar {
       position: fixed;
       bottom: 12px;
@@ -236,23 +35,20 @@
       z-index: 1000;
       display: flex;
       gap: 8px;
-      overflow-x: auto;
+      justify-content: center;
       background: rgba(251, 249, 244, 0.95);
-      padding: 8px 10px;
-      border: 2px solid var(--border-color);
+      padding: 8px 12px;
+      border: 2.5px solid var(--border-color);
       border-radius: 30px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color);
       backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
     }
-
-    .nav-bar::-webkit-scrollbar { display: none; }
 
     .nav-btn {
       background: var(--card-bg);
       border: 2px solid var(--border-color);
       border-radius: 20px;
-      padding: 6px 14px;
+      padding: 6px 16px;
       font-size: 13px;
       font-weight: 700;
       white-space: nowrap;
@@ -260,48 +56,68 @@
       box-shadow: 0 2px 0px var(--border-color);
       text-decoration: none;
       color: var(--text-main);
+      transition: all 0.1s ease;
     }
 
     .nav-btn.active {
       background: var(--tag-yellow);
+      transform: translateY(1px);
+      box-shadow: 0 1px 0px var(--border-color);
     }
+
+    .header-card { background: var(--card-bg); border: 2.5px solid var(--border-color); border-radius: 20px; padding: 20px; margin-bottom: 20px; box-shadow: var(--shadow); text-align: center; }
+    .page-title { font-size: 20px; font-weight: 900; }
+    .status-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #2E7D32; background: #E8F5E9; padding: 3px 10px; border-radius: 12px; border: 1px solid #A5D6A7; margin-top: 8px; font-weight: 700; }
+    .dot { width: 8px; height: 8px; background-color: #4CAF50; border-radius: 50%; }
+
+    .card { background: var(--card-bg); border: 2.5px solid var(--border-color); border-radius: 20px; padding: 18px; margin-bottom: 15px; box-shadow: var(--shadow); }
+    .shop-group-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+    .shop-group-left { display: flex; align-items: center; gap: 10px; }
+    .brand-icon { background: #E3F2FD; border: 2px solid var(--border-color); border-radius: 12px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; }
+    .brand-name { font-size: 16px; font-weight: 900; }
+    .progress-pill { background: var(--bg-color); border: 1.5px solid var(--border-color); border-radius: 15px; padding: 4px 10px; font-size: 12px; font-weight: 700; }
+
+    .shop-items-container { margin-top: 15px; border-top: 2px dashed #E0E0E0; padding-top: 15px; }
+    .shop-item { background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 12px; margin-bottom: 10px; }
+    .shop-item-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .item-name-input { border: none; background: transparent; font-size: 14px; font-weight: 900; color: var(--text-main); width: 100%; outline: none; }
+    .price-input-group { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; color: var(--text-sub); flex-wrap: wrap; }
+    .price-input { border: 1.5px solid var(--border-color); border-radius: 8px; padding: 4px 8px; width: 100px; font-size: 12px; font-weight: 700; }
+
+    .img-upload-box { margin-top: 8px; border: 1.5px dashed var(--border-color); border-radius: 10px; padding: 8px; text-align: center; background: #FFF; cursor: pointer; font-size: 11px; color: var(--text-sub); font-weight: 700; }
+    .preview-img { max-width: 100%; max-height: 120px; border-radius: 8px; border: 1.5px solid var(--border-color); margin-top: 6px; object-fit: cover; }
+
+    .add-btn { width: 100%; background: var(--tag-yellow); border: 2.5px solid var(--border-color); border-radius: 16px; padding: 12px; font-size: 14px; font-weight: 900; cursor: pointer; box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 10px; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <div class="header-card">
     <div class="page-title">🛍️ 購物與格價清單</div>
-    <div class="status-badge"><span class="dot"></span> 實時自動儲存 (支援照片相片)</div>
+    <div class="status-badge"><span class="dot"></span> 實時自動儲存 (支援照片上傳)</div>
   </div>
 
-  <!-- 購物分類列表容器 -->
   <div id="shopping-list-container">
-
-    <!-- Cartier 分類 -->
     <div class="card" id="group-cartier">
-      <div class="shop-group-header" onclick="toggleGroup('items-cartier', 'arrow-cartier')">
+      <div class="shop-group-header" onclick="toggleGroup('items-cartier')">
         <div class="shop-group-left">
           <div class="brand-icon" style="background:#E1F5FE;">Ca</div>
           <div class="brand-name">Cartier</div>
         </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <div class="progress-pill" id="count-cartier">0/1 ▼</div>
-        </div>
+        <div class="progress-pill" id="count-cartier">0/1 ▼</div>
       </div>
-
       <div class="shop-items-container" id="items-cartier">
         <div class="shop-item">
           <div class="shop-item-top">
             <input type="checkbox" onchange="updateProgress('cartier')" style="transform: scale(1.2);">
-            <input type="text" class="item-name-input" value="Panthère 錶 (鋼款 Small)" oninput="saveData()">
+            <input type="text" class="item-name-input" value="Panthère 錶 (鋼款 Small)">
             <button onclick="deleteItem(this, 'cartier')" style="border:none; background:none; cursor:pointer;">✕</button>
           </div>
           <div class="price-input-group">
-            <span>預算/含稅價:</span>
-            <input type="text" class="price-input" placeholder="¥ 540,000" oninput="saveData()">
-            <span>免稅預估:</span>
-            <input type="text" class="price-input" placeholder="約 HK$ 28,000" oninput="saveData()">
+            <span>預算:</span>
+            <input type="text" class="price-input" value="¥ 540,000">
+            <span>免稅約:</span>
+            <input type="text" class="price-input" value="HK$ 28,000">
           </div>
           <div class="img-upload-box" onclick="triggerImgUpload(this)">
             📷 點擊上傳 / 貼上產品相片
@@ -311,102 +127,42 @@
         </div>
       </div>
     </div>
-
-    <!-- 其他 / 藥妝手信 分類 -->
-    <div class="card" id="group-other">
-      <div class="shop-group-header" onclick="toggleGroup('items-other', 'arrow-other')">
-        <div class="shop-group-left">
-          <div class="brand-icon" style="background:#FFF3E0;">其他</div>
-          <div class="brand-name">藥妝與手信其他</div>
-        </div>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <div class="progress-pill" id="count-other">0/2 ▼</div>
-        </div>
-      </div>
-
-      <div class="shop-items-container" id="items-other">
-        <div class="shop-item">
-          <div class="shop-item-top">
-            <input type="checkbox" onchange="updateProgress('other')" style="transform: scale(1.2);">
-            <input type="text" class="item-name-input" value="資生堂 膠原蛋白粉" oninput="saveData()">
-            <button onclick="deleteItem(this, 'other')" style="border:none; background:none; cursor:pointer;">✕</button>
-          </div>
-          <div class="price-input-group">
-            <span>目標價:</span>
-            <input type="text" class="price-input" placeholder="¥ 2,200" oninput="saveData()">
-          </div>
-          <div class="img-upload-box" onclick="triggerImgUpload(this)">
-            📷 點擊上傳 / 貼上產品相片
-            <input type="file" accept="image/*" style="display:none;" onchange="previewFile(this)">
-            <div class="img-preview-wrap"></div>
-          </div>
-        </div>
-
-        <div class="shop-item">
-          <div class="shop-item-top">
-            <input type="checkbox" onchange="updateProgress('other')" style="transform: scale(1.2);">
-            <input type="text" class="item-name-input" value="蝦餅手信 (名古屋限定)" oninput="saveData()">
-            <button onclick="deleteItem(this, 'other')" style="border:none; background:none; cursor:pointer;">✕</button>
-          </div>
-          <div class="price-input-group">
-            <span>目標價:</span>
-            <input type="text" class="price-input" placeholder="¥ 1,080" oninput="saveData()">
-          </div>
-          <div class="img-upload-box" onclick="triggerImgUpload(this)">
-            📷 點擊上傳 / 貼上產品相片
-            <input type="file" accept="image/*" style="display:none;" onchange="previewFile(this)">
-            <div class="img-preview-wrap"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- 新增購物項目按鈕 -->
-  <button class="add-btn" onclick="addNewItem('other')">
-    ➕ 新增購物項目
-  </button>
+  <button class="add-btn" onclick="addNewItem('cartier')">➕ 新增購物項目</button>
 
-  <!-- 固定底部導航欄 -->
+  <!-- 底部固定導航欄（3個完整按鈕） -->
   <div class="nav-bar">
     <a class="nav-btn" href="index.html">🏠 行程總覽</a>
     <a class="nav-btn active" href="shopping.html">🛍️ 購物清單</a>
+    <a class="nav-btn" href="receipts.html">🧾 單據記帳</a>
   </div>
 
   <script>
-    // 折疊 / 展開分類
     function toggleGroup(containerId) {
       const container = document.getElementById(containerId);
-      if (container.style.display === "none") {
-        container.style.display = "block";
-      } else {
-        container.style.display = "none";
-      }
+      container.style.display = container.style.display === "none" ? "block" : "none";
     }
 
-    // 更新完成進度數字 (例如 1/2)
     function updateProgress(groupId) {
       const container = document.getElementById('items-' + groupId);
       const total = container.querySelectorAll('.shop-item').length;
       const checked = container.querySelectorAll('input[type="checkbox"]:checked').length;
       document.getElementById('count-' + groupId).innerText = `${checked}/${total} ▼`;
-      saveData();
     }
 
-    // 新增項目
     function addNewItem(groupId) {
       const container = document.getElementById('items-' + groupId);
       const newItemHtml = `
         <div class="shop-item">
           <div class="shop-item-top">
             <input type="checkbox" onchange="updateProgress('${groupId}')" style="transform: scale(1.2);">
-            <input type="text" class="item-name-input" placeholder="請輸入商品名稱..." oninput="saveData()">
+            <input type="text" class="item-name-input" placeholder="請輸入商品名稱...">
             <button onclick="deleteItem(this, '${groupId}')" style="border:none; background:none; cursor:pointer;">✕</button>
           </div>
           <div class="price-input-group">
-            <span>目標價/含稅:</span>
-            <input type="text" class="price-input" placeholder="¥ 0" oninput="saveData()">
+            <span>目標價:</span>
+            <input type="text" class="price-input" placeholder="¥ 0">
           </div>
           <div class="img-upload-box" onclick="triggerImgUpload(this)">
             📷 點擊上傳 / 貼上產品相片
@@ -419,13 +175,11 @@
       updateProgress(groupId);
     }
 
-    // 刪除項目
     function deleteItem(btn, groupId) {
       btn.closest('.shop-item').remove();
       updateProgress(groupId);
     }
 
-    // 上傳圖片處理
     function triggerImgUpload(box) {
       box.querySelector('input[type="file"]').click();
     }
@@ -435,22 +189,11 @@
       if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-          const wrap = input.parentElement.querySelector('.img-preview-wrap');
-          wrap.innerHTML = `<img src="${e.target.result}" class="preview-img">`;
-          saveData();
+          input.parentElement.querySelector('.img-preview-wrap').innerHTML = `<img src="${e.target.result}" class="preview-img">`;
         }
         reader.readAsDataURL(file);
       }
     }
-
-    // LocalStorage 自動儲存 (範例機制)
-    function saveData() {
-      // 可擴充自動儲存項目邏輯
-    }
-
-    // 初始化進度
-    updateProgress('cartier');
-    updateProgress('other');
   </script>
 </body>
 </html>
