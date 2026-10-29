@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日本單據消費記帳 · Winter Loop 2027</title>
+  <title>日本單據消費記帳 · Central-Hokuriku-Snow-Trip</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- 引入 Tesseract.js 用於自動 OCR 讀取單據金額 -->
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@v5/dist/tesseract.min.js"></script>
   <style>
     :root {
       --bg-color: #FBF9F4;
@@ -27,15 +29,13 @@
     .card { background: var(--card-bg); border: 2.5px solid var(--border-color); border-radius: 20px; padding: 18px; margin-bottom: 15px; box-shadow: var(--shadow); }
     .card-title { font-size: 18px; font-weight: 900; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
 
-    /* 總結卡片 */
     .summary-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     .sum-card { background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 10px; text-align: center; }
     .sum-val { font-size: 16px; font-weight: 900; color: var(--tag-red); }
 
-    /* 表單欄位 */
     .form-group { margin-bottom: 12px; }
     .form-label { font-size: 12px; font-weight: 900; margin-bottom: 4px; display: block; }
-    .form-input, .form-select { width: 100%; border: 2px solid var(--border-color); border-radius: 12px; padding: 8px 12px; font-size: 13px; font-weight: 700; background: #FFF; outline: none; }
+    .form-input { width: 100%; border: 2px solid var(--border-color); border-radius: 12px; padding: 8px 12px; font-size: 13px; font-weight: 700; background: #FFF; outline: none; }
 
     .pill-group { display: flex; gap: 8px; }
     .pill-opt { flex: 1; text-align: center; padding: 8px; border: 2px solid var(--border-color); border-radius: 12px; font-size: 12px; font-weight: 900; cursor: pointer; background: #FFF; }
@@ -43,7 +43,6 @@
 
     .add-btn { width: 100%; background: var(--tag-green); color: white; border: 2.5px solid var(--border-color); border-radius: 16px; padding: 12px; font-size: 14px; font-weight: 900; cursor: pointer; box-shadow: var(--shadow); }
 
-    /* 單據紀錄卡片 */
     .receipt-item { background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 12px; margin-bottom: 12px; position: relative; }
     .receipt-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
     .receipt-title { font-size: 15px; font-weight: 900; }
@@ -55,10 +54,22 @@
     .bg-aa { background: var(--tag-yellow); }
     .bg-single { background: var(--tag-purple); color: white; }
 
+    /* 載入中提示遮罩 */
+    #loading-toast {
+      display: none;
+      background: rgba(43, 43, 43, 0.85);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
     /* 底部導航 */
-    .nav-bar { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); width: calc(100% - 24px); max-width: 580px; z-index: 1000; display: flex; gap: 8px; overflow-x: auto; background: rgba(251, 249, 244, 0.95); padding: 8px 10px; border: 2px solid var(--border-color); border-radius: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-    .nav-bar::-webkit-scrollbar { display: none; }
-    .nav-btn { background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 20px; padding: 6px 14px; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer; box-shadow: 0 2px 0px var(--border-color); text-decoration: none; color: var(--text-main); }
+    .nav-bar { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); width: calc(100% - 24px); max-width: 580px; z-index: 1000; display: flex; gap: 8px; justify-content: center; background: rgba(251, 249, 244, 0.95); padding: 8px 12px; border: 2.5px solid var(--border-color); border-radius: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color); backdrop-filter: blur(8px); }
+    .nav-btn { background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 20px; padding: 6px 16px; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer; box-shadow: 0 2px 0px var(--border-color); text-decoration: none; color: var(--text-main); }
     .nav-btn.active { background: var(--tag-yellow); }
   </style>
 </head>
@@ -81,20 +92,27 @@
 
   <!-- 新增/編輯消費單據 -->
   <div class="card">
-    <div class="card-title"><span id="form-title">➕ 登記新單據</span></div>
+    <div class="card-title"><span id="form-title">➕ 智能單據記帳</span></div>
     
     <div class="form-group">
-      <label class="form-label">項目名稱 / 店舖</label>
+      <label class="form-label">📷 1. 上傳/拍攝單據相片 (自動識別金額)</label>
+      <input type="file" id="r-img" accept="image/*" class="form-input" onchange="handleImgUpload(this)">
+      <div id="loading-toast">🤖 正在智能識別單據中的金額與文字...</div>
+      <div id="img-preview" style="margin-top: 6px;"></div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">項目名稱 / 店舖 (可手動修改)</label>
       <input type="text" id="r-name" class="form-input" placeholder="例如: 味藏天國 / FamilyMart">
     </div>
 
     <div class="form-group">
-      <label class="form-label">日元金額 (日幣 ¥)</label>
+      <label class="form-label">日元金額 (自動填入，可修改)</label>
       <input type="number" id="r-amount" class="form-input" placeholder="例如: 12800">
     </div>
 
     <div class="form-group">
-      <label class="form-label">邊個付款人先付？</label>
+      <label class="form-label">2. 邊個付款人先付？</label>
       <div class="pill-group">
         <div class="pill-opt active" id="pay-cw" onclick="selectPayer('CW')">CW</div>
         <div class="pill-opt" id="pay-me" onclick="selectPayer('Me')">Me</div>
@@ -102,17 +120,11 @@
     </div>
 
     <div class="form-group">
-      <label class="form-label">費用分攤方式</label>
+      <label class="form-label">3. 費用分攤方式</label>
       <div class="pill-group">
         <div class="pill-opt active" id="split-aa" onclick="selectSplit(true)">⚖️ AA 兩份攤分</div>
         <div class="pill-opt" id="split-single" onclick="selectSplit(false)">👤 付款人獨付</div>
       </div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">📷 上傳單據照片</label>
-      <input type="file" id="r-img" accept="image/*" class="form-input" onchange="handleImgUpload(this)">
-      <div id="img-preview" style="margin-top: 6px;"></div>
     </div>
 
     <button class="add-btn" onclick="saveReceipt()">💾 儲存單據紀錄</button>
@@ -150,6 +162,7 @@
       document.getElementById('split-single').classList.toggle('active', !aa);
     }
 
+    // 智能上傳並進行 OCR 辨識
     function handleImgUpload(input) {
       const file = input.files[0];
       if (file) {
@@ -157,8 +170,57 @@
         reader.onload = function(e) {
           currentImgBase64 = e.target.result;
           document.getElementById('img-preview').innerHTML = `<img src="${currentImgBase64}" class="receipt-img">`;
+          
+          // 啟動 Tesseract OCR 自動識別日文/英文數字
+          const toast = document.getElementById('loading-toast');
+          toast.style.display = 'block';
+
+          Tesseract.recognize(
+            currentImgBase64,
+            'jpn+eng', // 支援日文與英文數字識別
+            { logger: m => console.log(m) }
+          ).then(({ data: { text } }) => {
+            toast.style.display = 'none';
+            console.log("OCR Result:", text);
+
+            // 自動嘗試從文字中萃取金額（尋找 ¥ 符號或大數字）
+            parseReceiptText(text);
+          }).catch(err => {
+            toast.style.display = 'none';
+            console.error(err);
+          });
         }
         reader.readAsDataURL(file);
+      }
+    }
+
+    // 簡單的 OCR 文字解析函數
+    function parseReceiptText(text) {
+      // 尋找日元格式金額（例如 ¥1,280 或 1280円 等）
+      const lines = text.split('\n');
+      let foundAmount = 0;
+      let storeName = '';
+
+      for (let line of lines) {
+        // 抓取包含數字的行作為可能的金額
+        const cleanLine = line.replace(/[^\d]/g, '');
+        if (cleanLine.length >= 3 && cleanLine.length <= 7) {
+          const num = parseInt(cleanLine, 10);
+          if (num > 100 && num < 1000000) {
+            foundAmount = num; // 取出最合理的消費金額
+          }
+        }
+        // 第一行或比較短的文字通常是店名
+        if (!storeName && line.trim().length > 1 && line.trim().length < 15) {
+          storeName = line.trim();
+        }
+      }
+
+      if (foundAmount > 0) {
+        document.getElementById('r-amount').value = foundAmount;
+      }
+      if (storeName) {
+        document.getElementById('r-name').value = storeName;
       }
     }
 
@@ -177,7 +239,7 @@
       if (editIndex >= 0) {
         receipts[editIndex] = receiptData;
         editIndex = -1;
-        document.getElementById('form-title').innerText = '➕ 登記新單據';
+        document.getElementById('form-title').innerText = '➕ 智能單據記帳';
       } else {
         receipts.push(receiptData);
       }
@@ -204,6 +266,7 @@
       document.getElementById('img-preview').innerHTML = item.img ? `<img src="${item.img}" class="receipt-img">` : '';
       editIndex = index;
       document.getElementById('form-title').innerText = '✏️ 編輯單據紀錄';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function deleteReceipt(index) {
@@ -223,7 +286,7 @@
         if (item.payer === 'Me') meTotal += item.amount;
 
         const badgeClass = item.isAA ? 'bg-aa' : 'bg-single';
-        const splitText = item.isAA ? 'AA 兩份攤分' : '個人獨付';
+        const splitText = item.isAA ? '⚖️ AA 兩份攤分' : '👤 個人獨付';
 
         const html = `
           <div class="receipt-item">
@@ -236,8 +299,8 @@
             </div>
             ${item.img ? `<img src="${item.img}" class="receipt-img">` : ''}
             <div style="margin-top: 8px; display: flex; gap: 8px;">
-              <button onclick="editReceipt(${index})" style="padding: 3px 8px; border-radius: 6px; border: 1.5px solid #2B2B2B; font-weight: 700; cursor: pointer;">✏️ 編輯</button>
-              <button onclick="deleteReceipt(${index})" style="padding: 3px 8px; border-radius: 6px; border: 1.5px solid #2B2B2B; font-weight: 700; cursor: pointer; color: red;">✕ 刪除</button>
+              <button onclick="editReceipt(${index})" style="padding: 3px 8px; border-radius: 6px; border: 1.5px solid #2B2B2B; font-weight: 700; cursor: pointer; background: #FFF;">✏️ 編輯</button>
+              <button onclick="deleteReceipt(${index})" style="padding: 3px 8px; border-radius: 6px; border: 1.5px solid #2B2B2B; font-weight: 700; cursor: pointer; color: red; background: #FFF;">✕ 刪除</button>
             </div>
           </div>
         `;
