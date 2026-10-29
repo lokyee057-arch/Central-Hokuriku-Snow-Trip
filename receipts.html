@@ -18,6 +18,7 @@
       --tag-green: #74B9BE;
       --tag-yellow: #F3CD7B;
       --tag-purple: #B39DDB;
+      --tag-blue: #90CAF9;
       --text-main: #2B2B2B;
       --text-sub: #666666;
       --shadow: 0 5px 0px #2B2B2B;
@@ -31,14 +32,14 @@
 
     .summary-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
     .sum-card { background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 10px; text-align: center; }
-    .sum-val { font-size: 16px; font-weight: 900; color: var(--tag-red); }
+    .sum-val { font-size: 14px; font-weight: 900; color: var(--tag-red); line-height: 1.4; }
 
     .form-group { margin-bottom: 12px; }
     .form-label { font-size: 12px; font-weight: 900; margin-bottom: 4px; display: block; }
     .form-input { width: 100%; border: 2px solid var(--border-color); border-radius: 12px; padding: 8px 12px; font-size: 13px; font-weight: 700; background: #FFF; outline: none; }
 
-    .pill-group { display: flex; gap: 8px; }
-    .pill-opt { flex: 1; text-align: center; padding: 8px; border: 2px solid var(--border-color); border-radius: 12px; font-size: 12px; font-weight: 900; cursor: pointer; background: #FFF; }
+    .pill-group { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pill-opt { flex: 1; min-width: 80px; text-align: center; padding: 8px 4px; border: 2px solid var(--border-color); border-radius: 12px; font-size: 11px; font-weight: 900; cursor: pointer; background: #FFF; white-space: nowrap; }
     .pill-opt.active { background: var(--tag-yellow); }
 
     .add-btn { width: 100%; background: var(--tag-green); color: white; border: 2.5px solid var(--border-color); border-radius: 16px; padding: 12px; font-size: 14px; font-weight: 900; cursor: pointer; box-shadow: var(--shadow); }
@@ -53,8 +54,8 @@
     .tag-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 10px; font-weight: 900; }
     .bg-aa { background: var(--tag-yellow); }
     .bg-single { background: var(--tag-purple); color: white; }
+    .bg-for-other { background: var(--tag-blue); color: var(--text-main); }
 
-    /* 載入中提示遮罩 */
     #loading-toast {
       display: none;
       background: rgba(43, 43, 43, 0.85);
@@ -67,7 +68,6 @@
       margin-bottom: 12px;
     }
 
-    /* 底部導航 */
     .nav-bar { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); width: calc(100% - 24px); max-width: 580px; z-index: 1000; display: flex; gap: 8px; justify-content: center; background: rgba(251, 249, 244, 0.95); padding: 8px 12px; border: 2.5px solid var(--border-color); border-radius: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color); backdrop-filter: blur(8px); }
     .nav-btn { background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 20px; padding: 6px 16px; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer; box-shadow: 0 2px 0px var(--border-color); text-decoration: none; color: var(--text-main); }
     .nav-btn.active { background: var(--tag-yellow); }
@@ -77,15 +77,15 @@
 
   <!-- 結算面板 -->
   <div class="card">
-    <div class="card-title">🧾 日本單據消費結算</div>
+    <div class="card-title">🧾 消費記帳與結算</div>
     <div class="summary-box">
       <div class="sum-card">
-        <div style="font-size: 11px; font-weight: 700;">CW 累計已付</div>
-        <div class="sum-val" id="sum-cw">¥ 0</div>
+        <div style="font-size: 11px; font-weight: 700;">CW 累計代墊</div>
+        <div class="sum-val" id="sum-cw">¥ 0<br><span style="font-size:11px;">HK$ 0</span></div>
       </div>
       <div class="sum-card">
-        <div style="font-size: 11px; font-weight: 700;">Me 累計已付</div>
-        <div class="sum-val" id="sum-me">¥ 0</div>
+        <div style="font-size: 11px; font-weight: 700;">Me 累計代墊</div>
+        <div class="sum-val" id="sum-me">¥ 0<br><span style="font-size:11px;">HK$ 0</span></div>
       </div>
     </div>
   </div>
@@ -95,24 +95,30 @@
     <div class="card-title"><span id="form-title">➕ 智能單據記帳</span></div>
     
     <div class="form-group">
-      <label class="form-label">📷 1. 上傳/拍攝單據相片 (自動識別金額)</label>
+      <label class="form-label">📷 1. 上傳/拍攝收據相片 (自動識別金額)</label>
       <input type="file" id="r-img" accept="image/*" class="form-input" onchange="handleImgUpload(this)">
       <div id="loading-toast">🤖 正在智能識別單據中的金額與文字...</div>
       <div id="img-preview" style="margin-top: 6px;"></div>
     </div>
 
     <div class="form-group">
-      <label class="form-label">項目名稱 / 店舖 (可手動修改)</label>
-      <input type="text" id="r-name" class="form-input" placeholder="例如: 味藏天國 / FamilyMart">
+      <label class="form-label">項目名稱 / 店舖</label>
+      <input type="text" id="r-name" class="form-input" placeholder="例如: 味藏天國 / 機票">
     </div>
 
     <div class="form-group">
-      <label class="form-label">日元金額 (自動填入，可修改)</label>
-      <input type="number" id="r-amount" class="form-input" placeholder="例如: 12800">
+      <label class="form-label">金額與幣種</label>
+      <div style="display: flex; gap: 8px;">
+        <select id="r-currency" class="form-input" style="width: 90px; font-weight: 900;">
+          <option value="¥">¥ 日圓</option>
+          <option value="HK$">HK$ 港幣</option>
+        </select>
+        <input type="number" id="r-amount" class="form-input" placeholder="例如: 12800" style="flex: 1;">
+      </div>
     </div>
 
     <div class="form-group">
-      <label class="form-label">2. 邊個付款人先付？</label>
+      <label class="form-label">2. 邊個先付款？</label>
       <div class="pill-group">
         <div class="pill-opt active" id="pay-cw" onclick="selectPayer('CW')">CW</div>
         <div class="pill-opt" id="pay-me" onclick="selectPayer('Me')">Me</div>
@@ -122,8 +128,9 @@
     <div class="form-group">
       <label class="form-label">3. 費用分攤方式</label>
       <div class="pill-group">
-        <div class="pill-opt active" id="split-aa" onclick="selectSplit(true)">⚖️ AA 兩份攤分</div>
-        <div class="pill-opt" id="split-single" onclick="selectSplit(false)">👤 付款人獨付</div>
+        <div class="pill-opt active" id="split-aa" onclick="selectSplit('aa')">⚖️ AA 攤分</div>
+        <div class="pill-opt" id="split-single" onclick="selectSplit('single')">👤 個人獨付</div>
+        <div class="pill-opt" id="split-for-other" onclick="selectSplit('for-other')">🤝 幫對方付</div>
       </div>
     </div>
 
@@ -145,7 +152,7 @@
 
   <script>
     let currentPayer = 'CW';
-    let isAA = true;
+    let currentSplitMode = 'aa';
     let currentImgBase64 = '';
     let receipts = [];
     let editIndex = -1;
@@ -156,13 +163,13 @@
       document.getElementById('pay-me').classList.toggle('active', payer === 'Me');
     }
 
-    function selectSplit(aa) {
-      isAA = aa;
-      document.getElementById('split-aa').classList.toggle('active', aa);
-      document.getElementById('split-single').classList.toggle('active', !aa);
+    function selectSplit(mode) {
+      currentSplitMode = mode;
+      document.getElementById('split-aa').classList.toggle('active', mode === 'aa');
+      document.getElementById('split-single').classList.toggle('active', mode === 'single');
+      document.getElementById('split-for-other').classList.toggle('active', mode === 'for-other');
     }
 
-    // 智能上傳並進行 OCR 辨識
     function handleImgUpload(input) {
       const file = input.files[0];
       if (file) {
@@ -171,19 +178,15 @@
           currentImgBase64 = e.target.result;
           document.getElementById('img-preview').innerHTML = `<img src="${currentImgBase64}" class="receipt-img">`;
           
-          // 啟動 Tesseract OCR 自動識別日文/英文數字
           const toast = document.getElementById('loading-toast');
           toast.style.display = 'block';
 
           Tesseract.recognize(
             currentImgBase64,
-            'jpn+eng', // 支援日文與英文數字識別
+            'jpn+eng',
             { logger: m => console.log(m) }
           ).then(({ data: { text } }) => {
             toast.style.display = 'none';
-            console.log("OCR Result:", text);
-
-            // 自動嘗試從文字中萃取金額（尋找 ¥ 符號或大數字）
             parseReceiptText(text);
           }).catch(err => {
             toast.style.display = 'none';
@@ -194,45 +197,39 @@
       }
     }
 
-    // 簡單的 OCR 文字解析函數
     function parseReceiptText(text) {
-      // 尋找日元格式金額（例如 ¥1,280 或 1280円 等）
       const lines = text.split('\n');
       let foundAmount = 0;
       let storeName = '';
 
       for (let line of lines) {
-        // 抓取包含數字的行作為可能的金額
         const cleanLine = line.replace(/[^\d]/g, '');
         if (cleanLine.length >= 3 && cleanLine.length <= 7) {
           const num = parseInt(cleanLine, 10);
           if (num > 100 && num < 1000000) {
-            foundAmount = num; // 取出最合理的消費金額
+            foundAmount = num;
           }
         }
-        // 第一行或比較短的文字通常是店名
         if (!storeName && line.trim().length > 1 && line.trim().length < 15) {
           storeName = line.trim();
         }
       }
 
-      if (foundAmount > 0) {
-        document.getElementById('r-amount').value = foundAmount;
-      }
-      if (storeName) {
-        document.getElementById('r-name').value = storeName;
-      }
+      if (foundAmount > 0) document.getElementById('r-amount').value = foundAmount;
+      if (storeName) document.getElementById('r-name').value = storeName;
     }
 
     function saveReceipt() {
       const name = document.getElementById('r-name').value || '未命名單據';
       const amount = parseFloat(document.getElementById('r-amount').value) || 0;
+      const currency = document.getElementById('r-currency').value;
 
       const receiptData = {
         name,
         amount,
+        currency,
         payer: currentPayer,
-        isAA,
+        splitMode: currentSplitMode,
         img: currentImgBase64
       };
 
@@ -260,8 +257,9 @@
       const item = receipts[index];
       document.getElementById('r-name').value = item.name;
       document.getElementById('r-amount').value = item.amount;
+      document.getElementById('r-currency').value = item.currency || '¥';
       selectPayer(item.payer);
-      selectSplit(item.isAA);
+      selectSplit(item.splitMode || 'aa');
       currentImgBase64 = item.img;
       document.getElementById('img-preview').innerHTML = item.img ? `<img src="${item.img}" class="receipt-img">` : '';
       editIndex = index;
@@ -278,21 +276,33 @@
       const container = document.getElementById('receipt-list');
       container.innerHTML = '';
 
-      let cwTotal = 0;
-      let meTotal = 0;
+      let cwYen = 0, cwHkd = 0;
+      let meYen = 0, meHkd = 0;
 
       receipts.forEach((item, index) => {
-        if (item.payer === 'CW') cwTotal += item.amount;
-        if (item.payer === 'Me') meTotal += item.amount;
+        const cur = item.currency || '¥';
+        if (item.payer === 'CW') {
+          if (cur === '¥') cwYen += item.amount; else cwHkd += item.amount;
+        } else if (item.payer === 'Me') {
+          if (cur === '¥') meYen += item.amount; else meHkd += item.amount;
+        }
 
-        const badgeClass = item.isAA ? 'bg-aa' : 'bg-single';
-        const splitText = item.isAA ? '⚖️ AA 兩份攤分' : '👤 個人獨付';
+        let badgeClass = 'bg-aa';
+        let splitText = '⚖️ AA 攤分';
+
+        if (item.splitMode === 'single') {
+          badgeClass = 'bg-single';
+          splitText = '👤 個人獨付';
+        } else if (item.splitMode === 'for-other') {
+          badgeClass = 'bg-for-other';
+          splitText = '🤝 幫對方付';
+        }
 
         const html = `
           <div class="receipt-item">
             <div class="receipt-head">
               <span class="receipt-title">${item.name}</span>
-              <span class="receipt-amount">¥ ${item.amount.toLocaleString()}</span>
+              <span class="receipt-amount">${cur} ${item.amount.toLocaleString()}</span>
             </div>
             <div class="receipt-info">
               付款人：<b>${item.payer}</b> | <span class="tag-badge ${badgeClass}">${splitText}</span>
@@ -307,8 +317,8 @@
         container.insertAdjacentHTML('beforeend', html);
       });
 
-      document.getElementById('sum-cw').innerText = `¥ ${cwTotal.toLocaleString()}`;
-      document.getElementById('sum-me').innerText = `¥ ${meTotal.toLocaleString()}`;
+      document.getElementById('sum-cw').innerHTML = `¥ ${cwYen.toLocaleString()}<br><span style="font-size:11px;">HK$ ${cwHkd.toLocaleString()}</span>`;
+      document.getElementById('sum-me').innerHTML = `¥ ${meYen.toLocaleString()}<br><span style="font-size:11px;">HK$ ${meHkd.toLocaleString()}</span>`;
     }
   </script>
 </body>
