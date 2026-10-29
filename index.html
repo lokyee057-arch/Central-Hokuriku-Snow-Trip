@@ -82,7 +82,6 @@
       box-shadow: var(--shadow);
     }
 
-    /* 可點擊折疊標題列 */
     .card-header-toggle {
       display: flex;
       justify-content: space-between;
@@ -99,7 +98,6 @@
       gap: 8px;
     }
 
-    /* 僅保留圖標的純圖標膠囊按鈕 */
     .toggle-pill {
       background: var(--bg-color);
       border: 2px solid var(--border-color);
@@ -145,13 +143,13 @@
     .item-box-sub { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
     .badge-top-right { position: absolute; top: 10px; right: 10px; }
 
+    .link-btns { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
     .btn-sm { display: inline-flex; align-items: center; gap: 4px; background: var(--card-bg); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 4px 10px; font-size: 11px; font-weight: 700; text-decoration: none; color: var(--text-main); box-shadow: 0 2px 0px var(--border-color); }
 
     .day-selector { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 5px; }
     .day-tab { border: 2px solid var(--border-color); border-radius: 12px; padding: 6px 12px; font-size: 12px; font-weight: 700; background: var(--card-bg); cursor: pointer; white-space: nowrap; box-shadow: 0 2px 0px var(--border-color); }
     .day-tab.active { background: var(--tag-red); color: white; }
 
-    /* Timeline Vertical Layout */
     .timeline { position: relative; padding-left: 28px; }
     .timeline::before { content: ''; position: absolute; left: 8px; top: 10px; bottom: 10px; width: 2.5px; background-color: var(--border-color); }
     .timeline-item { position: relative; margin-bottom: 25px; }
@@ -166,7 +164,6 @@
     .bg-yellow-box { background: #FFF9E6; }
     .bg-blue-box { background: #EBF3FA; }
 
-    /* 備忘錄拖拽排序樣式 */
     .check-item {
       display: flex;
       align-items: center;
@@ -249,7 +246,7 @@
         <div class="item-box-sub">
           • Day 1 (1/27) 名古屋住宿：待定<br>
           • Day 2 (1/28) 名古屋住宿：待定<br>
-          • Day 5 (1/31) 名古屋住宿：待定<br>
+          • Day 5 (1/31) 金澤住宿：待定<br>
           • Day 6 (2/01) 名古屋住宿：待定
         </div>
       </div>
@@ -325,7 +322,7 @@
             <div class="timeline-dot"></div>
             <div class="timeline-time">18:30 - 20:30</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：麵家 獅子丸 (Menya Shishimaru)</span><span class="tag tag-red">特色拉麵</span></div>
-            <div class="timeline-desc">品嚐名古屋極具特色的濃郁雞白湯拉麵。</div>
+            <div class="timeline-desc">品嚐名古屋極具特色、泡沫極致滑順的雞白湯拉麵。</div>
           </div>
         </div>
       </div>
@@ -444,8 +441,8 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">18:00 - 20:00</div>
-            <div class="timeline-head"><span class="timeline-title">晚餐：備長 / しら河 (在地特選鰻魚飯)</span><span class="tag tag-red">鰻魚三吃</span></div>
-            <div class="timeline-desc">品嚐在地人氣、無外地分店的極致炭燒鰻魚飯三吃！</div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：鰻木屋 / 鰻與（名古屋純在地鰻魚飯）</span><span class="tag tag-red">極上鰻魚三吃</span></div>
+            <div class="timeline-desc">品嚐全日本絕無其他地區分店、名古屋在地老饕最推崇的炭燒鰻魚三吃！</div>
           </div>
         </div>
       </div>
@@ -456,8 +453,8 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">09:00 - 11:00</div>
-            <div class="timeline-head"><span class="timeline-title">☕ 復古喫茶店早餐 / Brunch</span><span class="tag tag-yellow">名古屋喫茶文化</span></div>
-            <div class="timeline-desc">在名古屋在地經典喫茶店享用厚片吐司紅豆沙與手沖咖啡。</div>
+            <div class="timeline-head"><span class="timeline-title">☕ 喫茶 Context / Komeda 總店</span><span class="tag tag-yellow">喫茶 Brunch</span></div>
+            <div class="timeline-desc">在名古屋經典喫茶店享用厚片吐司、紅豆沙與手沖咖啡。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -476,7 +473,7 @@
     </div>
   </div>
 
-  <!-- 🍽️ 餐廳總整理 -->
+  <!-- 🍽️ 餐廳總整理 (精準 Google Maps 地圖定位 + Tabelog 連結) -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-food', 'pill-food')">
       <div class="card-title">🍽️ 餐廳總整理</div>
@@ -486,37 +483,66 @@
       <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 1 晚餐</span>
         <div class="item-box-title">🥩 とんかつジョニー (Tonkatsu Johnny)</div>
-        <div class="item-box-sub">• 狀態：榮商圈人氣炸豬扒</div>
-        <div class="link-btns"><a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a></div>
+        <div class="item-box-sub">• 狀態：榮商圈人氣在地炸豬扒專門店</div>
+        <div class="link-btns">
+          <a href="https://tabelog.com/aichi/A2301/A230103/23075253/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=とんかつジョニー+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+        </div>
       </div>
+
       <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 2 晚餐</span>
         <div class="item-box-title">🍜 麵家 獅子丸 (Menya Shishimaru)</div>
-        <div class="item-box-sub">• 狀態：特色雞白湯拉麵</div>
-        <div class="link-btns"><a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a></div>
+        <div class="item-box-sub">• 狀態：名古屋名驛人氣 NO.1 雞白湯拉麵</div>
+        <div class="link-btns">
+          <a href="https://tabelog.com/aichi/A2301/A230101/23056811/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=麵家+獅子丸+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+        </div>
       </div>
+
       <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 3 晚餐</span>
         <div class="item-box-title">🥩 味藏天國 (A5 飛驒牛燒肉)</div>
-        <div class="item-box-sub">• 狀態：⚠️ 16:30 現場抽號碼牌</div>
-        <div class="link-btns"><a href="https://tabelog.com/gifu/A2104/A210401/21000040/" target="_blank" class="btn-sm">🔗 Tabelog</a></div>
+        <div class="item-box-sub">• 狀態：⚠️ 16:30 現場抽號碼牌（高山站旁）</div>
+        <div class="link-btns">
+          <a href="https://tabelog.com/gifu/A2104/A210401/21000040/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=味蔵天国+高山" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+        </div>
       </div>
+
       <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 4 晚餐</span>
         <div class="item-box-title">🍲 丸明 高山店 (飛驒牛專門)</div>
-        <div class="item-box-sub">• 狀態：現場排隊 / 飯店代訂</div>
-        <div class="link-btns"><a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-sm">🔗 Tabelog</a></div>
+        <div class="item-box-sub">• 狀態：現場排隊 / 飯店代訂朴葉燒</div>
+        <div class="link-btns">
+          <a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=丸明+高山店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+        </div>
       </div>
+
       <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 6 晚餐</span>
-        <div class="item-box-title">🍱 名古屋在地特選鰻魚飯 (備長 / しら河)</div>
-        <div class="item-box-sub">• 狀態：不設外地分店的正宗極上三吃</div>
-        <div class="link-btns"><a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a></div>
+        <div class="item-box-title">🍱 鰻木屋 / うなぎのしら河 (純在地鰻魚飯)</div>
+        <div class="item-box-sub">• 狀態：無全日本其他縣市分店、在地極上三吃</div>
+        <div class="link-btns">
+          <a href="https://tabelog.com/aichi/A2301/A230101/23000084/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=うなぎのしら河+名駅店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+        </div>
+      </div>
+
+      <div class="item-box">
+        <span class="badge-top-right tag tag-yellow">Day 7 早餐/Brunch</span>
+        <div class="item-box-title">☕ 喫茶 Context / 喫茶マウンテン</div>
+        <div class="item-box-sub">• 狀態：名古屋特色復古喫茶店 Morning Service</div>
+        <div class="link-btns">
+          <a href="https://tabelog.com/aichi/A2301/A230101/23001552/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=名古屋+喫茶店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- 🚌 交通買飛策略指南 -->
+  <!-- 🚌 交通買飛策略指南 (含明細價格與預訂官網) -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-transport', 'pill-transport')">
       <div class="card-title">🚌 交通買飛策略指南</div>
@@ -524,18 +550,26 @@
     </div>
     <div class="card-body" id="body-transport">
       <div class="item-box" style="background: var(--tag-yellow); color: var(--text-main);">
-        <div style="font-weight: 700; margin-bottom: 5px;">🎫 全行程車票預訂策略：</div>
-        <div style="font-size: 12px; line-height: 1.6;">
-          1. <b>JR 飛驒特急 (Hida)</b>：名古屋 ⇄ 高山（可網上預訂指定席）<br>
-          2. <b>濃飛巴士 / 北陸鐵道巴士</b>：高山 ➔ 白川鄉 ➔ 金澤（<b>搭乘前1個月必須網上搶指定席！</b>）<br>
-          3. <b>奧飛驒 2 日巴士套票</b>：高山站巴士總站現場購買（含新穗高纜車）<br>
-          4. 市內地鐵/名鐵/巴士全用 <b>Apple Wallet Suica / ICOCA</b> 儲值卡。
+        <div style="font-weight: 900; margin-bottom: 6px;">🎫 車票明細與線上購買連結：</div>
+        <div style="font-size: 12px; line-height: 1.7;">
+          • <b>JR 特急飛驒號 (Hida)</b> (名古屋 ⇄ 高山)：<br>
+          &nbsp;&nbsp;單程約 <b>¥6,100</b> (約 HK$310) <a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm" style="padding:1px 6px; font-size:10px;">🔗 JR 官網預訂</a><br><br>
+
+          • <b>濃飛高速巴士</b> (高山 ➔ 白川鄉 ➔ 金澤)：<br>
+          &nbsp;&nbsp;高山-白川鄉 <b>¥2,600</b> (約 HK$132) | 白川鄉-金澤 <b>¥2,600</b> (約 HK$132)<br>
+          &nbsp;&nbsp;⚠️ <b>搭乘前 1 個月必須搶號！</b> <a href="https://www.japanexpressbus.com/zh-tw/" target="_blank" class="btn-sm" style="padding:1px 6px; font-size:10px;">🔗 濃飛巴士官網</a><br><br>
+
+          • <b>奧飛驒 2 日巴士套票</b> (含新穗高纜車來回)：<br>
+          &nbsp;&nbsp;套票 <b>¥7,000</b> (約 HK$355) ➔ 高山濃飛巴士總站現場購買。<br><br>
+
+          • <b>市區名鐵 / 地鐵 / 周遊巴士</b>：<br>
+          &nbsp;&nbsp;全部直接用 <b>Apple Wallet Suica / ICOCA</b> 拍卡搭乘即可。
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 🏨 住宿安排卡片 -->
+  <!-- 🏨 住宿安排卡片 (嚴格按 Day 1 至 Day 6 日期次序) -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-hotel', 'pill-hotel')">
       <div class="card-title">🏨 住宿安排</div>
@@ -543,24 +577,44 @@
     </div>
     <div class="card-body" id="body-hotel">
       <div class="item-box">
-        <span class="tag tag-yellow">Day 1, 2, 6 (3晚)</span>
+        <span class="tag tag-yellow">Day 1 (1/27) · 1晚</span>
         <div class="item-box-title" style="margin-top: 5px;">名古屋站 / 榮町附近飯店 (待定)</div>
-        <div class="item-box-sub">建議選擇名古屋站附近，方便搭乘 JR 與巴士前往高山。</div>
+        <div class="item-box-sub">建議選擇名古屋站附近，方便次日前往吉卜力公園。</div>
       </div>
+
       <div class="item-box">
-        <span class="tag tag-green">Day 3, 4 (2晚) · 已確定</span>
+        <span class="tag tag-yellow">Day 2 (1/28) · 1晚</span>
+        <div class="item-box-title" style="margin-top: 5px;">名古屋站 / 榮町附近飯店 (待定)</div>
+        <div class="item-box-sub">建議選擇名古屋站附近，方便次日清晨搭乘 JR 特急前往高山。</div>
+      </div>
+
+      <div class="item-box">
+        <span class="tag tag-green">Day 3 (1/29) · 第1晚 (已確定)</span>
         <div class="item-box-title" style="margin-top: 5px;">高山櫻庵 Takayama Ouan</div>
-        <div class="item-box-sub">入住：2027.01.29 - 01.31 (2晚)<br>高山站步行3分鐘，頂樓露天溫泉 + 免費夜鳴拉麵（包早餐）。</div>
+        <div class="item-box-sub">高山站步行3分鐘，頂樓露天溫泉 + 免費夜鳴拉麵（含早餐）。</div>
       </div>
+
       <div class="item-box">
-        <span class="tag tag-yellow">Day 5 (1晚)</span>
+        <span class="tag tag-green">Day 4 (1/30) · 第2晚 (已確定)</span>
+        <div class="item-box-title" style="margin-top: 5px;">高山櫻庵 Takayama Ouan</div>
+        <div class="item-box-sub">連住第二晚，新穗高纜車遊玩後回旅館放鬆泡湯（含早餐）。</div>
+      </div>
+
+      <div class="item-box">
+        <span class="tag tag-yellow">Day 5 (1/31) · 1晚</span>
         <div class="item-box-title" style="margin-top: 5px;">金澤站前飯店 (待定)</div>
         <div class="item-box-sub">建議選擇金澤站兼六園口附近，方便次日前往近江町市場與兼六園。</div>
+      </div>
+
+      <div class="item-box">
+        <span class="tag tag-yellow">Day 6 (2/01) · 1晚</span>
+        <div class="item-box-title" style="margin-top: 5px;">名古屋站附近飯店 (待定)</div>
+        <div class="item-box-sub">返回名古屋，建議選擇名古屋站周邊，方便最後一日前往機場。</div>
       </div>
     </div>
   </div>
 
-  <!-- ☑️ 備忘與搶票清單 (含 Drag & Drop 拖拽排序與新增功能) -->
+  <!-- ☑️ 備忘與搶票清單 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-todo', 'pill-todo')">
       <div class="card-title">☑️ 備忘與搶票清單</div>
@@ -606,7 +660,6 @@
   </div>
 
   <script>
-    // 倒數計時器
     function updateTimer() {
       const target = new Date("2027-01-27T09:35:00").getTime();
       const now = new Date().getTime();
@@ -621,7 +674,6 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // 卡片折疊/展開（純圖標切換）
     function toggleCard(bodyId, pillId) {
       const body = document.getElementById(bodyId);
       const pill = document.getElementById(pillId);
@@ -634,7 +686,6 @@
       }
     }
 
-    // 切換 Day 行程
     function showDay(dayNum) {
       document.querySelectorAll('.day-details').forEach(el => el.style.display = 'none');
       document.querySelectorAll('.day-tab').forEach(el => el.classList.remove('active'));
@@ -642,7 +693,6 @@
       event.target.classList.add('active');
     }
 
-    // 新增備忘錄項目
     function addTodoItem() {
       const input = document.getElementById('new-todo-input');
       const text = input.value.trim();
@@ -662,12 +712,10 @@
       input.value = '';
     }
 
-    // 拖拽排序 (Drag & Drop 支援電腦與手機 Touch Event)
     function setupDragAndDrop(item) {
       item.addEventListener('dragstart', () => item.classList.add('dragging'));
       item.addEventListener('dragend', () => item.classList.remove('dragging'));
 
-      // 觸控手機端支援
       let touchStartY = 0;
       item.addEventListener('touchstart', (e) => {
         if (e.target.classList.contains('drag-handle') || e.target.closest('.drag-handle')) {
@@ -721,7 +769,6 @@
       }, { offset: Number.NEGATIVE_INFINITY }).element;
     }
 
-    // 初始化現有備忘錄的拖拽事件
     document.querySelectorAll('.check-item').forEach(setupDragAndDrop);
   </script>
 </body>
