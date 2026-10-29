@@ -823,16 +823,11 @@
     </div>
   </div>
 
-  <!-- 固定喺底部嘅膠囊導航欄 (Bottom Fixed Navigation) -->
-  <div class="nav-bar">
-    <button class="nav-btn active" onclick="scrollToSec('sec-home')">🏠 首頁</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-flights')">✈️ 航班</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-itinerary')">📅 行程</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-pending')">❓ 待定</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-food')">🍽️ 餐廳</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-transport')">🚌 交通</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-hotel')">🏨 住宿</button>
-    <button class="nav-btn" onclick="scrollToSec('sec-todo')">☑️ 待辦</button>
+ <!-- 底部固定導航欄 (已包含首頁、購物、記帳) -->
+  <div class="nav-bar" style="position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); width: calc(100% - 24px); max-width: 580px; z-index: 1000; display: flex; gap: 8px; overflow-x: auto; background: rgba(251, 249, 244, 0.95); padding: 8px 10px; border: 2px solid var(--border-color); border-radius: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color); backdrop-filter: blur(8px);">
+    <a class="nav-btn active" href="index.html">🏠 行程總覽</a>
+    <a class="nav-btn" href="shopping.html">🛍️ 購物清單</a>
+    <a class="nav-btn" href="receipts.html">🧾 單據記帳</a>
   </div>
 
   <script>
