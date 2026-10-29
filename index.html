@@ -99,18 +99,21 @@
       gap: 8px;
     }
 
+    /* 僅保留圖標的純圖標膠囊按鈕 */
     .toggle-pill {
       background: var(--bg-color);
       border: 2px solid var(--border-color);
       border-radius: 15px;
-      padding: 4px 12px;
-      font-size: 12px;
+      width: 38px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
       font-weight: 900;
       box-shadow: 0 2px 0px var(--border-color);
-      white-space: nowrap;
     }
 
-    /* 隱藏內容區塊 */
     .card-body {
       margin-top: 15px;
       border-top: 2px dashed #E0E0E0;
@@ -159,20 +162,37 @@
     .timeline-title { font-size: 15px; font-weight: 900; }
     .timeline-desc { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
 
-    /* 待定事項內層卡片 */
     .pending-sub-box { border: 2px solid var(--border-color); border-radius: 14px; padding: 12px 15px; margin-bottom: 12px; }
     .bg-yellow-box { background: #FFF9E6; }
     .bg-blue-box { background: #EBF3FA; }
 
-    .check-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #DDD; }
-    .check-left { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
-    .check-btn-group { display: flex; gap: 4px; }
-    .action-btn { background: var(--card-bg); border: 1.5px solid var(--border-color); border-radius: 6px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 11px; cursor: pointer; }
+    /* 備忘錄拖拽排序樣式 */
+    .check-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: var(--bg-color);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      cursor: grab;
+      touch-action: none;
+      box-shadow: 0 2px 0px var(--border-color);
+    }
+    .check-item:active { cursor: grabbing; }
+    .check-item.dragging { opacity: 0.4; background: #E0E0E0; }
+    .drag-handle { font-size: 16px; font-weight: 900; color: var(--text-sub); margin-right: 8px; cursor: grab; }
+    .check-left { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; flex: 1; }
+    
+    .todo-input-group { display: flex; gap: 8px; margin-top: 12px; }
+    .todo-input { flex: 1; border: 2px solid var(--border-color); border-radius: 12px; padding: 8px 12px; font-size: 13px; font-weight: 700; background: #FFF; outline: none; }
+    .todo-add-btn { background: var(--tag-yellow); border: 2px solid var(--border-color); border-radius: 12px; padding: 8px 16px; font-size: 13px; font-weight: 900; cursor: pointer; box-shadow: 0 2px 0px var(--border-color); white-space: nowrap; }
   </style>
 </head>
 <body>
 
-  <!-- 首頁與倒數卡片 (不折疊) -->
+  <!-- 首頁與倒數卡片 -->
   <div id="sec-home" class="card header-card">
     <div style="font-size: 35px; margin-bottom: 5px;">🏔️⛺</div>
     <div class="trip-title">Nagoya & Hokuriku Winter Loop 2027</div>
@@ -186,11 +206,11 @@
     </div>
   </div>
 
-  <!-- 航班資訊 (可折疊) -->
+  <!-- 航班資訊 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-flights', 'pill-flights')">
       <div class="card-title">✈️ 航班資訊</div>
-      <div class="toggle-pill" id="pill-flights">縮細 ▲</div>
+      <div class="toggle-pill" id="pill-flights">▲</div>
     </div>
     <div class="card-body" id="body-flights">
       <div class="item-box">
@@ -215,11 +235,11 @@
     </div>
   </div>
 
-  <!-- 【順序 1】❓ 待定事項總覽卡片 (可折疊) -->
+  <!-- ❓ 待定事項總覽卡片 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-pending', 'pill-pending')">
       <div class="card-title">❓ 待定事項總覽 (進度追蹤)</div>
-      <div class="toggle-pill" id="pill-pending">縮細 ▲</div>
+      <div class="toggle-pill" id="pill-pending">▲</div>
     </div>
     <div class="card-body" id="body-pending">
       <div style="font-size: 12px; color: var(--text-sub); margin-bottom: 12px;">以下為尚未鎖定的住宿與餐飲，隨時可以填補確定！</div>
@@ -237,19 +257,19 @@
       <div class="pending-sub-box bg-blue-box">
         <div style="font-weight: 900; font-size: 13px; margin-bottom: 6px;">🍽️ 餐飲待定項目：</div>
         <div class="item-box-sub">
-          • 早餐：Day 2, 3, 6, 7 早餐待定<br>
+          • 早餐：Day 2, 3, 6 早餐待定 (Day 7 已安排喫茶店)<br>
           • 午餐：Day 2, 3, 4 (白川鄉), 5 (飛驒古川) 午餐待定<br>
-          • 晚餐：Day 1 (榮商圈), Day 2, Day 5, Day 6 晚餐待定
+          • 晚餐：Day 5 晚餐待定
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 【順序 2】📅 7 天 Timeline 詳細行程 (可折疊) -->
+  <!-- 📅 7 天 Timeline 詳細行程 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-itinerary', 'pill-itinerary')">
       <div class="card-title">📅 每日行程與攻略</div>
-      <div class="toggle-pill" id="pill-itinerary">縮細 ▲</div>
+      <div class="toggle-pill" id="pill-itinerary">▲</div>
     </div>
     <div class="card-body" id="body-itinerary">
       <div class="day-selector">
@@ -262,286 +282,193 @@
         <button class="day-tab" onclick="showDay(7)">Day 7 (2/2)</button>
       </div>
 
-      <!-- Day 1 Timeline -->
+      <!-- Day 1 -->
       <div id="day-content-1" class="day-details">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">07:30 - 09:35</div>
-            <div class="timeline-head">
-              <span class="timeline-title">早餐：Intervals Sky Bar</span>
-              <span class="tag tag-gray">香港機場</span>
-            </div>
+            <div class="timeline-head"><span class="timeline-title">早餐：Intervals Sky Bar</span><span class="tag tag-gray">香港機場</span></div>
             <div class="timeline-desc">登機前享用 Mocktail 輕食早餐。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">14:10 - 16:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">抵達名古屋機場 ➔ 市區飯店</span>
-              <span class="tag tag-purple">名鐵特急 (28mins)</span>
-            </div>
+            <div class="timeline-head"><span class="timeline-title">抵達名古屋機場 ➔ 市區飯店</span><span class="tag tag-purple">名鐵特急 (28mins)</span></div>
             <div class="timeline-desc">搭乘名鐵特急直達名古屋站辦理入住。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">18:00 - 20:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">晚餐：榮商圈 / Oasis 21</span>
-              <span class="tag tag-gray">待定</span>
-            </div>
-            <div class="timeline-desc">榮商圈 Oasis 21 漫步賞夜景，晚餐待定。</div>
+            <div class="timeline-time">18:00 - 20:30</div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：とんかつジョニー (Tonkatsu Johnny)</span><span class="tag tag-red">在地炸豬扒</span></div>
+            <div class="timeline-desc">榮商圈漫步賞夜景，品嚐超人氣美味炸豬扒。</div>
           </div>
         </div>
       </div>
 
-      <!-- Day 2 Timeline -->
+      <!-- Day 2 -->
       <div id="day-content-2" class="day-details" style="display: none;">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">09:00 - 10:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">名古屋市區 ➔ 吉卜力公園</span>
-              <span class="tag tag-purple">地鐵東山線+Linimo (50mins)</span>
-            </div>
-            <div class="timeline-desc">地鐵東山線至藤丘站，轉乘 Linimo 磁浮列車至「愛·地球博記念公園站」。</div>
+            <div class="timeline-head"><span class="timeline-title">名古屋市區 ➔ 吉卜力公園</span><span class="tag tag-purple">地鐵+Linimo (50mins)</span></div>
+            <div class="timeline-desc">地鐵東山線至藤丘站，轉乘 Linimo 至「愛·地球博記念公園站」。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">10:00 - 16:30</div>
-            <div class="timeline-head">
-              <span class="timeline-title">吉卜力公園 (Ghibli Park)</span>
-              <span class="tag tag-red">必去</span>
-            </div>
+            <div class="timeline-head"><span class="timeline-title">吉卜力公園 (Ghibli Park)</span><span class="tag tag-red">必去</span></div>
             <div class="timeline-desc">朝聖吉卜力大倉庫、魔女之谷與青春之丘實景展區。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">18:30 - 21:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">吉卜力 ➔ 大須商店街 / 榮町</span>
-              <span class="tag tag-purple">Linimo+地鐵 (45mins)</span>
-            </div>
-            <div class="timeline-desc">回到名古屋熱鬧商圈逛街與晚餐。</div>
+            <div class="timeline-time">18:30 - 20:30</div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：麵家 獅子丸 (Menya Shishimaru)</span><span class="tag tag-red">特色拉麵</span></div>
+            <div class="timeline-desc">品嚐名古屋極具特色的濃郁雞白湯拉麵。</div>
           </div>
         </div>
       </div>
 
-      <!-- Day 3 Timeline -->
+      <!-- Day 3 -->
       <div id="day-content-3" class="day-details" style="display: none;">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">08:43 - 11:10</div>
-            <div class="timeline-head">
-              <span class="timeline-title">JR 名古屋站 ➔ JR 高山站</span>
-              <span class="tag tag-purple">JR 特急 Hida (2.5小時)</span>
-            </div>
+            <div class="timeline-head"><span class="timeline-title">JR 名古屋站 ➔ JR 高山站</span><span class="tag tag-purple">JR 特急 Hida (2.5小時)</span></div>
             <div class="timeline-desc">搭乘特急飛驒號沿途欣賞雪景直達高山。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">12:00 - 14:30</div>
-            <div class="timeline-head">
-              <span class="timeline-title">高山古街 ➔ 高山櫻庵</span>
-              <span class="tag tag-yellow">步行 (10mins)</span>
-            </div>
-            <div class="timeline-desc">漫步三町老街食飛驒牛握壽司，Check-in 高山櫻庵（含頂樓露天溫泉與夜鳴拉麵）。</div>
+            <div class="timeline-head"><span class="timeline-title">高山古街 ➔ 高山櫻庵</span><span class="tag tag-yellow">步行 (10mins)</span></div>
+            <div class="timeline-desc">漫步三町老街食飛驒牛握壽司，Check-in 溫泉旅館。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">16:30 - 19:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">晚餐：味藏天國 (A5 飛驒牛燒肉)</span>
-              <span class="tag tag-red">⚠️ 16:30 抽號碼牌</span>
-            </div>
-            <div class="timeline-desc">高山第一人氣 A5 飛驒牛燒肉名店！高山站旁步行 1 分鐘。</div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：味藏天國 (A5 飛驒牛燒肉)</span><span class="tag tag-red">⚠️ 16:30 抽號碼牌</span></div>
+            <div class="timeline-desc">高山第一人氣 A5 飛驒牛燒肉名店！</div>
           </div>
         </div>
       </div>
 
-      <!-- Day 4 Timeline -->
+      <!-- Day 4 -->
       <div id="day-content-4" class="day-details" style="display: none;">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">07:30 - 08:30</div>
-            <div class="timeline-head">
-              <span class="timeline-title">早餐：高山櫻庵溫泉飯店</span>
-              <span class="tag tag-green">已包 Breakfast</span>
-            </div>
+            <div class="timeline-head"><span class="timeline-title">早餐：高山櫻庵溫泉飯店</span><span class="tag tag-green">已包 Breakfast</span></div>
             <div class="timeline-desc">享用飯店豐富日式自助早餐。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">08:40 - 10:15</div>
-            <div class="timeline-head">
-              <span class="timeline-title">高山濃飛巴士總站 ➔ 新穗高纜車</span>
-              <span class="tag tag-purple">濃飛巴士 (1.5小時)</span>
-            </div>
+            <div class="timeline-head"><span class="timeline-title">高山 ➔ 新穗高纜車</span><span class="tag tag-purple">濃飛巴士 (1.5小時)</span></div>
             <div class="timeline-desc">搭乘奧飛驒巴士專線直達新穗高高原。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">10:30 - 14:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">新穗高雙層纜車 ➔ 頂樓展望台</span>
-              <span class="tag tag-red">必去</span>
-            </div>
-            <div class="timeline-desc">登上 2,156 米展望台，360 度俯瞰阿爾卑斯連綿壯麗雪山。</div>
+            <div class="timeline-head"><span class="timeline-title">新穗高雙層纜車 ➔ 頂樓展望台</span><span class="tag tag-red">必去</span></div>
+            <div class="timeline-desc">登上 2,156 米展望台，360 度俯瞰阿爾卑斯雪山連峰。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">18:30 - 20:30</div>
-            <div class="timeline-head">
-              <span class="timeline-title">晚餐：丸明 高山店 (飛驒牛專門)</span>
-              <span class="tag tag-red">必去</span>
-            </div>
-            <div class="timeline-desc">享用極品飛驒牛壽喜燒 / 朴葉燒牛肉。</div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：丸明 高山店 (飛驒牛專門)</span><span class="tag tag-red">必去</span></div>
+            <div class="timeline-desc">享用極品飛驒牛壽喜燒 / 朴葉燒。</div>
           </div>
         </div>
       </div>
 
-      <!-- Day 5 Timeline -->
+      <!-- Day 5 -->
       <div id="day-content-5" class="day-details" style="display: none;">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">09:30 - 11:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">高山櫻庵 ➔ 飛驒山王宮 日枝神社</span>
-              <span class="tag tag-purple">Taxi / 步行 (15mins)</span>
-            </div>
-            <div class="timeline-desc">參拜被白雪覆蓋的朱紅鳥居與千年杉樹林（《你的名字》朝聖點）。</div>
+            <div class="timeline-head"><span class="timeline-title">飛驒山王宮 日枝神社</span><span class="tag tag-purple">Taxi / 步行 (15mins)</span></div>
+            <div class="timeline-desc">參拜被白雪覆蓋的朱紅鳥居（《你的名字》朝聖點）。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">12:00 - 13:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">高山濃飛總站 ➔ 白川鄉</span>
-              <span class="tag tag-purple">濃飛巴士 (50mins)</span>
-            </div>
+            <div class="timeline-head"><span class="timeline-title">高山 ➔ 白川鄉</span><span class="tag tag-purple">濃飛巴士 (50mins)</span></div>
             <div class="timeline-desc">搭乘濃飛巴士前往白川鄉，行李寄放總站 Locker。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">13:00 - 16:30</div>
-            <div class="timeline-head">
-              <span class="timeline-title">白川鄉合掌造村落漫步</span>
-              <span class="tag tag-gray">避開團客</span>
-            </div>
-            <div class="timeline-desc">村內悠閒午餐，包場感受無團客嘅寧靜氣氛。</div>
+            <div class="timeline-head"><span class="timeline-title">白川鄉合掌造村落漫步</span><span class="tag tag-gray">避開團客</span></div>
+            <div class="timeline-desc">村內悠閒午餐，感受無團客嘅寧靜雪景。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">16:30 - 17:30</div>
-            <div class="timeline-head">
-              <span class="timeline-title">🏡 白川鄉 17:00 藍調亮燈 Moment</span>
-              <span class="tag tag-red">一日團全撤離</span>
-            </div>
-            <div class="timeline-desc">登上荻町城跡展望台，捕捉深藍雪景與暖黃合掌屋窗光。</div>
+            <div class="timeline-head"><span class="timeline-title">🏡 白川鄉 17:00 藍調亮燈 Moment</span><span class="tag tag-red">一日團全撤離</span></div>
+            <div class="timeline-desc">登上展望台捕捉深藍雪景與暖黃合掌屋窗光。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">18:00 - 19:25</div>
-            <div class="timeline-head">
-              <span class="timeline-title">白川鄉 ➔ 金澤站前</span>
-              <span class="tag tag-purple">預約制高速巴士 (1.5小時)</span>
-            </div>
+            <div class="timeline-head"><span class="timeline-title">白川鄉 ➔ 金澤站前</span><span class="tag tag-purple">預約制高速巴士 (1.5小時)</span></div>
             <div class="timeline-desc">直達金澤，Check-in 金澤站前飯店。</div>
           </div>
         </div>
       </div>
 
-      <!-- Day 6 Timeline -->
+      <!-- Day 6 -->
       <div id="day-content-6" class="day-details" style="display: none;">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">09:00 - 11:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">金澤站 ➔ 兼六園 (冬日雪吊)</span>
-              <span class="tag tag-purple">城下町金澤周遊巴士 (15mins)</span>
-            </div>
-            <div class="timeline-desc">漫步日本三大名園之一，欣賞冬日限定雪吊與徽軫燈籠。</div>
+            <div class="timeline-head"><span class="timeline-title">金澤 ➔ 兼六園 (冬日雪吊)</span><span class="tag tag-purple">周遊巴士 (15mins)</span></div>
+            <div class="timeline-desc">漫步日本三大名園之一，欣賞冬日限定雪吊景色。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">11:30 - 13:30</div>
-            <div class="timeline-head">
-              <span class="timeline-title">兼六園 ➔ 近江町市場 (爆食加能蟹)</span>
-              <span class="tag tag-purple">巴士 (10mins)</span>
-            </div>
-            <div class="timeline-desc">品嚐北陸冬日限定松葉蟹、寒鰤魚與澎湃海鮮丼。</div>
+            <div class="timeline-head"><span class="timeline-title">近江町市場 (爆食加能蟹)</span><span class="tag tag-purple">巴士 (10mins)</span></div>
+            <div class="timeline-desc">品嚐北陸冬日限定松葉蟹、寒鰤魚海鮮丼。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">15:00 - 17:30</div>
-            <div class="timeline-head">
-              <span class="timeline-title">JR 金澤站 ➔ JR 名古屋站</span>
-              <span class="tag tag-purple">JR 特急/新幹線 (2.5小時)</span>
-            </div>
-            <div class="timeline-desc">搭乘鐵路返回名古屋市區飯店 Check-in。</div>
+            <div class="timeline-head"><span class="timeline-title">JR 金澤 ➔ JR 名古屋</span><span class="tag tag-purple">JR 特急/新幹線 (2.5小時)</span></div>
+            <div class="timeline-desc">返回名古屋市區。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">18:00 - 20:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">晚餐：あつた蓬萊軒 (鰻魚飯三吃)</span>
-              <span class="tag tag-red">⚠️ 17:00 領號碼牌</span>
-            </div>
-            <div class="timeline-desc">名古屋百年鰻魚飯老店名物 Hitsumabushi！</div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：備長 / しら河 (在地特選鰻魚飯)</span><span class="tag tag-red">鰻魚三吃</span></div>
+            <div class="timeline-desc">品嚐在地人氣、無外地分店的極致炭燒鰻魚飯三吃！</div>
           </div>
         </div>
       </div>
 
-      <!-- Day 7 Timeline -->
+      <!-- Day 7 -->
       <div id="day-content-7" class="day-details" style="display: none;">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">10:00 - 12:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">名古屋最後補貨 / 常滑招財貓小鎮</span>
-              <span class="tag tag-yellow">購物</span>
-            </div>
-            <div class="timeline-desc">名驛 JR 高島屋補貨手信。</div>
+            <div class="timeline-time">09:00 - 11:00</div>
+            <div class="timeline-head"><span class="timeline-title">☕ 復古喫茶店早餐 / Brunch</span><span class="tag tag-yellow">名古屋喫茶文化</span></div>
+            <div class="timeline-desc">在名古屋在地經典喫茶店享用厚片吐司紅豆沙與手沖咖啡。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">12:30 - 13:00</div>
-            <div class="timeline-head">
-              <span class="timeline-title">名古屋站 ➔ 中部國際機場 (NGO)</span>
-              <span class="tag tag-purple">名鐵 μ-SKY (28mins)</span>
-            </div>
+            <div class="timeline-time">12:30</div>
+            <div class="timeline-head"><span class="timeline-title">名古屋站 ➔ 中部國際機場 (NGO)</span><span class="tag tag-purple">名鐵 μ-SKY (28mins)</span></div>
             <div class="timeline-desc">辦理登機與託行李，預留時間體驗 JAL 櫻花貴賓室。</div>
           </div>
-
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">15:15 - 19:10</div>
-            <div class="timeline-head">
-              <span class="timeline-title">🛫 CX539 商務艙起飛返港</span>
-              <span class="tag tag-green">抵達 HKG</span>
-            </div>
+            <div class="timeline-head"><span class="timeline-title">🛫 CX539 商務艙起飛返港</span><span class="tag tag-green">抵達 HKG</span></div>
             <div class="timeline-desc">結束完美冬日北陸雪國之旅！</div>
           </div>
         </div>
@@ -549,59 +476,51 @@
     </div>
   </div>
 
-  <!-- 【順序 3】🍽️ 餐廳總整理 (可折疊) -->
+  <!-- 🍽️ 餐廳總整理 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-food', 'pill-food')">
-      <div class="card-title">🍽️ 餐廳總整理 (已確認必去)</div>
-      <div class="toggle-pill" id="pill-food">縮細 ▲</div>
+      <div class="card-title">🍽️ 餐廳總整理</div>
+      <div class="toggle-pill" id="pill-food">▲</div>
     </div>
     <div class="card-body" id="body-food">
       <div class="item-box">
+        <span class="badge-top-right tag tag-red">Day 1 晚餐</span>
+        <div class="item-box-title">🥩 とんかつジョニー (Tonkatsu Johnny)</div>
+        <div class="item-box-sub">• 狀態：榮商圈人氣炸豬扒</div>
+        <div class="link-btns"><a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a></div>
+      </div>
+      <div class="item-box">
+        <span class="badge-top-right tag tag-red">Day 2 晚餐</span>
+        <div class="item-box-title">🍜 麵家 獅子丸 (Menya Shishimaru)</div>
+        <div class="item-box-sub">• 狀態：特色雞白湯拉麵</div>
+        <div class="link-btns"><a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a></div>
+      </div>
+      <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 3 晚餐</span>
         <div class="item-box-title">🥩 味藏天國 (A5 飛驒牛燒肉)</div>
-        <div class="item-box-sub">• 狀態：⚠️ 16:30 必須現場抽號碼牌</div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/gifu/A2104/A210401/21000040/" target="_blank" class="btn-sm">🔗 Tabelog</a>
-          <a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
+        <div class="item-box-sub">• 狀態：⚠️ 16:30 現場抽號碼牌</div>
+        <div class="link-btns"><a href="https://tabelog.com/gifu/A2104/A210401/21000040/" target="_blank" class="btn-sm">🔗 Tabelog</a></div>
       </div>
-
       <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 4 晚餐</span>
-        <div class="item-box-title">🍲 丸明 高山店 (飛驒牛壽喜燒/朴葉燒)</div>
+        <div class="item-box-title">🍲 丸明 高山店 (飛驒牛專門)</div>
         <div class="item-box-sub">• 狀態：現場排隊 / 飯店代訂</div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-sm">🔗 Tabelog</a>
-          <a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
+        <div class="link-btns"><a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-sm">🔗 Tabelog</a></div>
       </div>
-
       <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 6 晚餐</span>
-        <div class="item-box-title">🍱 あつた蓬萊軒 (鰻魚飯三吃)</div>
-        <div class="item-box-sub">• 狀態：⚠️ 17:00 前現場領號碼牌</div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/aichi/A2301/A230112/23000006/" target="_blank" class="btn-sm">🔗 Tabelog</a>
-          <a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box">
-        <span class="badge-top-right tag tag-red">Day 6 午餐</span>
-        <div class="item-box-title">🦀 金澤 近江町市場 (冬蟹/寒鰤魚海鮮丼)</div>
-        <div class="item-box-sub">• 狀態：現場選擇人氣海鮮丼店家</div>
-        <div class="link-btns">
-          <a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
+        <div class="item-box-title">🍱 名古屋在地特選鰻魚飯 (備長 / しら河)</div>
+        <div class="item-box-sub">• 狀態：不設外地分店的正宗極上三吃</div>
+        <div class="link-btns"><a href="https://maps.google.com" target="_blank" class="btn-sm">🗺️ Google 地圖</a></div>
       </div>
     </div>
   </div>
 
-  <!-- 【順序 4】🚌 交通買飛策略指南 (可折疊) -->
+  <!-- 🚌 交通買飛策略指南 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-transport', 'pill-transport')">
       <div class="card-title">🚌 交通買飛策略指南</div>
-      <div class="toggle-pill" id="pill-transport">縮細 ▲</div>
+      <div class="toggle-pill" id="pill-transport">▲</div>
     </div>
     <div class="card-body" id="body-transport">
       <div class="item-box" style="background: var(--tag-yellow); color: var(--text-main);">
@@ -616,11 +535,11 @@
     </div>
   </div>
 
-  <!-- 【順序 5】🏨 住宿安排卡片 (可折疊) -->
+  <!-- 🏨 住宿安排卡片 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-hotel', 'pill-hotel')">
       <div class="card-title">🏨 住宿安排</div>
-      <div class="toggle-pill" id="pill-hotel">縮細 ▲</div>
+      <div class="toggle-pill" id="pill-hotel">▲</div>
     </div>
     <div class="card-body" id="body-hotel">
       <div class="item-box">
@@ -628,13 +547,11 @@
         <div class="item-box-title" style="margin-top: 5px;">名古屋站 / 榮町附近飯店 (待定)</div>
         <div class="item-box-sub">建議選擇名古屋站附近，方便搭乘 JR 與巴士前往高山。</div>
       </div>
-
       <div class="item-box">
         <span class="tag tag-green">Day 3, 4 (2晚) · 已確定</span>
         <div class="item-box-title" style="margin-top: 5px;">高山櫻庵 Takayama Ouan</div>
-        <div class="item-box-sub">入住：2027.01.29 - 01.31 (2晚)<br>高山站步行3分鐘，頂樓露天溫泉 + 免費夜鳴拉麵（包含每日早餐）。</div>
+        <div class="item-box-sub">入住：2027.01.29 - 01.31 (2晚)<br>高山站步行3分鐘，頂樓露天溫泉 + 免費夜鳴拉麵（包早餐）。</div>
       </div>
-
       <div class="item-box">
         <span class="tag tag-yellow">Day 5 (1晚)</span>
         <div class="item-box-title" style="margin-top: 5px;">金澤站前飯店 (待定)</div>
@@ -643,49 +560,40 @@
     </div>
   </div>
 
-  <!-- 【順序 6】☑️ 備忘與搶票清單 (可折疊) -->
+  <!-- ☑️ 備忘與搶票清單 (含 Drag & Drop 拖拽排序與新增功能) -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-todo', 'pill-todo')">
       <div class="card-title">☑️ 備忘與搶票清單</div>
-      <div class="toggle-pill" id="pill-todo">縮細 ▲</div>
+      <div class="toggle-pill" id="pill-todo">▲</div>
     </div>
     <div class="card-body" id="body-todo">
       <div id="todo-container">
-        <div class="check-item">
+        <div class="check-item" draggable="true">
+          <span class="drag-handle">⋮⋮</span>
           <div class="check-left"><input type="checkbox"> 11/10 13:00 : 搶吉卜力公園門票 (海外通道)</div>
-          <div class="check-btn-group">
-            <button class="action-btn" onclick="moveUp(this)">↑</button>
-            <button class="action-btn" onclick="moveDown(this)">↓</button>
-            <button class="action-btn" onclick="delItem(this)">✕</button>
-          </div>
+          <button onclick="this.closest('.check-item').remove()" style="border:none; background:none; cursor:pointer; font-weight:900; color:#666;">✕</button>
         </div>
-
-        <div class="check-item">
+        <div class="check-item" draggable="true">
+          <span class="drag-handle">⋮⋮</span>
           <div class="check-left"><input type="checkbox"> 出發前 1 個月 : 預約濃飛巴士 (高山 ➔ 白川鄉 ➔ 金澤)</div>
-          <div class="check-btn-group">
-            <button class="action-btn" onclick="moveUp(this)">↑</button>
-            <button class="action-btn" onclick="moveDown(this)">↓</button>
-            <button class="action-btn" onclick="delItem(this)">✕</button>
-          </div>
+          <button onclick="this.closest('.check-item').remove()" style="border:none; background:none; cursor:pointer; font-weight:900; color:#666;">✕</button>
         </div>
-
-        <div class="check-item">
+        <div class="check-item" draggable="true">
+          <span class="drag-handle">⋮⋮</span>
           <div class="check-left"><input type="checkbox"> 買日本 eSIM 卡 / 儲值 Apple Wallet Suica</div>
-          <div class="check-btn-group">
-            <button class="action-btn" onclick="moveUp(this)">↑</button>
-            <button class="action-btn" onclick="moveDown(this)">↓</button>
-            <button class="action-btn" onclick="delItem(this)">✕</button>
-          </div>
+          <button onclick="this.closest('.check-item').remove()" style="border:none; background:none; cursor:pointer; font-weight:900; color:#666;">✕</button>
         </div>
-
-        <div class="check-item">
+        <div class="check-item" draggable="true">
+          <span class="drag-handle">⋮⋮</span>
           <div class="check-left"><input type="checkbox"> 買旅遊保險</div>
-          <div class="check-btn-group">
-            <button class="action-btn" onclick="moveUp(this)">↑</button>
-            <button class="action-btn" onclick="moveDown(this)">↓</button>
-            <button class="action-btn" onclick="delItem(this)">✕</button>
-          </div>
+          <button onclick="this.closest('.check-item').remove()" style="border:none; background:none; cursor:pointer; font-weight:900; color:#666;">✕</button>
         </div>
+      </div>
+
+      <!-- 新增備忘輸入區 -->
+      <div class="todo-input-group">
+        <input type="text" id="new-todo-input" class="todo-input" placeholder="輸入新的備忘事項...">
+        <button class="todo-add-btn" onclick="addTodoItem()">➕ 新增</button>
       </div>
     </div>
   </div>
@@ -713,16 +621,16 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // 通用卡片折疊 / 展開切換
+    // 卡片折疊/展開（純圖標切換）
     function toggleCard(bodyId, pillId) {
       const body = document.getElementById(bodyId);
       const pill = document.getElementById(pillId);
       if (body.style.display === "none") {
         body.style.display = "block";
-        pill.innerText = "縮細 ▲";
+        pill.innerText = "▲";
       } else {
         body.style.display = "none";
-        pill.innerText = "展開 ▼";
+        pill.innerText = "▼";
       }
     }
 
@@ -734,19 +642,87 @@
       event.target.classList.add('active');
     }
 
-    function moveUp(btn) {
-      let item = btn.closest('.check-item');
-      if (item.previousElementSibling) item.parentNode.insertBefore(item, item.previousElementSibling);
+    // 新增備忘錄項目
+    function addTodoItem() {
+      const input = document.getElementById('new-todo-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const container = document.getElementById('todo-container');
+      const newItem = document.createElement('div');
+      newItem.className = 'check-item';
+      newItem.draggable = true;
+      newItem.innerHTML = `
+        <span class="drag-handle">⋮⋮</span>
+        <div class="check-left"><input type="checkbox"> ${text}</div>
+        <button onclick="this.closest('.check-item').remove()" style="border:none; background:none; cursor:pointer; font-weight:900; color:#666;">✕</button>
+      `;
+      setupDragAndDrop(newItem);
+      container.appendChild(newItem);
+      input.value = '';
     }
 
-    function moveDown(btn) {
-      let item = btn.closest('.check-item');
-      if (item.nextElementSibling) item.parentNode.insertBefore(item.nextElementSibling, item);
+    // 拖拽排序 (Drag & Drop 支援電腦與手機 Touch Event)
+    function setupDragAndDrop(item) {
+      item.addEventListener('dragstart', () => item.classList.add('dragging'));
+      item.addEventListener('dragend', () => item.classList.remove('dragging'));
+
+      // 觸控手機端支援
+      let touchStartY = 0;
+      item.addEventListener('touchstart', (e) => {
+        if (e.target.classList.contains('drag-handle') || e.target.closest('.drag-handle')) {
+          item.classList.add('dragging');
+          touchStartY = e.touches[0].clientY;
+        }
+      }, {passive: true});
+
+      item.addEventListener('touchmove', (e) => {
+        if (!item.classList.contains('dragging')) return;
+        const currentY = e.touches[0].clientY;
+        const container = document.getElementById('todo-container');
+        const afterElement = getDragAfterElement(container, currentY);
+        const draggingItem = document.querySelector('.dragging');
+        if (afterElement == null) {
+          container.appendChild(draggingItem);
+        } else {
+          container.insertBefore(draggingItem, afterElement);
+        }
+      }, {passive: true});
+
+      item.addEventListener('touchend', () => {
+        item.classList.remove('dragging');
+      });
     }
 
-    function delItem(btn) {
-      btn.closest('.check-item').remove();
+    const container = document.getElementById('todo-container');
+    container.addEventListener('dragover', e => {
+      e.preventDefault();
+      const afterElement = getDragAfterElement(container, e.clientY);
+      const dragging = document.querySelector('.dragging');
+      if (dragging) {
+        if (afterElement == null) {
+          container.appendChild(dragging);
+        } else {
+          container.insertBefore(dragging, afterElement);
+        }
+      }
+    });
+
+    function getDragAfterElement(container, y) {
+      const draggableElements = [...container.querySelectorAll('.check-item:not(.dragging)')];
+      return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+          return { offset: offset, element: child };
+        } else {
+          return closest;
+        }
+      }, { offset: Number.NEGATIVE_INFINITY }).element;
     }
+
+    // 初始化現有備忘錄的拖拽事件
+    document.querySelectorAll('.check-item').forEach(setupDragAndDrop);
   </script>
 </body>
 </html>
