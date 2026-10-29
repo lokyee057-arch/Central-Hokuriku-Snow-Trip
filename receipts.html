@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本單據消費記帳 · Winter Loop 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #FBF9F4;
+      --card-bg: #FFFFFF;
+      --border-color: #2B2B2B;
+      --tag-red: #E88282;
+      --tag-green: #74B9BE;
+      --tag-yellow: #F3CD7B;
+      --tag-purple: #B39DDB;
+      --text-main: #2B2B2B;
+      --text-sub: #666666;
+      --shadow: 0 5px 0px #2B2B2B;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Zen Maru Gothic', sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text-main); padding: 15px; max-width: 600px; margin: 0 auto; padding-bottom: 90px; }
+
+    .card { background: var(--card-bg); border: 2.5px solid var(--border-color); border-radius: 20px; padding: 18px; margin-bottom: 15px; box-shadow: var(--shadow); }
+    .card-title { font-size: 18px; font-weight: 900; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+
+    /* 總結卡片 */
+    .summary-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+    .sum-card { background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 10px; text-align: center; }
+    .sum-val { font-size: 16px; font-weight: 900; color: var(--tag-red); }
+
+    /* 表單欄位 */
+    .form-group { margin-bottom: 12px; }
+    .form-label { font-size: 12px; font-weight: 900; margin-bottom: 4px; display: block; }
+    .form-input, .form-select { width: 100%; border: 2px solid var(--border-color); border-radius: 12px; padding: 8px 12px; font-size: 13px; font-weight: 700; background: #FFF; outline: none; }
+
+    .pill-group { display: flex; gap: 8px; }
+    .pill-opt { flex: 1; text-align: center; padding: 8px; border: 2px solid var(--border-color); border-radius: 12px; font-size: 12px; font-weight: 900; cursor: pointer; background: #FFF; }
+    .pill-opt.active { background: var(--tag-yellow); }
+
+    .add-btn { width: 100%; background: var(--tag-green); color: white; border: 2.5px solid var(--border-color); border-radius: 16px; padding: 12px; font-size: 14px; font-weight: 900; cursor: pointer; box-shadow: var(--shadow); }
+
+    /* 單據紀錄卡片 */
+    .receipt-item { background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 12px; margin-bottom: 12px; position: relative; }
+    .receipt-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .receipt-title { font-size: 15px; font-weight: 900; }
+    .receipt-amount { font-size: 16px; font-weight: 900; color: var(--tag-red); }
+    .receipt-info { font-size: 12px; color: var(--text-sub); line-height: 1.5; }
+    .receipt-img { max-width: 100%; max-height: 150px; border-radius: 10px; border: 1.5px solid var(--border-color); margin-top: 8px; object-fit: cover; }
+
+    .tag-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; border: 1.5px solid var(--border-color); font-size: 10px; font-weight: 900; }
+    .bg-aa { background: var(--tag-yellow); }
+    .bg-single { background: var(--tag-purple); color: white; }
+
+    /* 底部導航 */
+    .nav-bar { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); width: calc(100% - 24px); max-width: 580px; z-index: 1000; display: flex; gap: 8px; overflow-x: auto; background: rgba(251, 249, 244, 0.95); padding: 8px 10px; border: 2px solid var(--border-color); border-radius: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .nav-bar::-webkit-scrollbar { display: none; }
+    .nav-btn { background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 20px; padding: 6px 14px; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer; box-shadow: 0 2px 0px var(--border-color); text-decoration: none; color: var(--text-main); }
+    .nav-btn.active { background: var(--tag-yellow); }
+  </style>
+</head>
+<body>
+
+  <!-- 結算面板 -->
+  <div class="card">
+    <div class="card-title">🧾 日本單據消費結算</div>
+    <div class="summary-box">
+      <div class="sum-card">
+        <div style="font-size: 11px; font-weight: 700;">CW 累計已付</div>
+        <div class="sum-val" id="sum-cw">¥ 0</div>
+      </div>
+      <div class="sum-card">
+        <div style="font-size: 11px; font-weight: 700;">Me 累計已付</div>
+        <div class="sum-val" id="sum-me">¥ 0</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 新增/編輯消費單據 -->
+  <div class="card">
+    <div class="card-title"><span id="form-title">➕ 登記新單據</span></div>
+    
+    <div class="form-group">
+      <label class="form-label">項目名稱 / 店舖</label>
+      <input type="text" id="r-name" class="form-input" placeholder="例如: 味藏天國 / FamilyMart">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">日元金額 (日幣 ¥)</label>
+      <input type="number" id="r-amount" class="form-input" placeholder="例如: 12800">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">邊個付款人先付？</label>
+      <div class="pill-group">
+        <div class="pill-opt active" id="pay-cw" onclick="selectPayer('CW')">CW</div>
+        <div class="pill-opt" id="pay-me" onclick="selectPayer('Me')">Me</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">費用分攤方式</label>
+      <div class="pill-group">
+        <div class="pill-opt active" id="split-aa" onclick="selectSplit(true)">⚖️ AA 兩份攤分</div>
+        <div class="pill-opt" id="split-single" onclick="selectSplit(false)">👤 付款人獨付</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">📷 上傳單據照片</label>
+      <input type="file" id="r-img" accept="image/*" class="form-input" onchange="handleImgUpload(this)">
+      <div id="img-preview" style="margin-top: 6px;"></div>
+    </div>
+
+    <button class="add-btn" onclick="saveReceipt()">💾 儲存單據紀錄</button>
+  </div>
+
+  <!-- 單據列表 -->
+  <div class="card">
+    <div class="card-title">📋 已記錄單據列表</div>
+    <div id="receipt-list"></div>
+  </div>
+
+  <!-- 底部固定導航 -->
+  <div class="nav-bar">
+    <a class="nav-btn" href="index.html">🏠 行程總覽</a>
+    <a class="nav-btn" href="shopping.html">🛍️ 購物清單</a>
+    <a class="nav-btn active" href="receipts.html">🧾 單據記帳</a>
+  </div>
+
+  <script>
+    let currentPayer = 'CW';
+    let isAA = true;
+    let currentImgBase64 = '';
+    let receipts = [];
+    let editIndex = -1;
+
+    function selectPayer(payer) {
+      currentPayer = payer;
+      document.getElementById('pay-cw').classList.toggle('active', payer === 'CW');
+      document.getElementById('pay-me').classList.toggle('active', payer === 'Me');
+    }
+
+    function selectSplit(aa) {
+      isAA = aa;
+      document.getElementById('split-aa').classList.toggle('active', aa);
+      document.getElementById('split-single').classList.toggle('active', !aa);
+    }
+
+    function handleImgUpload(input) {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          currentImgBase64 = e.target.result;
+          document.getElementById('img-preview').innerHTML = `<img src="${currentImgBase64}" class="receipt-img">`;
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function saveReceipt() {
+      const name = document.getElementById('r-name').value || '未命名單據';
+      const amount = parseFloat(document.getElementById('r-amount').value) || 0;
+
+      const receiptData = {
+        name,
+        amount,
+        payer: currentPayer,
+        isAA,
+        img: currentImgBase64
+      };
+
+      if (editIndex >= 0) {
+        receipts[editIndex] = receiptData;
+        editIndex = -1;
+        document.getElementById('form-title').innerText = '➕ 登記新單據';
+      } else {
+        receipts.push(receiptData);
+      }
+
+      resetForm();
+      renderReceipts();
+    }
+
+    function resetForm() {
+      document.getElementById('r-name').value = '';
+      document.getElementById('r-amount').value = '';
+      document.getElementById('r-img').value = '';
+      document.getElementById('img-preview').innerHTML = '';
+      currentImgBase64 = '';
+    }
+
+    function editReceipt(index) {
+      const item = receipts[index];
+      document.getElementById('r-name').value = item.name;
+      document.getElementById('r-amount').value = item.amount;
+      selectPayer(item.payer);
+      selectSplit(item.isAA);
+      currentImgBase64 = item.img;
+      document.getElementById('img-preview').innerHTML = item.img ? `<img src="${item.img}" class="receipt-img">` : '';
+      editIndex = index;
+      document.getElementById('form-title').innerText = '✏️ 編輯單據紀錄';
+    }
+
+    function deleteReceipt(index) {
+      receipts.splice(index, 1);
+      renderReceipts();
+    }
+
+    function renderReceipts() {
+      const container = document.getElementById('receipt-list');
+      container.innerHTML = '';
+
+      let cwTotal = 0;
+      let meTotal = 0;
+
+      receipts.forEach((item, index) => {
+        if (item.payer === 'CW') cwTotal += item.amount;
+        if (item.payer === 'Me') meTotal += item.amount;
+
+        const badgeClass = item.isAA ? 'bg-aa' : 'bg-single';
+        const splitText = item.isAA ? 'AA 兩份攤分' : '個人獨付';
+
+        const html = `
+          <div class="receipt-item">
+            <div class="receipt-head">
+              <span class="receipt-title">${item.name}</span>
+              <span class="receipt-amount">¥ ${item.amount.toLocaleString()}</span>
+            </div>
+            <div class="receipt-info">
+              付款人：<b>${item.payer}</b> | <span class="tag-badge ${badgeClass}">${splitText}</span>
+            </div>
+            ${item.img ? `<img src="${item.img}" class="receipt-img">` : ''}
+            <div style="margin-top: 8px; display: flex; gap: 8px;">
+              <button onclick="editReceipt(${index})" style="padding: 3px 8px; border-radius: 6px; border: 1.5px solid #2B2B2B; font-weight: 700; cursor: pointer;">✏️ 編輯</button>
+              <button onclick="deleteReceipt(${index})" style="padding: 3px 8px; border-radius: 6px; border: 1.5px solid #2B2B2B; font-weight: 700; cursor: pointer; color: red;">✕ 刪除</button>
+            </div>
+          </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+      });
+
+      document.getElementById('sum-cw').innerText = `¥ ${cwTotal.toLocaleString()}`;
+      document.getElementById('sum-me').innerText = `¥ ${meTotal.toLocaleString()}`;
+    }
+  </script>
+</body>
+</html>
