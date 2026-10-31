@@ -17,7 +17,7 @@
       --tag-yellow: #F3CD7B;
       --tag-purple: #B39DDB;
       --text-main: #2B2B2B;
-      --text-sub: #666666;
+      --text-sub: #555555;
       --shadow: 0 5px 0px #2B2B2B;
     }
 
@@ -59,8 +59,8 @@
       background: var(--card-bg);
       border: 2px solid var(--border-color);
       border-radius: 20px;
-      padding: 6px 16px;
-      font-size: 13px;
+      padding: 8px 18px;
+      font-size: 14px;
       font-weight: 700;
       white-space: nowrap;
       cursor: pointer;
@@ -91,7 +91,7 @@
     }
 
     .card-title {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 900;
       display: flex;
       align-items: center;
@@ -119,14 +119,14 @@
     }
 
     .header-card { text-align: center; padding: 25px 15px; }
-    .trip-title { font-size: 22px; font-weight: 900; margin-bottom: 4px; }
-    .trip-date { font-size: 13px; color: var(--text-sub); font-weight: 700; margin-bottom: 15px; }
+    .trip-title { font-size: 24px; font-weight: 900; margin-bottom: 4px; }
+    .trip-date { font-size: 14px; color: var(--text-sub); font-weight: 700; margin-bottom: 15px; }
     .timer-container { display: flex; justify-content: center; gap: 10px; }
-    .timer-box { background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 8px 12px; min-width: 55px; box-shadow: 0 3px 0px var(--border-color); }
-    .timer-num { font-size: 18px; font-weight: 900; }
-    .timer-unit { font-size: 10px; color: var(--text-sub); }
+    .timer-box { background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 12px; padding: 8px 12px; min-width: 60px; box-shadow: 0 3px 0px var(--border-color); }
+    .timer-num { font-size: 20px; font-weight: 900; }
+    .timer-unit { font-size: 11px; color: var(--text-sub); }
 
-    .tag { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; border: 1.5px solid var(--border-color); }
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; border: 1.5px solid var(--border-color); }
     .tag-red { background: var(--tag-red); color: white; }
     .tag-green { background: var(--tag-green); color: white; }
     .tag-yellow { background: var(--tag-yellow); color: var(--text-main); }
@@ -134,42 +134,45 @@
     .tag-gray { background: #E0E0E0; color: #2B2B2B; }
 
     .flight-route { display: flex; justify-content: space-between; align-items: center; margin: 12px 0; }
-    .airport-code { font-size: 20px; font-weight: 900; }
-    .airport-time { font-size: 12px; color: var(--text-sub); font-weight: 700; }
-    .arrow { font-size: 18px; font-weight: 900; }
+    .airport-code { font-size: 22px; font-weight: 900; }
+    .airport-time { font-size: 13px; color: var(--text-sub); font-weight: 700; }
+    .arrow { font-size: 20px; font-weight: 900; }
 
-    .item-box { background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 12px 15px; margin-bottom: 12px; position: relative; }
-    .item-box-title { font-size: 15px; font-weight: 900; margin-bottom: 5px; }
-    .item-box-sub { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
-    .badge-top-right { position: absolute; top: 10px; right: 10px; }
+    .item-box { background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; position: relative; }
+    .item-box-title { font-size: 16px; font-weight: 900; margin-bottom: 6px; }
+    .item-box-sub { font-size: 13.5px; color: var(--text-sub); line-height: 1.6; }
 
-    .link-btns { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-    .btn-sm { display: inline-flex; align-items: center; gap: 4px; background: var(--card-bg); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 4px 10px; font-size: 11px; font-weight: 700; text-decoration: none; color: var(--text-main); box-shadow: 0 2px 0px var(--border-color); cursor: pointer; }
+    .food-inline-card {
+      background: #FFFBF0;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-top: 8px;
+    }
 
-    .day-selector { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 5px; }
-    .day-tab { border: 2px solid var(--border-color); border-radius: 12px; padding: 6px 12px; font-size: 12px; font-weight: 700; background: var(--card-bg); cursor: pointer; white-space: nowrap; box-shadow: 0 2px 0px var(--border-color); }
+    .link-btns { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .btn-sm { display: inline-flex; align-items: center; gap: 4px; background: var(--card-bg); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 5px 12px; font-size: 12px; font-weight: 700; text-decoration: none; color: var(--text-main); box-shadow: 0 2px 0px var(--border-color); cursor: pointer; }
+
+    .day-selector { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 5px; }
+    .day-tab { border: 2px solid var(--border-color); border-radius: 14px; padding: 8px 14px; font-size: 13px; font-weight: 700; background: var(--card-bg); cursor: pointer; white-space: nowrap; box-shadow: 0 2px 0px var(--border-color); }
     .day-tab.active { background: var(--tag-red); color: white; }
 
     .timeline { position: relative; padding-left: 28px; }
     .timeline::before { content: ''; position: absolute; left: 8px; top: 10px; bottom: 10px; width: 2.5px; background-color: var(--border-color); }
     .timeline-item { position: relative; margin-bottom: 25px; }
     .timeline-item:last-child { margin-bottom: 0; }
-    .timeline-dot { position: absolute; left: -28px; top: 3px; width: 14px; height: 14px; background-color: var(--tag-yellow); border: 2.5px solid var(--border-color); border-radius: 50%; z-index: 2; }
-    .timeline-time { font-size: 12px; font-weight: 900; color: var(--text-sub); margin-bottom: 2px; }
-    .timeline-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
-    .timeline-title { font-size: 15px; font-weight: 900; }
-    .timeline-desc { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
-
-    .pending-sub-box { border: 2px solid var(--border-color); border-radius: 14px; padding: 12px 15px; margin-bottom: 12px; }
-    .bg-yellow-box { background: #FFF9E6; }
-    .bg-blue-box { background: #EBF3FA; }
+    .timeline-dot { position: absolute; left: -28px; top: 4px; width: 14px; height: 14px; background-color: var(--tag-yellow); border: 2.5px solid var(--border-color); border-radius: 50%; z-index: 2; }
+    .timeline-time { font-size: 13px; font-weight: 900; color: var(--text-sub); margin-bottom: 3px; }
+    .timeline-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+    .timeline-title { font-size: 16px; font-weight: 900; }
+    .timeline-desc { font-size: 14px; color: var(--text-main); line-height: 1.65; }
   </style>
 </head>
 <body>
 
   <!-- 首頁與倒數卡片 -->
   <div id="sec-home" class="card header-card">
-    <div style="font-size: 35px; margin-bottom: 5px;">🏔️⛺</div>
+    <div style="font-size: 38px; margin-bottom: 5px;">🏔️⛺</div>
     <div class="trip-title">Nagoya & Hokuriku Winter Loop 2027</div>
     <div class="trip-date">2027.01.27 - 02.02 (7 Days)</div>
     
@@ -190,7 +193,7 @@
     <div class="card-body" id="body-flights">
       <div class="item-box">
         <span class="tag tag-red">去程 · 1月27日 (三)</span>
-        <span style="float: right; font-size: 11px; font-weight: 700;">國泰航空 CX536</span>
+        <span style="float: right; font-size: 12px; font-weight: 700;">國泰 CX536 (特選經濟)</span>
         <div class="flight-route">
           <div><div class="airport-code">HKG</div><div class="airport-time">09:35 起飛</div></div>
           <div class="arrow">➔</div>
@@ -199,7 +202,7 @@
       </div>
       <div class="item-box">
         <span class="tag tag-green">回程 · 2月2日 (二)</span>
-        <span style="float: right; font-size: 11px; font-weight: 700;">國泰航空 CX539 (商務艙)</span>
+        <span style="float: right; font-size: 12px; font-weight: 700;">國泰 CX539 (商務艙)</span>
         <div class="flight-route">
           <div><div class="airport-code">NGO</div><div class="airport-time">15:15 起飛</div></div>
           <div class="arrow">➔</div>
@@ -210,36 +213,7 @@
     </div>
   </div>
 
-  <!-- ❓ 待定事項總覽卡片 -->
-  <div class="card">
-    <div class="card-header-toggle" onclick="toggleCard('body-pending', 'pill-pending')">
-      <div class="card-title">❓ 待定事項總覽 (出發前進度追蹤)</div>
-      <div class="toggle-pill" id="pill-pending">▲</div>
-    </div>
-    <div class="card-body" id="body-pending">
-      <div style="font-size: 12px; color: var(--text-sub); margin-bottom: 12px;">以下為尚未鎖定的住宿與餐飲，隨時可以填補確定！</div>
-
-      <div class="pending-sub-box bg-yellow-box">
-        <div style="font-weight: 900; font-size: 13px; margin-bottom: 6px;">🏨 住宿待定項目：</div>
-        <div class="item-box-sub">
-          • Day 1 (1/27) 名古屋住宿：待定<br>
-          • Day 2 (1/28) 名古屋住宿：待定<br>
-          • Day 5 (1/31) 金澤住宿：HOTEL AO / Sanraku (待定)<br>
-          • Day 6 (2/01) 名古屋住宿：待定
-        </div>
-      </div>
-
-      <div class="pending-sub-box bg-blue-box">
-        <div style="font-weight: 900; font-size: 13px; margin-bottom: 6px;">🍽️ 餐飲待定項目：</div>
-        <div class="item-box-sub">
-          • 早餐：Day 6 早餐待定 (Day 2便利店/糀太郎, Day 3高山Don, Day 4櫻庵包餐, Day 7喫茶店)<br>
-          • 午餐：Day 2, 4 (白川鄉) 午餐待定
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 📅 7 天 Timeline 詳細行程 -->
+  <!-- 📅 7 天 Timeline 詳細行程 (已內嵌餐廳訂枱與地圖指南) -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-itinerary', 'pill-itinerary')">
       <div class="card-title">📅 每日行程與攻略</div>
@@ -247,13 +221,13 @@
     </div>
     <div class="card-body" id="body-itinerary">
       <div class="day-selector">
-        <button class="day-tab active" onclick="showDay(1)">Day 1 (1/27)</button>
-        <button class="day-tab" onclick="showDay(2)">Day 2 (1/28)</button>
-        <button class="day-tab" onclick="showDay(3)">Day 3 (1/29)</button>
-        <button class="day-tab" onclick="showDay(4)">Day 4 (1/30)</button>
-        <button class="day-tab" onclick="showDay(5)">Day 5 (1/31)</button>
-        <button class="day-tab" onclick="showDay(6)">Day 6 (2/1)</button>
-        <button class="day-tab" onclick="showDay(7)">Day 7 (2/2)</button>
+        <button class="day-tab active" onclick="showDay(1, event)">Day 1 (1/27)</button>
+        <button class="day-tab" onclick="showDay(2, event)">Day 2 (1/28)</button>
+        <button class="day-tab" onclick="showDay(3, event)">Day 3 (1/29)</button>
+        <button class="day-tab" onclick="showDay(4, event)">Day 4 (1/30)</button>
+        <button class="day-tab" onclick="showDay(5, event)">Day 5 (1/31)</button>
+        <button class="day-tab" onclick="showDay(6, event)">Day 6 (2/1)</button>
+        <button class="day-tab" onclick="showDay(7, event)">Day 7 (2/2)</button>
       </div>
 
       <!-- Day 1 -->
@@ -262,8 +236,8 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">14:10 - 15:15</div>
-            <div class="timeline-head"><span class="timeline-title">降落名古屋中部國際機場 (NGO)</span><span class="tag tag-green">國泰 CX536</span></div>
-            <div class="timeline-desc">商務艙優先下機，快速辦理入境與託運行李提取手續（約 65 分鐘）。</div>
+            <div class="timeline-head"><span class="timeline-title">降落名古屋中部國際機場 (NGO)</span><span class="tag tag-green">國泰 CX536 (特選經濟)</span></div>
+            <div class="timeline-desc">特選經濟客艙優先下機，快速辦理入境與託運行李提取手續（約 65 分鐘）。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -286,11 +260,28 @@
             <div class="timeline-time">18:30 🚗 交通時間 15mins</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：とんかつジョニー 或 馬喰一代</span><span class="tag tag-red">名站極上和牛</span></div>
             <div class="timeline-desc">
-              由商圈散步 10-15 分鐘至餐廳。名站附近享用厚切炸豬排或頂級飛驒牛燒肉。<br>
-              <div class="link-btns">
-                <span class="btn-sm" onclick="scrollToFood('food-johnny')">🔗 查看 Tonkatsu Johnny 詳情</span>
-                <span class="btn-sm" onclick="scrollToFood('food-bakuro')">🔗 查看 馬喰一代 詳情</span>
+              由商圈散步 10-15 分鐘至餐廳。
+
+              <!-- 內嵌餐廳指南 1 -->
+              <div class="food-inline-card">
+                <div style="font-weight:900; font-size:14.5px;">🥩 飛騨牛一頭家 馬喰一代 (名驛店)</div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：極上飛驒牛燒肉、海膽生和牛刺身與牛肉他他</div>
+                <div class="link-btns">
+                  <a href="https://tabelog.com/aichi/A2301/A230101/23065668/" target="_blank" class="btn-sm">🔗 Tabelog 預訂</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=馬喰一代+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+                </div>
               </div>
+
+              <!-- 內嵌餐廳指南 2 -->
+              <div class="food-inline-card">
+                <div style="font-weight:900; font-size:14.5px;">🥩 とんかつジョニー (Tonkatsu Johnny)</div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：現場排隊 / 人氣在地厚切炸豬扒專門店</div>
+                <div class="link-btns">
+                  <a href="https://tabelog.com/aichi/A2301/A230103/23075253/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=とんかつジョニー+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -344,8 +335,17 @@
             <div class="timeline-time">17:00 之後 🚗 交通時間 50mins</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：麵家 獅子丸 (雞白湯拉麵)</span><span class="tag tag-red">名站排隊名店</span></div>
             <div class="timeline-desc">
-              搭乘 Linimo 轉地鐵東山線返回名古屋站（車程 50 分鐘），直奔獅子丸享用極順雞白湯拉麵。<br>
-              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-shishimaru')">🔗 查看 麵家 獅子丸 詳情</span>
+              搭乘 Linimo 轉地鐵東山線返回名古屋站（車程 50 分鐘），直奔獅子丸享用極順雞白湯拉麵。
+
+              <div class="food-inline-card">
+                <div style="font-weight:900; font-size:14.5px;">🍜 麵家 獅子丸 (Menya Shishimaru)</div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：現場排隊（不設預約，建議 18:00 前抵達）</div>
+                <div class="link-btns">
+                  <a href="https://tabelog.com/aichi/A2301/A230101/23056811/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=麵家+獅子丸+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -386,8 +386,17 @@
             <div class="timeline-time">18:00 🚶 徒步 10mins</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：丸明 高山店 (飛驒牛專門)</span><span class="tag tag-red">⚠️ 建議提早 Booking</span></div>
             <div class="timeline-desc">
-              古街步行 10 分鐘至丸明，享用極上 A5 飛驒牛壽喜燒或燒肉。<br>
-              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-maruaki')">🔗 查看 丸明 高山店 詳情</span>
+              古街步行 10 分鐘至丸明，享用極上 A5 飛驒牛壽喜燒或燒肉。
+
+              <div class="food-inline-card">
+                <div style="font-weight:900; font-size:14.5px;">🍲 丸明 高山店 (飛驒牛專門)</div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>建議 Check-in 時請飯店 Front Desk 協助電話代訂 18:00</b></div>
+                <div class="link-btns">
+                  <a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=丸明+高山店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+                </div>
+              </div>
+
             </div>
           </div>
           <div class="timeline-item">
@@ -437,8 +446,17 @@
             <div class="timeline-time">17:35 - 19:30 🚶 徒步 1min</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：味藏天國 (A5 飛驒牛燒肉)</span><span class="tag tag-red">⚠️ 17:35 現場撳飛</span></div>
             <div class="timeline-desc">
-              落車步行 1 分鐘直奔隔壁味藏天國撳飛，大口品嚐滿滿油花的飛驒牛拼盤！續住高山櫻庵第 2 晚。<br>
-              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-ajikura')">🔗 查看 味藏天國 詳情</span>
+              落車步行 1 分鐘直奔隔壁味藏天國撳飛，大口品嚐滿滿油花的飛驒牛拼盤！續住高山櫻庵第 2 晚。
+
+              <div class="food-inline-card">
+                <div style="font-weight:900; font-size:14.5px;">🥩 味藏天國 (A5 飛驒牛燒肉)</div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>不設電話預訂！17:35 巴士落車即刻去現場撳飛</b></div>
+                <div class="link-btns">
+                  <a href="https://tabelog.com/gifu/A2104/A210401/21000040/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=味蔵天国+高山" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -480,8 +498,17 @@
             <div class="timeline-time">18:45 🚗 交通時間 15mins</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：麵屋大河 (Menya Taiga)</span><span class="tag tag-red">黑味噌拉麵</span></div>
             <div class="timeline-desc">
-              搭公車返回金澤站前（15 分鐘），享用金澤第一濃郁、帶有柚子生薑香氣的黑味噌拉麵。<br>
-              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-taiga')">🔗 查看 麵屋大河 詳情</span>
+              搭公車返回金澤站前（15 分鐘），享用金澤第一濃郁、帶有柚子生薑香氣的黑味噌拉麵。
+
+              <div class="food-inline-card">
+                <div style="font-weight:900; font-size:14.5px;">🍜 麵屋大河 (Menya Taiga)</div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：金澤站前排隊名店（極致濃郁柚子生薑黑味噌拉麵）</div>
+                <div class="link-btns">
+                  <a href="https://tabelog.com/ishikawa/A1701/A170101/17007412/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=面屋大河+金沢" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -519,8 +546,17 @@
             <div class="timeline-time">18:00 之後 🚗 交通時間 15mins</div>
             <div class="timeline-head"><span class="timeline-title">榮商圈衝刺 ➔ 晚餐：鰻魚飯三吃</span><span class="tag tag-red">登河 / 鰻木屋 / しら河</span></div>
             <div class="timeline-desc">
-              飯店 Check-in 後地鐵前往榮商圈購物，晚上享用正宗炭燒鰻魚飯三吃。<br>
-              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-unagi')">🔗 查看 登河 / 鰻魚飯 詳情</span>
+              飯店 Check-in 後地鐵前往榮商圈購物，晚上享用正宗炭燒鰻魚飯三吃。
+
+              <div class="food-inline-card">
+                <div style="font-weight:900; font-size:14.5px;">🍱 炭焼きうなぎ 登河 栄店 / うなぎのしら河</div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>建議出發前透過 Tabelog / 官網線上預訂席位</b></div>
+                <div class="link-btns">
+                  <a href="https://tabelog.com/aichi/A2301/A230103/23070440/" target="_blank" class="btn-sm">🔗 Tabelog 線上預訂</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=登河+栄店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -558,85 +594,6 @@
     </div>
   </div>
 
-  <!-- 🍽️ 餐廳總整理 -->
-  <div class="card" id="card-food-section">
-    <div class="card-header-toggle" onclick="toggleCard('body-food', 'pill-food')">
-      <div class="card-title">🍽️ 餐廳總整理 (訂枱與排隊指南)</div>
-      <div class="toggle-pill" id="pill-food">▲</div>
-    </div>
-    <div class="card-body" id="body-food">
-      <div class="item-box" id="food-bakuro">
-        <span class="badge-top-right tag tag-red">Day 1 / 6 晚餐</span>
-        <div class="item-box-title">🥩 飛騨牛一頭家 馬喰一代 (名驛 / 榮)</div>
-        <div class="item-box-sub">• 狀態：極上飛驒牛燒肉、海膽生和牛刺身與牛肉他他</div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/aichi/A2301/A230101/23065668/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=馬喰一代+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box" id="food-johnny">
-        <span class="badge-top-right tag tag-red">Day 1 晚餐</span>
-        <div class="item-box-title">🥩 とんかつジョニー (Tonkatsu Johnny)</div>
-        <div class="item-box-sub">• 狀態：現場排隊 / 人氣在地炸豬扒專門店</div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/aichi/A2301/A230103/23075253/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=とんかつジョニー+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box" id="food-shishimaru">
-        <span class="badge-top-right tag tag-red">Day 2 晚餐</span>
-        <div class="item-box-title">🍜 麵家 獅子丸 (Menya Shishimaru)</div>
-        <div class="item-box-sub">• 狀態：現場排隊（不設預約，建議 18:00 前抵達）</div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/aichi/A2301/A230101/23056811/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=麵家+獅子丸+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box" id="food-maruaki">
-        <span class="badge-top-right tag tag-red">Day 3 晚餐</span>
-        <div class="item-box-title">🍲 丸明 高山店 (飛驒牛專門)</div>
-        <div class="item-box-sub">• 狀態：⚠️ <b>建議 Check-in 時請飯店 Front Desk 協助電話代訂 18:00</b></div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=丸明+高山店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box" id="food-ajikura">
-        <span class="badge-top-right tag tag-red">Day 4 晚餐</span>
-        <div class="item-box-title">🥩 味藏天國 (A5 飛驒牛燒肉)</div>
-        <div class="item-box-sub">• 狀態：⚠️ <b>不設電話預訂！17:35 巴士落車即刻去現場撳飛</b></div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/gifu/A2104/A210401/21000040/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=味蔵天国+高山" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box" id="food-taiga">
-        <span class="badge-top-right tag tag-red">Day 5 晚餐</span>
-        <div class="item-box-title">🍜 麵屋大河 (Menya Taiga)</div>
-        <div class="item-box-sub">• 狀態：金澤站前排隊名店（極致濃郁柚子生薑黑味噌拉麵）</div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/ishikawa/A1701/A170101/17007412/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=面屋大河+金沢" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box" id="food-unagi">
-        <span class="badge-top-right tag tag-red">Day 6 晚餐</span>
-        <div class="item-box-title">🍱 炭焼きうなぎ 登河 栄店 / うなぎのしら河</div>
-        <div class="item-box-sub">• 狀態：⚠️ <b>建議出發前透過 Tabelog / 官網線上預訂席位</b></div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/aichi/A2301/A230103/23070440/" target="_blank" class="btn-sm">🔗 Tabelog 線上預訂</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=登河+栄店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- 🚌 交通買飛策略指南 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-transport', 'pill-transport')">
@@ -645,18 +602,18 @@
     </div>
     <div class="card-body" id="body-transport">
       <div class="item-box" style="background: var(--tag-yellow); color: var(--text-main);">
-        <div style="font-weight: 900; margin-bottom: 6px;">🎫 車票明細與線上購買連結：</div>
-        <div style="font-size: 12px; line-height: 1.7;">
+        <div style="font-weight: 900; margin-bottom: 6px; font-size: 15px;">🎫 車票明細與線上購買連結：</div>
+        <div style="font-size: 13.5px; line-height: 1.75;">
           • <b>JR 特急飛驒號 (Hida)</b> (名古屋 ⇄ 高山)：<br>
           &nbsp;&nbsp;單程約 <b>¥6,100</b> (約 HK$310)<br>
           &nbsp;&nbsp;⚠️ <b>熱門雪季強烈建議提早 1 個月於網上預訂指定席！</b><br>
-          &nbsp;&nbsp;<a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm" style="padding:1px 6px; font-size:10px;">🔗 JR 官網預訂</a><br><br>
+          &nbsp;&nbsp;<a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm" style="padding:2px 8px; font-size:11px;">🔗 JR 官網預訂</a><br><br>
 
           • <b>濃飛高速巴士</b> (高山 ➔ 白川鄉 ➔ 高山)：<br>
           &nbsp;&nbsp;⚠️ <b>12/30 09:00 (HKT) 必須上網搶票！</b><br>
           &nbsp;&nbsp;① 1/30 高山 ➔ 白川鄉 (11:50 - 12:40)<br>
           &nbsp;&nbsp;② 1/30 白川鄉 ➔ 高山 (16:45 - 17:35)<br>
-          &nbsp;&nbsp;<a href="https://www.japanexpressbus.com/zh-tw/" target="_blank" class="btn-sm" style="padding:1px 6px; font-size:10px;">🔗 Japan Bus Online 搶票</a><br><br>
+          &nbsp;&nbsp;<a href="https://www.japanexpressbus.com/zh-tw/" target="_blank" class="btn-sm" style="padding:2px 8px; font-size:11px;">🔗 Japan Bus Online 搶票</a><br><br>
 
           • <b>奧飛驒 2 日巴士套票</b> (含新穗高纜車來回)：<br>
           &nbsp;&nbsp;套票 <b>¥7,000</b> (約 HK$355) ➔ 高山濃飛巴士總站現場購買。<br><br>
@@ -747,32 +704,12 @@
       }
     }
 
-    function showDay(dayNum) {
+    function showDay(dayNum, evt) {
       document.querySelectorAll('.day-details').forEach(el => el.style.display = 'none');
       document.querySelectorAll('.day-tab').forEach(el => el.classList.remove('active'));
       document.getElementById('day-content-' + dayNum).style.display = 'block';
-      event.target.classList.add('active');
-    }
-
-    function scrollToFood(foodId) {
-      const foodBody = document.getElementById('body-food');
-      const foodPill = document.getElementById('pill-food');
-      
-      if (foodBody.style.display === "none") {
-        foodBody.style.display = "block";
-        foodPill.innerText = "▲";
-      }
-
-      const targetEl = document.getElementById(foodId);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        targetEl.style.transition = 'all 0.3s ease';
-        targetEl.style.transform = 'scale(1.03)';
-        targetEl.style.boxShadow = '0 0 12px rgba(232, 130, 130, 0.8)';
-        setTimeout(() => {
-          targetEl.style.transform = 'scale(1)';
-          targetEl.style.boxShadow = 'none';
-        }, 1200);
+      if(evt && evt.target) {
+        evt.target.classList.add('active');
       }
     }
   </script>
