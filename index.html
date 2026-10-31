@@ -32,7 +32,6 @@
       padding-bottom: 90px;
     }
 
-    /* 底部固定膠囊導航欄 */
     .nav-bar {
       position: fixed;
       bottom: 12px;
@@ -64,13 +63,10 @@
       box-shadow: 0 2px 0px var(--border-color);
       text-decoration: none;
       color: var(--text-main);
-      transition: all 0.1s ease;
     }
 
     .nav-btn.active {
       background: var(--tag-yellow);
-      transform: translateY(1px);
-      box-shadow: 0 1px 0px var(--border-color);
     }
 
     .card {
@@ -254,7 +250,7 @@
       <div class="pending-sub-box bg-blue-box">
         <div style="font-weight: 900; font-size: 13px; margin-bottom: 6px;">🍽️ 餐飲待定項目：</div>
         <div class="item-box-sub">
-          • 早餐：Day 6 早餐待定 (Day 2便利店, Day 3高山古街/Don, Day 4櫻庵包餐, Day 7喫茶店)<br>
+          • 早餐：Day 6 早餐待定 (Day 2便利店/糀太郎, Day 3高山Don, Day 4櫻庵包餐, Day 7喫茶店)<br>
           • 午餐：Day 2, 4 (白川鄉) 午餐待定
         </div>
       </div>
@@ -295,9 +291,15 @@
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">18:00 - 20:30</div>
-            <div class="timeline-head"><span class="timeline-title">晚餐：とんかつジョニー (Tonkatsu Johnny)</span><span class="tag tag-red">在地炸豬扒</span></div>
-            <div class="timeline-desc">榮商圈 Oasis 21 漫步賞夜景，品嚐名古屋超人氣美味炸豬扒。<b>（夜光回飯店前先去便利店買定 Day 2 早餐飯糰/三文治）</b></div>
+            <div class="timeline-time">16:30 - 18:00</div>
+            <div class="timeline-head"><span class="timeline-title">🛍️ 大須商店街 / 大須觀音散步</span><span class="tag tag-yellow">大須商圈</span></div>
+            <div class="timeline-desc">地鐵前往大須觀音寺參拜，漫步古色古香與文青小店交織的大須商店街。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">18:30 - 20:30</div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：とんかつジョニー (Tonkatsu Johnny) 或 馬喰一代燒肉</span><span class="tag tag-red">榮/名驛</span></div>
+            <div class="timeline-desc">榮商圈 Oasis 21 漫步賞夜景，品嚐超人氣炸豬扒，或選擇「馬喰一代」高級飛驒牛海膽生和牛刺身！<b>（夜光回飯店前買 Lawson 焦糖布甸卷蛋）</b></div>
           </div>
         </div>
       </div>
@@ -308,8 +310,8 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">08:00 - 09:00</div>
-            <div class="timeline-head"><span class="timeline-title">早餐：前一晚便利店買定輕食</span><span class="tag tag-yellow">方便省時</span></div>
-            <div class="timeline-desc">出發車程中或出發前於飯店享用前晚買好的便利店早餐，節省時間直衝吉卜力公園。</div>
+            <div class="timeline-head"><span class="timeline-title">早餐：おむすび処 糀太郎 / 便利店輕食</span><span class="tag tag-yellow">質感飯糰</span></div>
+            <div class="timeline-desc">外賣名驛超人氣「糀太郎」手作飯糰與豚汁，或車程中享用便利店早餐，節省時間直衝吉卜力公園。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -354,14 +356,14 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">11:30 - 12:30</div>
-            <div class="timeline-head"><span class="timeline-title">☕ 早餐 / Brunch：Coffee Don (喫茶どん) 或 Train Bleu</span><span class="tag tag-yellow">高山站周邊</span></div>
-            <div class="timeline-desc">前往昭和風濃郁的 Coffee Don 享用厚吐司與手沖咖啡；或品嚐日本殿堂級 Train Bleu 牛角包。</div>
+            <div class="timeline-head"><span class="timeline-title">☕ 早餐 / Brunch：Coffee Don (喫茶どん)</span><span class="tag tag-yellow">高山站周邊</span></div>
+            <div class="timeline-desc">前往昭和風濃郁的 Coffee Don 享用厚吐司與手沖咖啡。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">12:30 - 13:30</div>
-            <div class="timeline-head"><span class="timeline-title">⛩️ 飛驒山王宮 日枝神社</span><span class="tag tag-yellow">《你的名字》朝聖</span></div>
-            <div class="timeline-desc">參拜被白雪覆蓋的朱紅鳥居與千年杉樹林。</div>
+            <div class="timeline-head"><span class="timeline-title">⛩️ 飛驒山王宮 日枝神社 ➔ 高山陣屋</span><span class="tag tag-yellow">歷史名勝</span></div>
+            <div class="timeline-desc">參拜雪中朱紅鳥居《你的名字》日枝神社，隨後順路參觀全日本唯一保留至今的江戶時代代官所「高山陣屋」。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -484,8 +486,8 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">18:00 - 20:00</div>
-            <div class="timeline-head"><span class="timeline-title">晚餐：鰻木屋 / うなぎのしら河</span><span class="tag tag-red">⚠️ 建議提早預約</span></div>
-            <div class="timeline-desc"><b>Remind：建議出發前預約</b>，品嚐無全日本其他縣市分店的正宗極上炭燒鰻魚三吃。</div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：登河 栄店 / 鰻木屋 / うなぎのしら河</span><span class="tag tag-red">⚠️ 建議提早預約</span></div>
+            <div class="timeline-desc"><b>Remind：建議出發前預約</b>，品嚐「登河」炭燒鰻魚或名古屋純在地鰻魚三吃。</div>
           </div>
         </div>
       </div>
@@ -496,8 +498,8 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">09:00 - 11:00</div>
-            <div class="timeline-head"><span class="timeline-title">☕ 復古喫茶店早餐 / Brunch</span><span class="tag tag-yellow">名古屋喫茶文化</span></div>
-            <div class="timeline-desc">在名古屋在地經典喫茶店享用厚片吐司、紅豆沙與手沖咖啡。</div>
+            <div class="timeline-head"><span class="timeline-title">☕ 復古喫茶店 / Tsubame Bread & Milk</span><span class="tag tag-yellow">名古屋喫茶 Brunch</span></div>
+            <div class="timeline-desc">在小燕子生吐司享用現烤絹香黃油多士，或在地經典喫茶店享用紅豆吐司與手沖咖啡。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -530,12 +532,32 @@
     </div>
     <div class="card-body" id="body-food">
       <div class="item-box">
+        <span class="badge-top-right tag tag-red">Day 1 / 6 晚餐</span>
+        <div class="item-box-title">🥩 飛騨牛一頭家 馬喰一代 (名驛 / 榮)</div>
+        <div class="item-box-sub">• 狀態：極上飛驒牛燒肉、海膽生和牛刺身與牛肉他他</div>
+        <div class="link-btns">
+          <a href="https://tabelog.com/aichi/A2301/A230101/23065668/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=馬喰一代+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+        </div>
+      </div>
+
+      <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 1 晚餐</span>
         <div class="item-box-title">🥩 とんかつジョニー (Tonkatsu Johnny)</div>
         <div class="item-box-sub">• 狀態：現場排隊 / 人氣在地炸豬扒專門店</div>
         <div class="link-btns">
           <a href="https://tabelog.com/aichi/A2301/A230103/23075253/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
           <a href="https://www.google.com/maps/search/?api=1&query=とんかつジョニー+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+        </div>
+      </div>
+
+      <div class="item-box">
+        <span class="badge-top-right tag tag-yellow">Day 2 早餐</span>
+        <div class="item-box-title">🍙 おむすび処 糀太郎 (名驛)</div>
+        <div class="item-box-sub">• 狀態：超人氣質感手作飯糰與濃郁豚汁</div>
+        <div class="link-btns">
+          <a href="https://tabelog.com/aichi/A2301/A230101/23083547/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=おむすび処+糀太郎" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
         </div>
       </div>
 
@@ -550,16 +572,6 @@
       </div>
 
       <div class="item-box">
-        <span class="badge-top-right tag tag-yellow">Day 3 早餐/Brunch</span>
-        <div class="item-box-title">☕ Coffee Don (喫茶どん) / Train Bleu</div>
-        <div class="item-box-sub">• 狀態：高山站與古街周邊超人氣老字號喫茶店與殿堂級麵包店</div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/gifu/A2104/A210401/21000109/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=喫茶どん+高山" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 3 晚餐</span>
         <div class="item-box-title">🥩 味藏天國 (A5 飛驒牛燒肉)</div>
         <div class="item-box-sub">• 狀態：⚠️ <b>不設電話預訂！必須 16:30 親身到現場抽號碼牌</b></div>
@@ -570,42 +582,22 @@
       </div>
 
       <div class="item-box">
-        <span class="badge-top-right tag tag-red">Day 4 晚餐</span>
-        <div class="item-box-title">🍲 丸明 高山店 (飛驒牛專門)</div>
-        <div class="item-box-sub">• 狀態：⚠️ <b>建議 Check-in 高山櫻庵時請飯店 Front Desk 協助電話代訂</b></div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=丸明+高山店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box">
-        <span class="badge-top-right tag tag-red">Day 5 晚餐</span>
-        <div class="item-box-title">🍣 もりもり寿し 金澤站前店 / 🍜 麵屋大河</div>
-        <div class="item-box-sub">• 狀態：金澤站前排隊名店（加能蟹/寒鰤魚迴轉壽司或濃郁味噌拉麵）</div>
-        <div class="link-btns">
-          <a href="https://tabelog.com/ishikawa/A1701/A170101/17000420/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=もりもり寿し+金沢駅前店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-        </div>
-      </div>
-
-      <div class="item-box">
         <span class="badge-top-right tag tag-red">Day 6 晚餐</span>
-        <div class="item-box-title">🍱 鰻木屋 / うなぎのしら河 (純在地鰻魚飯)</div>
+        <div class="item-box-title">🍱 炭焼きうなぎ 登河 栄店 / うなぎのしら河</div>
         <div class="item-box-sub">• 狀態：⚠️ <b>建議出發前透過 Tabelog / 官網線上預訂席位</b></div>
         <div class="link-btns">
-          <a href="https://tabelog.com/aichi/A2301/A230101/23000084/" target="_blank" class="btn-sm">🔗 Tabelog 線上預訂</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=うなぎのしら河+名駅店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+          <a href="https://tabelog.com/aichi/A2301/A230103/23070440/" target="_blank" class="btn-sm">🔗 Tabelog 線上預訂</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=登河+栄店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
         </div>
       </div>
 
       <div class="item-box">
-        <span class="badge-top-right tag tag-yellow">Day 7 早餐/Brunch</span>
-        <div class="item-box-title">☕ 喫茶 Context / 喫茶マウンテン</div>
-        <div class="item-box-sub">• 狀態：現場排隊（享受名古屋經典 Morning Service）</div>
+        <span class="badge-top-right tag tag-yellow">Day 7 Brunch</span>
+        <div class="item-box-title">🍞 Tsubame Bread & Milk (つばめパン&Milk)</div>
+        <div class="item-box-sub">• 狀態：絹香生吐司、黃油多士與牛乳餡</div>
         <div class="link-btns">
-          <a href="https://tabelog.com/aichi/A2301/A230101/23001552/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=名古屋+喫茶店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
+          <a href="https://tabelog.com/aichi/A2301/A230101/23073995/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=つばめパン+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
         </div>
       </div>
     </div>
@@ -638,7 +630,7 @@
     </div>
   </div>
 
-  <!-- 🏨 住宿安排卡片 (嚴格按 Day 1 至 Day 6 日期次序，標明 Check-in/out) -->
+  <!-- 🏨 住宿安排卡片 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-hotel', 'pill-hotel')">
       <div class="card-title">🏨 住宿安排</div>
@@ -703,7 +695,7 @@
         </div>
         <div class="check-item" draggable="true">
           <span class="drag-handle">⋮⋮</span>
-          <div class="check-left"><input type="checkbox"> 預約 Day 6 晚餐：名古屋純在地鰻魚飯 (Tabelog / 官網)</div>
+          <div class="check-left"><input type="checkbox"> 預約 Day 6 晚餐：鰻魚飯 / 馬喰一代 (Tabelog / 官網)</div>
           <button onclick="this.closest('.check-item').remove()" style="border:none; background:none; cursor:pointer; font-weight:900; color:#666;">✕</button>
         </div>
         <div class="check-item" draggable="true">
