@@ -36,6 +36,7 @@
       padding-bottom: 90px;
     }
 
+    /* 精簡乾淨的底部導航欄，徹底解決多重 Bar 重疊問題 */
     .nav-bar {
       position: fixed;
       bottom: 12px;
@@ -45,22 +46,22 @@
       max-width: 580px;
       z-index: 1000;
       display: flex;
-      gap: 8px;
+      gap: 12px;
       justify-content: center;
       background: rgba(251, 249, 244, 0.95);
-      padding: 8px 12px;
+      padding: 10px 16px;
       border: 2.5px solid var(--border-color);
-      border-radius: 30px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color);
+      border-radius: 25px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 3px 0px var(--border-color);
       backdrop-filter: blur(8px);
     }
 
     .nav-btn {
       background: var(--card-bg);
       border: 2px solid var(--border-color);
-      border-radius: 20px;
-      padding: 8px 18px;
-      font-size: 14px;
+      border-radius: 16px;
+      padding: 8px 16px;
+      font-size: 13.5px;
       font-weight: 700;
       white-space: nowrap;
       cursor: pointer;
@@ -194,7 +195,6 @@
       background: var(--bg-color);
     }
 
-    /* 底部切換按鈕導航 */
     .day-nav-footer {
       display: flex;
       justify-content: space-between;
@@ -212,45 +212,6 @@
       cursor: pointer;
       box-shadow: 0 2px 0px var(--border-color);
       color: var(--text-main);
-    }
-    .day-nav-btn:active {
-      transform: translateY(2px);
-      box-shadow: 0 0px 0px var(--border-color);
-    }
-
-    /* 全螢幕求助小卡 Modal 樣式 */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .modal-card {
-      background: #FFF;
-      border: 3px solid var(--border-color);
-      border-radius: 20px;
-      width: 100%;
-      max-width: 500px;
-      padding: 24px;
-      box-shadow: 0 8px 0px var(--border-color);
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 15px; right: 15px;
-      background: var(--tag-red);
-      color: white;
-      border: 2px solid var(--border-color);
-      border-radius: 50%;
-      width: 32px; height: 32px;
-      font-weight: 900;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 0px var(--border-color);
     }
 
     .timeline { position: relative; padding-left: 12px; }
@@ -370,7 +331,6 @@
             <div class="timeline-head"><span class="timeline-title">晚餐：とんかつジョニー (首選)</span><span class="tag tag-red">厚切炸豬排專門</span></div>
             <div class="timeline-desc">
               由商圈散步 10-15 分鐘至餐廳。
-
               <div class="food-inline-card">
                 <div style="font-weight:900; font-size:14.5px;">🥩 とんかつジョニー (Tonkatsu Johnny) [首選]</div>
                 <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：人氣在地厚切炸豬排專門店 (馬喰一代作為後備)</div>
@@ -383,7 +343,6 @@
           </div>
         </div>
 
-        <!-- 每日備註欄 -->
         <div class="memo-box">
           <div class="memo-header" onclick="toggleMemo(1)">
             <span>📝 Day 1 隨身備註與修改</span>
@@ -455,7 +414,6 @@
             <div class="timeline-head"><span class="timeline-title">晚餐：麵家 獅子丸 (雞白湯拉麵)</span><span class="tag tag-red">名站排隊名店</span></div>
             <div class="timeline-desc">
               搭乘 Linimo 轉地鐵東山線返回名古屋站（車程 50 分鐘），直奔獅子丸享用極順雞白湯拉麵。
-
               <div class="food-inline-card">
                 <div style="font-weight:900; font-size:14.5px;">🍜 麵家 獅子丸 (Menya Shishimaru)</div>
                 <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：現場排隊（不設預約，建議 18:00 前抵達）</div>
@@ -464,12 +422,10 @@
                   <a href="https://www.google.com/maps/search/?api=1&query=麵家+獅子丸+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
 
-        <!-- 每日備註欄 -->
         <div class="memo-box">
           <div class="memo-header" onclick="toggleMemo(2)">
             <span>📝 Day 2 隨身備註與修改</span>
@@ -486,65 +442,60 @@
         </div>
       </div>
 
-      <!-- Day 3 (1/29 Fri) -->
+      <!-- Day 3 (1/29 Fri) - 已更新為 08:58 Hida 3號 -->
       <div id="day-content-3" class="day-details" style="display: none;">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">07:20 - 10:02 🚗 交通時間 139mins</div>
-            <div class="timeline-head"><span class="timeline-title">JR 名古屋 ➔ JR 高山站</span><span class="tag tag-purple">JR 特急 Hida 1號 (需預約)</span></div>
-            <div class="timeline-desc">搭乘 07:43 JR 特急飛驒號 1 號直達高山站（車程 2 小時 19 分鐘），沿途欣賞銀白雪景。⚠️ <b>需提早 1 個月於網上預訂指定席！</b></div>
+            <div class="timeline-time">08:58 - 11:18 🚗 交通時間 140mins</div>
+            <div class="timeline-head"><span class="timeline-title">JR 名古屋 ➔ JR 高山站</span><span class="tag tag-purple">JR 特急 Hida 3號 (需提前預訂)</span></div>
+            <div class="timeline-desc">搭乘 **08:58 JR 特急飛驒號 3 號** 直達高山站（11:18 抵達），早上可悠閒起身，沿途欣賞雪景。⚠️ <b>需提前 1 個月於網上預訂指定席！</b></div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">10:02 - 10:30 🚶 徒步 3mins</div>
+            <div class="timeline-time">11:18 - 11:40 🚶 徒步 3mins</div>
             <div class="timeline-head"><span class="timeline-title">高山櫻庵 ➔ [行李寄存]</span><span class="tag tag-green">站旁3分鐘</span></div>
-            <div class="timeline-desc">出高山站步行 3 分鐘至高山櫻庵寄存大行李箱，隨後步行 2 分鐘至濃飛巴士總站。</div>
+            <div class="timeline-desc">出高山站步行 3 分鐘至高山櫻庵寄存大行李箱，隨後展開輕鬆的高山老街散策與午餐。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">10:40 - 14:30 🚗 交通時間 100mins (單程)</div>
-            <div class="timeline-head"><span class="timeline-title">新穗高雙層纜車 🚡❄️</span><span class="tag tag-red">2,156m 雪山屋脊</span></div>
+            <div class="timeline-time">11:40 - 13:40 🚶 漫步老街與午餐</div>
+            <div class="timeline-head"><span class="timeline-title">宮川朝市/老街 / 日枝神社 / 舩坂酒造店</span><span class="tag tag-yellow">品嚐飛驒牛握壽司與地酒</span></div>
+            <div class="timeline-desc">在老街悠閒行街、食午餐、品嚐飛驒牛握壽司，參拜雪中日枝神社，順便去舩坂酒造店投幣試飲地酒。</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">14:00 - 17:00 🚗 交通+新穗高纜車</div>
+            <div class="timeline-head"><span class="timeline-title">下午：新穗高雙層纜車 🚡❄️</span><span class="tag tag-red">2,156m 雪山屋脊</span></div>
             <div class="timeline-desc">
-              • 10:40-12:20 搭乘濃飛巴士至新穗高纜車站（車程 1 小時 40 分鐘）<br>
-              • 12:20-14:30 搭乘雙層纜車登上西穗高口展望台俯瞰雪山連峰，14:30 搭巴士返回高山。
+              • 14:00 於濃飛巴士總站乘搭巴士前往新穗高纜車站。<br>
+              • 搭乘雙層纜車登上西穗高口展望台俯瞰雪山連峰，下午 17:00 左右返回高山市區。
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">16:15 - 18:30 🚶 徒步 10mins</div>
-            <div class="timeline-head"><span class="timeline-title">宮川朝市 & 老街 / 日枝神社 / 舩坂酒造店</span><span class="tag tag-yellow">飛驒牛握壽司 & 清酒試飲</span></div>
-            <div class="timeline-desc">巴士返抵高山總站後，把握黃昏前漫步古街、品嚐飛驒牛握壽司與布丁，參拜日枝神社並至舩坂酒造店投幣試飲地酒。</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-time">18:30 🚶 徒步 10mins</div>
-            <div class="timeline-head"><span class="timeline-title">晚餐：丸明 高山店 (飛驒牛專門)</span><span class="tag tag-red">⚠️ Check-in 時請前台代訂</span></div>
+            <div class="timeline-time">17:30 🚶 徒步 10mins</div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：丸明 高山店 (飛驒牛專門)</span><span class="tag tag-red">⚠️ 不接受預約，現場排隊</span></div>
             <div class="timeline-desc">
-              古街步行 10 分鐘至丸明，享用極上 A5 飛驒牛壽喜燒或燒肉。
-
+              古街步行至丸明，享受 A5 飛驒牛燒肉（店家完全不接受任何預約，到場直接寫名排隊）。
               <div class="food-inline-card">
                 <div style="font-weight:900; font-size:14.5px;">🍲 丸明 高山店 (飛驒牛專門)</div>
-                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>抵達高山櫻庵 Check-in 時，請出示下方求助日語小卡請前台代訂 18:30 席位</b></div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>不接受電話/網上預約，17:30 到場直接寫名字排隊入座</b></div>
                 <div class="link-btns">
-                  <!-- 觸發全螢幕求助小卡的按鈕 -->
-                  <button class="btn-sm" onclick="openModal()" style="background: var(--tag-yellow); color: var(--text-main);">🛎️ 點擊顯示：請前台代訂餐廳求助日語小卡</button>
                   <a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
                   <a href="https://www.google.com/maps/search/?api=1&query=丸明+高山店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
                 </div>
               </div>
-
             </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">20:00 🚶 徒步 8mins</div>
-            <div class="timeline-head"><span class="timeline-title">高山櫻庵頂樓雪見溫泉 [Check-in]</span><span class="tag tag-green">夜鳴拉麵</span></div>
-            <div class="timeline-desc">步行返回高山櫻庵辦理入住，享用頂樓露天雪見溫泉與免費夜鳴拉麵。</div>
+            <div class="timeline-head"><span class="timeline-title">高山櫻庵 [Check-in] ＋ 免費夜鳴拉麵 🍜</span><span class="tag tag-green">溫泉與宵夜</span></div>
+            <div class="timeline-desc">返回高山櫻庵登記入住，享受頂樓露天雪見溫泉。💡 **溫馨提示**：每天晚上 **21:30 - 23:00** 餐廳會供應**免費醬油拉麵**，泡完溫泉記得去食宵夜！</div>
           </div>
         </div>
 
-        <!-- 每日備註欄 -->
         <div class="memo-box">
           <div class="memo-header" onclick="toggleMemo(3)">
             <span>📝 Day 3 隨身備註與修改</span>
@@ -597,24 +548,21 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">17:35 - 19:30 🚶 徒步 1min</div>
-            <div class="timeline-head"><span class="timeline-title">晚餐：味藏天國 (A5 飛驒牛燒肉)</span><span class="tag tag-red">⚠️ 17:35 現場撳飛</span></div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：味藏天國 (A5 飛驒牛壽喜燒)</span><span class="tag tag-red">⚠️ 17:35 現場撳飛</span></div>
             <div class="timeline-desc">
-              落車步行 1 分鐘直奔隔壁味藏天國撳飛，大口品嚐滿滿油花的飛驒牛拼盤！續住高山櫻庵第 2 晚。
-
+              落車步行 1 分鐘直奔隔壁味藏天國撳飛，晚餐我們選擇 **壽喜燒 (Sukiyaki)**，大口品嚐吸滿甜美醬汁的 A5 飛驒牛！續住高山櫻庵第 2 晚（別忘記晚上 21:30 有免費夜鳴拉麵）。
               <div class="food-inline-card">
-                <div style="font-weight:900; font-size:14.5px;">🥩 味藏天國 (A5 飛驒牛燒肉)</div>
-                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>不設電話預訂！17:35 巴士落車即刻去現場撳飛</b></div>
+                <div style="font-weight:900; font-size:14.5px;">🥩 味藏天國 (A5 飛驒牛壽喜燒)</div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>不設預約！17:35 巴士落車即刻去現場撳飛（點選壽喜燒）</b></div>
                 <div class="link-btns">
                   <a href="https://tabelog.com/gifu/A2104/A210401/21000040/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
                   <a href="https://www.google.com/maps/search/?api=1&query=味蔵天国+高山" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
 
-        <!-- 每日備註欄 -->
         <div class="memo-box">
           <div class="memo-header" onclick="toggleMemo(4)">
             <span>📝 Day 4 隨身備註與修改</span>
@@ -642,12 +590,12 @@
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">11:19 - 14:30 🚗 交通時間 191mins (含富山午餐空檔)</div>
+            <div class="timeline-time">11:19 - 14:23 🚗 交通時間 184mins (含富山午餐空檔)</div>
             <div class="timeline-head"><span class="timeline-title">高山 ➔ 富山 ➔ 金澤（鐵路大移動）🚂</span><span class="tag tag-purple">JR Hida 7號 + 新幹線</span></div>
             <div class="timeline-desc">
-              • 11:19-13:24 搭乘 JR 特急飛驒 7 號至富山站（車程 2 小時 5 分鐘，建議提前預訂）<br>
-              • 13:24-14:00 <b>富山站 36 分鐘轉車空檔：推薦於站內購買富山名物「鱒魚壽司 (鱒の寿司)」便當或享用黑拉麵作為午餐！</b><br>
-              • 14:00-14:23 富山站搭乘北陸新幹線直達金澤站（車程 23 分鐘）。
+              • 11:19-13:24 搭乘 **JR 特急飛驒 7 號** 至富山站（車程 2 小時 5 分鐘，⚠️ **此段需提前預訂指定席**）<br>
+              • 13:24-14:00 **富山站 36 分鐘轉車空檔**：富山站月台與新幹線轉乘極近（步行3分鐘），時間絕對足夠！推薦於站內購買富山名物「鱒魚壽司 (鱒の寿司)」便當或快速享用黑拉麵！<br>
+              • 14:00-14:23 搭乘 **北陸新幹線** 直達金澤站（⚠️ *跨區新幹線不能直接用普通Suica嘟卡，需於富山站購買新幹線車票或提前劃位*）。
             </div>
           </div>
           <div class="timeline-item">
@@ -671,7 +619,6 @@
             <div class="timeline-head"><span class="timeline-title">晚餐：麵屋大河 (Menya Taiga)</span><span class="tag tag-red">黑味噌拉麵</span></div>
             <div class="timeline-desc">
               搭公車返回金澤站前（15 分鐘），享用金澤第一濃郁、帶有柚子生薑香氣的黑味噌拉麵。
-
               <div class="food-inline-card">
                 <div style="font-weight:900; font-size:14.5px;">🍜 麵屋大河 (Menya Taiga)</div>
                 <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：金澤站前排隊名店（極致濃郁柚子生薑黑味噌拉麵）</div>
@@ -680,12 +627,10 @@
                   <a href="https://www.google.com/maps/search/?api=1&query=面屋大河+金沢" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
 
-        <!-- 每日備註欄 -->
         <div class="memo-box">
           <div class="memo-header" onclick="toggleMemo(5)">
             <span>📝 Day 5 隨身備註與修改</span>
@@ -727,7 +672,7 @@
             <div class="timeline-dot"></div>
             <div class="timeline-time">14:48 - 17:48 🚗 交通時間 180mins</div>
             <div class="timeline-head"><span class="timeline-title">JR 金澤 ➔ JR 名古屋</span><span class="tag tag-purple">JR 特急鷺號 (Shirasagi)</span></div>
-            <div class="timeline-desc">公車返回金澤站取回行李，搭乘 14:48 JR 特急鷺號 12 號直達名古屋（車程 3 小時）。</div>
+            <div class="timeline-desc">公車返回金澤站取回行李，搭乘 **14:48 JR 特急鷺號 12 號** 直達名古屋（車程 3 小時）。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -735,7 +680,6 @@
             <div class="timeline-head"><span class="timeline-title">榮商圈衝刺 ➔ 晚餐：鰻魚飯三吃</span><span class="tag tag-red">登河 / 鰻木屋 / しら河</span></div>
             <div class="timeline-desc">
               飯店 Check-in 後地鐵前往榮商圈購物，晚上享用正宗炭燒鰻魚飯三吃。
-
               <div class="food-inline-card">
                 <div style="font-weight:900; font-size:14.5px;">🍱 炭焼きうなぎ 登河 栄店 / うなぎのしら河</div>
                 <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>建議出發前透過 Tabelog / 官網線上預訂席位</b></div>
@@ -744,12 +688,10 @@
                   <a href="https://www.google.com/maps/search/?api=1&query=登河+栄店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
 
-        <!-- 每日備註欄 -->
         <div class="memo-box">
           <div class="memo-header" onclick="toggleMemo(6)">
             <span>📝 Day 6 隨身備註與修改</span>
@@ -773,9 +715,7 @@
             <div class="timeline-dot"></div>
             <div class="timeline-time">08:00 - 09:00 ☕ 喫茶店早餐</div>
             <div class="timeline-head"><span class="timeline-title">名古屋高分喫茶店：KAKO 柳橋店 / BUCYO COFFEE</span><span class="tag tag-yellow">免排隊小倉吐司</span></div>
-            <div class="timeline-desc">
-              在名站附近高分復古喫茶店享用正宗小倉紅豆厚吐司與香濃咖啡，免去排長龍又能感受地道昭和風情！
-            </div>
+            <div class="timeline-desc">在名站附近高分復古喫茶店享用正宗小倉紅豆厚吐司與香濃咖啡，免去排長龍又能感受地道昭和風情！</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -803,7 +743,6 @@
           </div>
         </div>
 
-        <!-- 每日備註欄 -->
         <div class="memo-box">
           <div class="memo-header" onclick="toggleMemo(7)">
             <span>📝 Day 7 隨身備註與修改</span>
@@ -822,33 +761,6 @@
     </div>
   </div>
 
-  <!-- 全螢幕求助小卡 Modal -->
-  <div class="modal-overlay" id="helpModal" onclick="closeModalOnOutside(event)">
-    <div class="modal-card">
-      <div class="modal-close" onclick="closeModal()">✕</div>
-      <div style="font-size: 18px; font-weight: 900; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-        <span>🛎️ 餐廳代訂求助小卡</span>
-      </div>
-      <div style="font-size: 13.5px; color: var(--text-sub); margin-bottom: 15px;">
-        (請將此畫面直接出示給飯店櫃台 Front Desk 職員觀看)
-      </div>
-      
-      <!-- 日語對話內容框 -->
-      <div style="background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 16px; font-size: 15px; line-height: 1.8; font-weight: 700;">
-        すみません、外国人観光客で日本の電話番号が無く、日本語も話せないため、大変恐縮ですがレストランの予約のお手伝いをお願いできませんでしょうか？<br><br>
-        【希望予約内容】<br>
-        • 店名：丸明 高山店<br>
-        • 日時：1月29日 (金) 18:30頃<br>
-        • 人数：2名<br><br>
-        お手数をおかけして申し訳ございませんが、よろしくお願いいたします。
-      </div>
-
-      <div style="margin-top: 15px; font-size: 12.5px; color: var(--text-sub); text-align: center;">
-        💡 翻譯：不好意思，因為我們是外國遊客，沒有日本電話也不會說日語，非常抱歉能否請您協助幫忙打電話預約餐廳？謝謝您的幫忙！
-      </div>
-    </div>
-  </div>
-
   <!-- 🚌 交通買飛策略指南 -->
   <div class="card">
     <div class="card-header-toggle" onclick="toggleCard('body-transport', 'pill-transport')">
@@ -859,12 +771,18 @@
       <div class="item-box" style="background: var(--tag-yellow); color: var(--text-main);">
         <div style="font-weight: 900; margin-bottom: 6px; font-size: 15px;">🎫 車票明細與線上購買連結：</div>
         <div style="font-size: 13.5px; line-height: 1.75;">
-          • <b>JR 特急飛驒號 (Hida)</b> (名古屋 ⇄ 高山)：<br>
-          &nbsp;&nbsp;單程約 <b>¥6,100</b> (約 HK$310)<br>
-          &nbsp;&nbsp;⚠️ <b>熱門雪季強烈建議提早 1 個月於網上預訂指定席！</b><br>
-          &nbsp;&nbsp;<a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm" style="padding:2px 8px; font-size:11px;">🔗 JR 官網預訂</a><br><br>
+          • <b>JR 特急飛驒號 (Hida 3號)</b> (名古屋 ➔ 高山)：<br>
+          &nbsp;&nbsp;• <b>時間</b>：Day 3 (1/29 Fri) 08:58 開車 ➔ 11:18 抵達<br>
+          &nbsp;&nbsp;• <b>票價</b>：約 <b>¥6,100</b> / 單程<br>
+          &nbsp;&nbsp;⚠️ <b>強烈建議提前 1 個月於網上預訂指定席！</b><br>
+          &nbsp;&nbsp;<a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm" style="padding:2px 8px; font-size:11px;">🔗 JR 西日本/JR 官網預訂</a><br><br>
+
+          • <b>JR 特急飛驒號 (Hida 7號) & 北陸新幹線</b> (高山 ➔ 富山 ➔ 金澤)：<br>
+          &nbsp;&nbsp;• <b>時間</b>：Day 5 (1/31 Sun) 11:19 開車 (Hida 7號) ➔ 13:24 抵達富山 (轉乘 36分鐘) ➔ 14:00 新幹線 ➔ 14:23 抵達金澤<br>
+          &nbsp;&nbsp;⚠️ <b>高山至富山段需提前預訂指定席；富山至金澤段新幹線請於富山站購買車票（不適用普通IC卡）</b><br><br>
 
           • <b>濃飛高速巴士</b> (高山 ➔ 白川鄉 ➔ 高山)：<br>
+          &nbsp;&nbsp;• <b>票價</b>：約 <b>¥2,600 / 單程</b> (來回約 ¥5,200 / 約 HK$265)<br>
           &nbsp;&nbsp;⚠️ <b>12/30 09:00 (HKT) 必須上網搶票！</b><br>
           &nbsp;&nbsp;① 1/30 高山 ➔ 白川鄉 (11:50 - 12:40)<br>
           &nbsp;&nbsp;② 1/30 白川鄉 ➔ 高山 (16:45 - 17:35)<br>
@@ -896,19 +814,19 @@
       <div class="item-box">
         <span class="tag tag-yellow">Day 2 (1/28) · 1晚</span>
         <div class="item-box-title" style="margin-top: 5px;">名古屋站附近飯店 (連住)</div>
-        <div class="item-box-sub">方便次日清晨搭乘 07:43 JR 特急飛驒號前往高山。</div>
+        <div class="item-box-sub">方便次日清晨搭乘 08:43 以外的 Hida 3號前往高山。</div>
       </div>
 
       <div class="item-box">
         <span class="tag tag-green">Day 3 (1/29) · 第1晚 (已確定)</span>
         <div class="item-box-title" style="margin-top: 5px;">高山櫻庵 Takayama Ouan [Check-in]</div>
-        <div class="item-box-sub">高山站步行3分鐘，頂樓露天雪見溫泉 + 免費夜鳴拉麵。</div>
+        <div class="item-box-sub">高山站步行3分鐘，頂樓露天雪見溫泉 + 免費夜鳴拉麵 (21:30-23:00)。</div>
       </div>
 
       <div class="item-box">
         <span class="tag tag-green">Day 4 (1/30) · 第2晚 (已確定)</span>
         <div class="item-box-title" style="margin-top: 5px;">高山櫻庵 Takayama Ouan (連住)</div>
-        <div class="item-box-sub">白川鄉遊玩回高山吃味藏天國後續住第 2 晚。</div>
+        <div class="item-box-sub">白川鄉遊玩回高山食味藏天國壽喜燒後續住第 2 晚。</div>
       </div>
 
       <div class="item-box">
@@ -925,7 +843,7 @@
     </div>
   </div>
 
-  <!-- 底部固定膠囊導航欄 -->
+  <!-- 底部固定精簡導航欄 -->
   <div class="nav-bar">
     <a class="nav-btn active" href="index.html">🏠 行程總覽</a>
     <a class="nav-btn" href="shopping.html">🛍️ 購物清單</a>
@@ -971,20 +889,6 @@
       document.getElementById('body-itinerary').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // 求助小卡 Modal 控制
-    function openModal() {
-      document.getElementById('helpModal').style.display = 'flex';
-    }
-    function closeModal() {
-      document.getElementById('helpModal').style.display = 'none';
-    }
-    function closeModalOnOutside(event) {
-      if (event.target.id === 'helpModal') {
-        closeModal();
-      }
-    }
-
-    // 每日備註收合與自動存檔功能 (LocalStorage)
     function toggleMemo(dayNum) {
       const body = document.getElementById('memo-body-' + dayNum);
       const arrow = document.getElementById('memo-arrow-' + dayNum);
@@ -1002,7 +906,6 @@
       localStorage.setItem('trip_memo_day_' + dayNum, text);
     }
 
-    // 頁面載入時自動恢復儲存的備註
     window.addEventListener('DOMContentLoaded', () => {
       for (let i = 1; i <= 7; i++) {
         const savedText = localStorage.getItem('trip_memo_day_' + i);
