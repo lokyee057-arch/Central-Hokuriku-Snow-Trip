@@ -107,6 +107,22 @@
       outline: none;
     }
 
+    .paste-dropzone {
+      border: 2px dashed var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      background: var(--bg-color);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-top: 6px;
+    }
+    .paste-dropzone:hover {
+      background: #F4F1EA;
+    }
+
     .btn-action {
       background: var(--tag-green);
       color: white;
@@ -215,11 +231,11 @@
     }
   </style>
 </head>
-<body>
+<body onpaste="handleGlobalPaste(event)">
 
   <div class="card" style="text-align: center; padding: 18px;">
     <div style="font-size: 26px; font-weight: 900;">🛍️ 購物與價格清單</div>
-    <div style="font-size: 13px; color: var(--text-sub); margin-top: 4px;">隨時新增、上傳相片、編輯或管理你的日本戰利品！</div>
+    <div style="font-size: 13px; color: var(--text-sub); margin-top: 4px;">支援上傳相片、直接貼上剪貼簿圖片、編輯與管理戰利品！</div>
   </div>
 
   <!-- 新增商品卡片 -->
@@ -249,8 +265,11 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="form-label">📷 上傳商品參考相片</label>
-      <input type="file" id="itemImageFile" class="form-input" accept="image/*" style="padding: 6px;">
+      <label class="form-label">📷 商品相片 (可上傳檔案，或在此區域直接長按貼上截圖)</label>
+      <input type="file" id="itemImageFile" class="form-input" accept="image/*" style="padding: 6px;" onchange="previewNewImage(this)">
+      <div class="paste-dropzone" id="newImagePreviewBox" contenteditable="true" style="outline: none;">
+        📋 點擊此處並按「貼上 (Paste)」可直接貼上圖片
+      </div>
     </div>
     <button class="btn-action" onclick="addItem()">＋ 放入購物清單</button>
   </div>
@@ -292,8 +311,11 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label">📷 更換商品相片 (留空則保留原相)</label>
-        <input type="file" id="editImageFile" class="form-input" accept="image/*" style="padding: 6px;">
+        <label class="form-label">📷 更換商品相片 (可檔案上傳或直接貼上)</label>
+        <input type="file" id="editImageFile" class="form-input" accept="image/*" style="padding: 6px;" onchange="previewEditImage(this)">
+        <div class="paste-dropzone" id="editImagePreviewBox" contenteditable="true" style="outline: none;">
+          📋 點擊此處並按「貼上 (Paste)」可直接貼上圖片
+        </div>
       </div>
       <div style="display: flex; gap: 10px; margin-top: 15px;">
         <button class="btn-action" style="background: #E0E0E0; color: #2B2B2B;" onclick="closeEditModal()">取消</button>
@@ -310,7 +332,6 @@
   </div>
 
   <script>
-    // 預設示範清單（包含 Cartier 錶）
     let shoppingItems = JSON.parse(localStorage.getItem('my_shopping_list')) || [
       {
         category: "💎 奢侈品精品",
@@ -320,6 +341,64 @@
         image: ""
       }
     ];
+
+    let newImageBase64 = "";
+    let editImageBase64 = "";
+
+    // 處理檔案上傳預覽 (新增)
+    function previewNewImage(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          newImageBase64 = e.target.result;
+          document.getElementById('newImagePreviewBox').innerHTML = `<span style="color:var(--tag-green); font-weight:900;">✅ 已成功載入圖片！</span>`;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // 處理檔案上傳預覽 (編輯)
+    function previewEditImage(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          editImageBase64 = e.target.result;
+          document.getElementById('editImagePreviewBox').innerHTML = `<span style="color:var(--tag-green); font-weight:900;">✅ 已成功更換圖片！</span>`;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // 支援貼上圖片功能 (Clipboard Paste)
+    document.getElementById('newImagePreviewBox').addEventListener('paste', function(e) {
+      handlePasteEvent(e, (base64) => {
+        newImageBase64 = base64;
+        document.getElementById('newImagePreviewBox').innerHTML = `<span style="color:var(--tag-green); font-weight:900;">✅ 已成功貼上剪貼簿圖片！</span>`;
+      });
+    });
+
+    document.getElementById('editImagePreviewBox').addEventListener('paste', function(e) {
+      handlePasteEvent(e, (base64) => {
+        editImageBase64 = base64;
+        document.getElementById('editImagePreviewBox').innerHTML = `<span style="color:var(--tag-green); font-weight:900;">✅ 已成功貼上剪貼簿圖片！</span>`;
+      });
+    });
+
+    function handlePasteEvent(e, callback) {
+      const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf('image') !== -1) {
+          const blob = items[i].getAsFile();
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            callback(event.target.result);
+          };
+          reader.readAsDataURL(blob);
+          e.preventDefault();
+          break;
+        }
+      }
+    }
 
     function saveAndRender() {
       localStorage.setItem('my_shopping_list', JSON.stringify(shoppingItems));
@@ -331,26 +410,22 @@
       const name = document.getElementById('itemName').value.trim();
       const jpy = document.getElementById('itemPriceJpy').value;
       const hkd = document.getElementById('itemPriceHkd').value;
-      const imageFile = document.getElementById('itemImageFile').files[0];
 
       if (!name) {
         alert('請輸入商品名稱 / 品牌！');
         return;
       }
 
-      if (imageFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          shoppingItems.push({ category, name, jpy, hkd, image: e.target.result });
-          saveAndRender();
-          clearForm();
-        };
-        reader.readAsDataURL(imageFile);
-      } else {
-        shoppingItems.push({ category, name, jpy, hkd, image: "" });
-        saveAndRender();
-        clearForm();
-      }
+      shoppingItems.push({ 
+        category, 
+        name, 
+        jpy, 
+        hkd, 
+        image: newImageBase64 
+      });
+      
+      saveAndRender();
+      clearForm();
     }
 
     function clearForm() {
@@ -358,6 +433,8 @@
       document.getElementById('itemPriceJpy').value = '';
       document.getElementById('itemPriceHkd').value = '';
       document.getElementById('itemImageFile').value = '';
+      document.getElementById('newImagePreviewBox').innerHTML = `📋 點擊此處並按「貼上 (Paste)」可直接貼上圖片`;
+      newImageBase64 = "";
     }
 
     function deleteItem(index) {
@@ -375,6 +452,8 @@
       document.getElementById('editJpy').value = item.jpy;
       document.getElementById('editHkd').value = item.hkd;
       document.getElementById('editImageFile').value = '';
+      document.getElementById('editImagePreviewBox').innerHTML = item.image ? `<span style="color:var(--tag-green); font-weight:900;">✅ 目前已有圖片 (可直接貼上新圖覆蓋)</span>` : `📋 點擊此處並按「貼上 (Paste)」可直接貼上圖片`;
+      editImageBase64 = item.image; // 預設保留原圖
       document.getElementById('editModal').style.display = 'flex';
     }
 
@@ -388,34 +467,22 @@
       const name = document.getElementById('editName').value.trim();
       const jpy = document.getElementById('editJpy').value;
       const hkd = document.getElementById('editHkd').value;
-      const imageFile = document.getElementById('editImageFile').files[0];
 
       if (!name) {
         alert('商品名稱不能為空！');
         return;
       }
 
-      const updateData = (imgData) => {
-        shoppingItems[index] = {
-          category,
-          name,
-          jpy,
-          hkd,
-          image: imgData !== undefined ? imgData : shoppingItems[index].image
-        };
-        saveAndRender();
-        closeEditModal();
+      shoppingItems[index] = {
+        category,
+        name,
+        jpy,
+        hkd,
+        image: editImageBase64
       };
-
-      if (imageFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          updateData(e.target.result);
-        };
-        reader.readAsDataURL(imageFile);
-      } else {
-        updateData(undefined);
-      }
+      
+      saveAndRender();
+      closeEditModal();
     }
 
     function renderList() {
@@ -427,7 +494,6 @@
         return;
       }
 
-      // 按類別分組
       const categories = [...new Set(shoppingItems.map(item => item.category))];
 
       categories.forEach(cat => {
@@ -469,7 +535,6 @@
       });
     }
 
-    // 初始化渲染
     renderList();
   </script>
 </body>
