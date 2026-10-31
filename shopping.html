@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>購物與價格清單 · Central-Hokuriku-Snow-Trip</title>
+  <title>Nagoya & Hokuriku Winter Loop - 購物清單</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
@@ -17,107 +17,292 @@
       --tag-yellow: #F3CD7B;
       --tag-purple: #B39DDB;
       --text-main: #2B2B2B;
-      --text-sub: #666666;
+      --text-sub: #555555;
       --shadow: 0 5px 0px #2B2B2B;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Zen Maru Gothic', sans-serif; }
-    body { background-color: var(--bg-color); color: var(--text-main); padding: 15px; max-width: 600px; margin: 0 auto; padding-bottom: 90px; }
 
-    .card { background: var(--card-bg); border: 2.5px solid var(--border-color); border-radius: 20px; padding: 18px; margin-bottom: 15px; box-shadow: var(--shadow); }
-    .card-title { font-size: 18px; font-weight: 900; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: 90px;
+    }
 
-    .category-header {
+    .nav-bar {
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 580px;
+      z-index: 1000;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      background: rgba(251, 249, 244, 0.95);
+      padding: 8px 12px;
+      border: 2.5px solid var(--border-color);
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-btn {
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      box-shadow: 0 2px 0px var(--border-color);
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .nav-btn.active {
+      background: var(--tag-yellow);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 2.5px solid var(--border-color);
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      font-size: 19px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-label {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 14px;
+      font-family: inherit;
+      background: var(--bg-color);
+      outline: none;
+    }
+
+    .btn-action {
+      background: var(--tag-green);
+      color: white;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px;
+      width: 100%;
       font-size: 15px;
       font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 3px 0px var(--border-color);
+      margin-top: 5px;
+    }
+    .btn-action:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0px var(--border-color);
+    }
+
+    .category-section {
+      margin-bottom: 15px;
+    }
+    .category-title {
       background: var(--tag-yellow);
       border: 2px solid var(--border-color);
       border-radius: 12px;
       padding: 6px 12px;
-      margin-top: 15px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      display: inline-block;
+      box-shadow: 0 2px 0px var(--border-color);
     }
 
-    .shop-item {
+    .item-card {
       background: var(--bg-color);
       border: 2px solid var(--border-color);
       border-radius: 14px;
       padding: 12px;
       margin-bottom: 10px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
       position: relative;
-      cursor: grab;
-      touch-action: none;
-      box-shadow: 0 2px 0px var(--border-color);
     }
-    .shop-item:active { cursor: grabbing; }
-    .shop-item.dragging { opacity: 0.4; background: #E0E0E0; }
+    .item-img {
+      width: 60px;
+      height: 60px;
+      border: 2px solid var(--border-color);
+      border-radius: 10px;
+      object-fit: cover;
+      background: #E0E0E0;
+      flex-shrink: 0;
+    }
+    .item-info {
+      flex-grow: 1;
+    }
+    .item-name {
+      font-size: 15px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .item-meta {
+      font-size: 12.5px;
+      color: var(--text-sub);
+      font-weight: 700;
+    }
+    .item-btns {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .btn-xs {
+      background: white;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 1px 0px var(--border-color);
+    }
+    .btn-delete {
+      background: var(--tag-red);
+      color: white;
+    }
 
-    .shop-item-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-    .drag-handle { font-size: 16px; font-weight: 900; color: var(--text-sub); cursor: grab; }
-    .shop-title { font-size: 14px; font-weight: 900; flex: 1; }
-
-    .price-box { display: flex; gap: 8px; margin-top: 6px; }
-    .price-tag { font-size: 11px; font-weight: 700; background: #FFF; border: 1.5px solid var(--border-color); border-radius: 8px; padding: 2px 6px; }
-
-    .form-group { margin-bottom: 10px; }
-    .form-label { font-size: 12px; font-weight: 900; margin-bottom: 4px; display: block; }
-    .form-input { width: 100%; border: 2px solid var(--border-color); border-radius: 12px; padding: 8px 12px; font-size: 13px; font-weight: 700; background: #FFF; outline: none; }
-
-    .add-btn { width: 100%; background: var(--tag-green); color: white; border: 2.5px solid var(--border-color); border-radius: 16px; padding: 12px; font-size: 14px; font-weight: 900; cursor: pointer; box-shadow: var(--shadow); }
-
-    .nav-bar { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); width: calc(100% - 24px); max-width: 580px; z-index: 1000; display: flex; gap: 8px; justify-content: center; background: rgba(251, 249, 244, 0.95); padding: 8px 12px; border: 2.5px solid var(--border-color); border-radius: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 3px 0px var(--border-color); backdrop-filter: blur(8px); }
-    .nav-btn { background: var(--card-bg); border: 2px solid var(--border-color); border-radius: 20px; padding: 6px 16px; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer; box-shadow: 0 2px 0px var(--border-color); text-decoration: none; color: var(--text-main); }
-    .nav-btn.active { background: var(--tag-yellow); }
+    /* Modal 編輯彈窗 */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-card {
+      background: #FFF;
+      border: 3px solid var(--border-color);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 450px;
+      padding: 20px;
+      box-shadow: 0 6px 0px var(--border-color);
+    }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div class="card-title">🛍️ 購物與價格清單</div>
-    <div style="font-size: 12px; color: var(--text-sub);">💡 支援長按 `⋮⋮` 拖拽排序，新增時可選擇所屬類別！</div>
+  <div class="card" style="text-align: center; padding: 18px;">
+    <div style="font-size: 26px; font-weight: 900;">🛍️ 購物與價格清單</div>
+    <div style="font-size: 13px; color: var(--text-sub); margin-top: 4px;">隨時新增、上傳相片、編輯或管理你的日本戰利品！</div>
   </div>
 
-  <!-- 新增購物項目表單 -->
+  <!-- 新增商品卡片 -->
   <div class="card">
     <div class="card-title">➕ 新增購物項目</div>
-    
     <div class="form-group">
       <label class="form-label">選擇購物類別</label>
-      <select id="item-category" class="form-input" style="font-weight: 900;">
+      <select id="itemCategory" class="form-select">
         <option value="💎 奢侈品精品">💎 奢侈品精品</option>
-        <option value="🍡 日本手信 / 食品">🍡 日本手信 / 食品</option>
-        <option value="💄 彩妝護膚 / 藥妝">💄 彩妝護膚 / 藥妝</option>
-        <option value="👕 服飾鞋包 / 電器">👕 服飾鞋包 / 電器</option>
-        <option value="📦 其他選購項目">📦 其他選購項目</option>
+        <option value="🧥 禦寒服飾裝備">🧥 禦寒服飾裝備</option>
+        <option value="🎁 手信與伴手禮">🎁 手信與伴手禮</option>
+        <option value="💊 藥妝與日用品">💊 藥妝與日用品</option>
       </select>
     </div>
-
     <div class="form-group">
       <label class="form-label">商品名稱 / 品牌</label>
-      <input type="text" id="item-name" class="form-input" placeholder="例如: Panthère 錶 / 白戀人餅乾">
+      <input type="text" id="itemName" class="form-input" placeholder="例如：Panthère 錶 / 白戀人餅乾">
     </div>
-
-    <div class="form-group">
-      <label class="form-label">預算價格 (日圓 / 港幣)</label>
-      <div style="display: flex; gap: 8px;">
-        <input type="number" id="item-yen" class="form-input" placeholder="日圓 ¥ (可空)" style="flex: 1;">
-        <input type="number" id="item-hkd" class="form-input" placeholder="港幣 HK$ (可空)" style="flex: 1;">
+    <div style="display: flex; gap: 8px;">
+      <div class="form-group" style="flex: 1;">
+        <label class="form-label">預算金額 (日圓 ¥)</label>
+        <input type="number" id="itemPriceJpy" class="form-input" placeholder="例: 540000">
+      </div>
+      <div class="form-group" style="flex: 1;">
+        <label class="form-label">預算金額 (港幣 HK$)</label>
+        <input type="number" id="itemPriceHkd" class="form-input" placeholder="例: 28000">
       </div>
     </div>
-
-    <button class="add-btn" onclick="addShoppingItem()">➕ 放入購物清單</button>
+    <div class="form-group">
+      <label class="form-label">📷 上傳商品參考相片</label>
+      <input type="file" id="itemImageFile" class="form-input" accept="image/*" style="padding: 6px;">
+    </div>
+    <button class="btn-action" onclick="addItem()">＋ 放入購物清單</button>
   </div>
 
-  <!-- 購物清單容器 -->
+  <!-- 我的選購清單展示區 -->
   <div class="card">
     <div class="card-title">📋 我的選購清單</div>
-    <div id="shopping-container"></div>
+    <div id="shoppingListContainer">
+      <!-- 動態載入項目 -->
+    </div>
   </div>
 
-  <!-- 底部固定導航 -->
+  <!-- 編輯商品 Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal-card">
+      <div style="font-size: 18px; font-weight: 900; margin-bottom: 12px;">✏️ 編輯購物項目</div>
+      <input type="hidden" id="editIndex">
+      <div class="form-group">
+        <label class="form-label">選擇購物類別</label>
+        <select id="editCategory" class="form-select">
+          <option value="💎 奢侈品精品">💎 奢侈品精品</option>
+          <option value="🧥 禦寒服飾裝備">🧥 禦寒服飾裝備</option>
+          <option value="🎁 手信與伴手禮">🎁 手信與伴手禮</option>
+          <option value="💊 藥妝與日用品">💊 藥妝與日用品</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">商品名稱 / 品牌</label>
+        <input type="text" id="editName" class="form-input">
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <div class="form-group" style="flex: 1;">
+          <label class="form-label">日圓 (¥)</label>
+          <input type="number" id="editJpy" class="form-input">
+        </div>
+        <div class="form-group" style="flex: 1;">
+          <label class="form-label">港幣 (HK$)</label>
+          <input type="number" id="editHkd" class="form-input">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">📷 更換商品相片 (留空則保留原相)</label>
+        <input type="file" id="editImageFile" class="form-input" accept="image/*" style="padding: 6px;">
+      </div>
+      <div style="display: flex; gap: 10px; margin-top: 15px;">
+        <button class="btn-action" style="background: #E0E0E0; color: #2B2B2B;" onclick="closeEditModal()">取消</button>
+        <button class="btn-action" onclick="saveEditedItem()">儲存修改</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部導航欄 -->
   <div class="nav-bar">
     <a class="nav-btn" href="index.html">🏠 行程總覽</a>
     <a class="nav-btn active" href="shopping.html">🛍️ 購物清單</a>
@@ -125,137 +310,166 @@
   </div>
 
   <script>
-    let shoppingList = [
+    // 預設示範清單（包含 Cartier 錶）
+    let shoppingItems = JSON.parse(localStorage.getItem('my_shopping_list')) || [
       {
-        id: 1,
         category: "💎 奢侈品精品",
         name: "Cartier Panthère 錶 (鋼款 Small WSPN0006)",
-        yen: 540000,
+        jpy: 540000,
         hkd: 28000,
-        checked: false
+        image: ""
       }
     ];
 
+    function saveAndRender() {
+      localStorage.setItem('my_shopping_list', JSON.stringify(shoppingItems));
+      renderList();
+    }
+
+    function addItem() {
+      const category = document.getElementById('itemCategory').value;
+      const name = document.getElementById('itemName').value.trim();
+      const jpy = document.getElementById('itemPriceJpy').value;
+      const hkd = document.getElementById('itemPriceHkd').value;
+      const imageFile = document.getElementById('itemImageFile').files[0];
+
+      if (!name) {
+        alert('請輸入商品名稱 / 品牌！');
+        return;
+      }
+
+      if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          shoppingItems.push({ category, name, jpy, hkd, image: e.target.result });
+          saveAndRender();
+          clearForm();
+        };
+        reader.readAsDataURL(imageFile);
+      } else {
+        shoppingItems.push({ category, name, jpy, hkd, image: "" });
+        saveAndRender();
+        clearForm();
+      }
+    }
+
+    function clearForm() {
+      document.getElementById('itemName').value = '';
+      document.getElementById('itemPriceJpy').value = '';
+      document.getElementById('itemPriceHkd').value = '';
+      document.getElementById('itemImageFile').value = '';
+    }
+
+    function deleteItem(index) {
+      if (confirm('確定要刪除這個購物項目嗎？')) {
+        shoppingItems.splice(index, 1);
+        saveAndRender();
+      }
+    }
+
+    function openEditModal(index) {
+      const item = shoppingItems[index];
+      document.getElementById('editIndex').value = index;
+      document.getElementById('editCategory').value = item.category;
+      document.getElementById('editName').value = item.name;
+      document.getElementById('editJpy').value = item.jpy;
+      document.getElementById('editHkd').value = item.hkd;
+      document.getElementById('editImageFile').value = '';
+      document.getElementById('editModal').style.display = 'flex';
+    }
+
+    function closeEditModal() {
+      document.getElementById('editModal').style.display = 'none';
+    }
+
+    function saveEditedItem() {
+      const index = document.getElementById('editIndex').value;
+      const category = document.getElementById('editCategory').value;
+      const name = document.getElementById('editName').value.trim();
+      const jpy = document.getElementById('editJpy').value;
+      const hkd = document.getElementById('editHkd').value;
+      const imageFile = document.getElementById('editImageFile').files[0];
+
+      if (!name) {
+        alert('商品名稱不能為空！');
+        return;
+      }
+
+      const updateData = (imgData) => {
+        shoppingItems[index] = {
+          category,
+          name,
+          jpy,
+          hkd,
+          image: imgData !== undefined ? imgData : shoppingItems[index].image
+        };
+        saveAndRender();
+        closeEditModal();
+      };
+
+      if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          updateData(e.target.result);
+        };
+        reader.readAsDataURL(imageFile);
+      } else {
+        updateData(undefined);
+      }
+    }
+
     function renderList() {
-      const container = document.getElementById('shopping-container');
+      const container = document.getElementById('shoppingListContainer');
       container.innerHTML = '';
 
-      const categories = [...new Set(shoppingList.map(item => item.category))];
+      if (shoppingItems.length === 0) {
+        container.innerHTML = '<div style="text-align: center; color: var(--text-sub); padding: 20px; font-size: 14px;">目前購物清單係空的，快啲加入第一件戰利品啦！🛍️</div>';
+        return;
+      }
+
+      // 按類別分組
+      const categories = [...new Set(shoppingItems.map(item => item.category))];
 
       categories.forEach(cat => {
-        const catHeader = document.createElement('div');
-        catHeader.className = 'category-header';
-        catHeader.innerHTML = `<span>${cat}</span>`;
-        container.appendChild(catHeader);
+        const catSection = document.createElement('div');
+        catSection.className = 'category-section';
 
-        const catItemsContainer = document.createElement('div');
-        catItemsContainer.className = 'cat-items-group';
+        const catTitle = document.createElement('div');
+        catTitle.className = 'category-title';
+        catTitle.innerText = cat;
+        catSection.appendChild(catTitle);
 
-        shoppingList.filter(item => item.category === cat).forEach(item => {
-          const itemEl = document.createElement('div');
-          itemEl.className = 'shop-item';
-          itemEl.draggable = true;
-          itemEl.dataset.id = item.id;
+        shoppingItems.forEach((item, index) => {
+          if (item.category === cat) {
+            const itemBox = document.createElement('div');
+            itemBox.className = 'item-card';
 
-          itemEl.innerHTML = `
-            <div class="shop-item-head">
-              <span class="drag-handle">⋮⋮</span>
-              <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleCheck(${item.id})">
-              <span class="shop-title" style="${item.checked ? 'text-decoration: line-through; color: #999;' : ''}">${item.name}</span>
-              <button onclick="deleteItem(${item.id})" style="border:none; background:none; cursor:pointer; font-weight:900; color:#666;">✕</button>
-            </div>
-            <div class="price-box">
-              ${item.yen ? `<span class="price-tag">預算: ¥ ${item.yen.toLocaleString()}</span>` : ''}
-              ${item.hkd ? `<span class="price-tag">免稅折合: HK$ ${item.hkd.toLocaleString()}</span>` : ''}
-            </div>
-          `;
+            const imgTag = item.image ? `<img src="${item.image}" class="item-img">` : `<div class="item-img" style="display:flex; align-items:center; justify-content:center; font-size:20px;">📦</div>`;
+            
+            let priceText = '';
+            if (item.jpy) priceText += `預算: ¥ ${Number(item.jpy).toLocaleString()} `;
+            if (item.hkd) priceText += `(HK$ ${Number(item.hkd).toLocaleString()})`;
 
-          setupDragAndDrop(itemEl);
-          catItemsContainer.appendChild(itemEl);
+            itemBox.innerHTML = `
+              ${imgTag}
+              <div class="item-info">
+                <div class="item-name">${item.name}</div>
+                <div class="item-meta">${priceText}</div>
+                <div class="item-btns">
+                  <button class="btn-xs" onclick="openEditModal(${index})">✏️ 編輯</button>
+                  <button class="btn-xs btn-delete" onclick="deleteItem(${index})">🗑️ 刪除</button>
+                </div>
+              </div>
+            `;
+            catSection.appendChild(itemBox);
+          }
         });
 
-        container.appendChild(catItemsContainer);
+        container.appendChild(catSection);
       });
     }
 
-    function addShoppingItem() {
-      const category = document.getElementById('item-category').value;
-      const name = document.getElementById('item-name').value.trim();
-      const yen = parseFloat(document.getElementById('item-yen').value) || 0;
-      const hkd = parseFloat(document.getElementById('item-hkd').value) || 0;
-
-      if (!name) return;
-
-      shoppingList.push({
-        id: Date.now(),
-        category,
-        name,
-        yen,
-        hkd,
-        checked: false
-      });
-
-      document.getElementById('item-name').value = '';
-      document.getElementById('item-yen').value = '';
-      document.getElementById('item-hkd').value = '';
-
-      renderList();
-    }
-
-    function toggleCheck(id) {
-      const item = shoppingList.find(i => i.id === id);
-      if (item) item.checked = !item.checked;
-      renderList();
-    }
-
-    function deleteItem(id) {
-      shoppingList = shoppingList.filter(i => i.id !== id);
-      renderList();
-    }
-
-    function setupDragAndDrop(item) {
-      item.addEventListener('dragstart', () => item.classList.add('dragging'));
-      item.addEventListener('dragend', () => item.classList.remove('dragging'));
-
-      let touchStartY = 0;
-      item.addEventListener('touchstart', (e) => {
-        if (e.target.classList.contains('drag-handle') || e.target.closest('.drag-handle')) {
-          item.classList.add('dragging');
-          touchStartY = e.touches[0].clientY;
-        }
-      }, {passive: true});
-
-      item.addEventListener('touchmove', (e) => {
-        if (!item.classList.contains('dragging')) return;
-        const currentY = e.touches[0].clientY;
-        const parent = item.parentElement;
-        const afterElement = getDragAfterElement(parent, currentY);
-        const draggingItem = document.querySelector('.dragging');
-        if (afterElement == null) {
-          parent.appendChild(draggingItem);
-        } else {
-          parent.insertBefore(draggingItem, afterElement);
-        }
-      }, {passive: true});
-
-      item.addEventListener('touchend', () => {
-        item.classList.remove('dragging');
-      });
-    }
-
-    function getDragAfterElement(container, y) {
-      const draggableElements = [...container.querySelectorAll('.shop-item:not(.dragging)')];
-      return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-          return { offset: offset, element: child };
-        } else {
-          return closest;
-        }
-      }, { offset: Number.NEGATIVE_INFINITY }).element;
-    }
-
+    // 初始化渲染
     renderList();
   </script>
 </body>
