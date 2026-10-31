@@ -36,6 +36,7 @@
       padding-bottom: 90px;
     }
 
+    /* 精簡乾淨的底部導航欄 */
     .nav-bar {
       position: fixed;
       bottom: 12px;
@@ -857,6 +858,101 @@
         </div>
         <div class="link-btns">
           <a href="https://www.google.com/maps/search/?api=1&query=Meitetsu+Inn+Nagoyaeki+Shinkansenguchi" target="_blank" class="btn-sm">🗺️ 開啟 Google 地圖導航</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🎟️ 必搶預約項目清單 (按開放時間順序排列) -->
+  <div class="card">
+    <div class="card-header-toggle" onclick="toggleCard('body-booking-list', 'pill-booking-list')">
+      <div class="card-title">🎟️ 必搶預約項目清單 (時間順序)</div>
+      <div class="toggle-pill" id="pill-booking-list">▲</div>
+    </div>
+    <div class="card-body" id="body-booking-list">
+      
+      <!-- 1. 吉卜力公園 -->
+      <div class="item-box">
+        <span class="tag tag-red">1. 最早預約 · 11月10日 13:00 (HKT)</span>
+        <div class="item-box-title" style="margin-top: 5px;">吉卜力公園門票 (Ghibli Park)</div>
+        <div class="item-box-sub">
+          • <b>適用行程</b>：Day 2 (1/28 Thu)<br>
+          • <b>開放預約時間</b>：<b>2026 年 11 月 10 日 (二) 13:00 (HKT)</b>（入場前 2 個月）<br>
+          • <b>重要資訊</b>：全預約制，現場無售票！建議搶購「大散步券 Premium」或「大散步券 Standard」。
+        </div>
+        <div class="link-btns">
+          <a href="https://l-tike.com/ghibli-park/" target="_blank" class="btn-sm">🔗 LAWSON TICKET 門票預訂</a>
+        </div>
+      </div>
+
+      <!-- 2. JR Hida 3號 -->
+      <div class="item-box">
+        <span class="tag tag-purple">2. 搭乘日前30天 · 12月29日 09:00 (HKT)</span>
+        <div class="item-box-title" style="margin-top: 5px;">JR 特急飛驒號 (Hida 3號) 名古屋 ➔ 高山</div>
+        <div class="item-box-sub">
+          • <b>適用行程</b>：Day 3 (1/29 Fri) 08:58 發車<br>
+          • <b>開放預約時間</b>：<b>2026 年 12 月 29 日 (二) 09:00 (HKT)</b>（搭乘日前 1 個月/30天）<br>
+          • <b>重要資訊</b>：冬雪旺季全車指定席熱門，建議準時在 JR 系統劃位靠窗席位。
+        </div>
+        <div class="link-btns">
+          <a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm">🔗 JR 西日本/東海 劃位官網</a>
+        </div>
+      </div>
+
+      <!-- 3. 濃飛巴士白川鄉 -->
+      <div class="item-box">
+        <span class="tag tag-purple">3. 搭乘日前1個月 · 12月30日 09:00 (HKT)</span>
+        <div class="item-box-title" style="margin-top: 5px;">濃飛高速巴士 (高山 ↔ 白川鄉來回)</div>
+        <div class="item-box-sub">
+          • <b>適用行程</b>：Day 4 (1/30 Sat) 去程 11:50 / 回程 16:45<br>
+          • <b>開放預約時間</b>：<b>2026 年 12 月 30 日 (三) 09:00 (HKT)</b>（搭乘日前 1 個月）<br>
+          • <b>重要資訊</b>：雪季熱門巴士線，去回程班次極搶手，務必準時上網搶票。
+        </div>
+        <div class="link-btns">
+          <a href="https://www.japanexpressbus.com/zh-tw/" target="_blank" class="btn-sm">🔗 Japan Bus Online 搶票</a>
+        </div>
+      </div>
+
+      <!-- 4. JR Hida 7號 & 北陸新幹線 -->
+      <div class="item-box">
+        <span class="tag tag-purple">4. 搭乘日前30天 · 12月31日 09:00 (HKT)</span>
+        <div class="item-box-title" style="margin-top: 5px;">JR 特急 Hida 7號 (高山➔富山) & 北陸新幹線 (富山➔金澤)</div>
+        <div class="item-box-sub">
+          • <b>適用行程</b>：Day 5 (1/31 Sun) Hida 7號 11:19 發車 / 新幹線 14:00 發車<br>
+          • <b>開放預約時間</b>：<b>2026 年 12 月 31 日 (四) 09:00 (HKT)</b>（搭乘日前 30 天）<br>
+          • <b>重要資訊</b>：Hida 7號需劃指定席；富山至金澤段新幹線不適用普通 IC 卡，需一併買實體車票。
+        </div>
+        <div class="link-btns">
+          <a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm">🔗 JR 列車指定席預訂</a>
+        </div>
+      </div>
+
+      <!-- 5. JR Shirasagi 12號 -->
+      <div class="item-box">
+        <span class="tag tag-purple">5. 搭乘日前30天 · 1月1日 09:00 (HKT)</span>
+        <div class="item-box-title" style="margin-top: 5px;">JR 特急鷺號 (Shirasagi 12號) 金澤 ➔ 名古屋</div>
+        <div class="item-box-sub">
+          • <b>適用行程</b>：Day 6 (2/1 Mon) 14:48 發車<br>
+          • <b>開放預約時間</b>：<b>2027 年 1 月 1 日 (五) 09:00 (HKT)</b>（搭乘日前 30 天）<br>
+          • <b>重要資訊</b>：直達名古屋，車程 3 小時，建議提前劃位確保舒適座位。
+        </div>
+        <div class="link-btns">
+          <a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm">🔗 JR 西日本 e5489 預訂</a>
+        </div>
+      </div>
+
+      <!-- 6. 名古屋鰻魚飯登河 -->
+      <div class="item-box">
+        <span class="tag tag-green">6. 出發前 1-2 個月開放預約</span>
+        <div class="item-box-title" style="margin-top: 5px;">炭焼きうなぎ 登河 栄店 (鰻魚飯三吃)</div>
+        <div class="item-box-sub">
+          • <b>適用行程</b>：Day 6 (2/1 Mon) 晚餐<br>
+          • <b>開放預約時間</b>：出發前 1 至 2 個月開放線上訂位<br>
+          • <b>重要資訊</b>：名站/榮商圈超人氣鰻魚飯，建議提早於 Tabelog 或官網線上預訂座位避開排隊。
+        </div>
+        <div class="link-btns">
+          <a href="https://tabelog.com/aichi/A2301/A230103/23070440/" target="_blank" class="btn-sm">🔗 Tabelog 線上座位預約</a>
         </div>
       </div>
 
