@@ -23,6 +23,10 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Zen Maru Gothic', sans-serif; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg-color);
       color: var(--text-main);
@@ -32,7 +36,6 @@
       padding-bottom: 90px;
     }
 
-    /* 底部固定膠囊導航欄 */
     .nav-bar {
       position: fixed;
       bottom: 12px;
@@ -141,7 +144,7 @@
     .badge-top-right { position: absolute; top: 10px; right: 10px; }
 
     .link-btns { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
-    .btn-sm { display: inline-flex; align-items: center; gap: 4px; background: var(--card-bg); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 4px 10px; font-size: 11px; font-weight: 700; text-decoration: none; color: var(--text-main); box-shadow: 0 2px 0px var(--border-color); }
+    .btn-sm { display: inline-flex; align-items: center; gap: 4px; background: var(--card-bg); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 4px 10px; font-size: 11px; font-weight: 700; text-decoration: none; color: var(--text-main); box-shadow: 0 2px 0px var(--border-color); cursor: pointer; }
 
     .day-selector { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 5px; }
     .day-tab { border: 2px solid var(--border-color); border-radius: 12px; padding: 6px 12px; font-size: 12px; font-weight: 700; background: var(--card-bg); cursor: pointer; white-space: nowrap; box-shadow: 0 2px 0px var(--border-color); }
@@ -260,25 +263,35 @@
             <div class="timeline-dot"></div>
             <div class="timeline-time">14:10 - 15:15</div>
             <div class="timeline-head"><span class="timeline-title">降落名古屋中部國際機場 (NGO)</span><span class="tag tag-green">國泰 CX536</span></div>
-            <div class="timeline-desc">商務艙優先下機，快速辦理出關手續。</div>
+            <div class="timeline-desc">商務艙優先下機，快速辦理入境與託運行李提取手續（約 65 分鐘）。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">15:15 - 16:15</div>
+            <div class="timeline-time">15:15 - 16:15 🚗 交通時間 60mins</div>
             <div class="timeline-head"><span class="timeline-title">機場 ➔ 名古屋站飯店 [Check-in]</span><span class="tag tag-purple">名鐵 μ-SKY (28mins)</span></div>
-            <div class="timeline-desc">搭乘 15:37 或 16:07 μ-SKY 特急直達名鐵名古屋站，前往飯店 Check-in 放低大行李。</div>
+            <div class="timeline-desc">
+              • 15:15-15:35 步行前往機場交通廣場月台（20 分鐘）<br>
+              • 15:37-16:05 搭乘名鐵特急 μ-SKY 直達名鐵名古屋站（車程 28 分鐘）<br>
+              • 16:05-16:15 步行前往名站附近飯店辦理 Check-in 寄放行李（10 分鐘）。
+            </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">16:30 - 18:30</div>
             <div class="timeline-head"><span class="timeline-title">名古屋站商圈散策</span><span class="tag tag-yellow">高島屋 / JR Towers</span></div>
-            <div class="timeline-desc">兩手空空逛 JR Central Towers，並至名鐵巴士總站熟悉 Day 4 坐車地點。</div>
+            <div class="timeline-desc">兩手空空逛 JR Central Towers，並至名鐵百貨巴士總站熟悉 Day 4 上車位置。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">18:30</div>
+            <div class="timeline-time">18:30 🚗 交通時間 15mins</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：とんかつジョニー 或 馬喰一代</span><span class="tag tag-red">名站極上和牛</span></div>
-            <div class="timeline-desc">名站附近享用厚切炸豬排或頂級飛驒牛燒肉（建議請飯店提前協助 Booking 馬喰一代）。</div>
+            <div class="timeline-desc">
+              由商圈散步 10-15 分鐘至餐廳。名站附近享用厚切炸豬排或頂級飛驒牛燒肉。<br>
+              <div class="link-btns">
+                <span class="btn-sm" onclick="scrollToFood('food-johnny')">🔗 查看 Tonkatsu Johnny 詳情</span>
+                <span class="btn-sm" onclick="scrollToFood('food-bakuro')">🔗 查看 馬喰一代 詳情</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -288,21 +301,25 @@
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">08:30 - 09:20</div>
+            <div class="timeline-time">08:30 - 09:20 🚗 交通時間 50mins</div>
             <div class="timeline-head"><span class="timeline-title">鐵路大移動 ➔ 愛·地球博記念公園</span><span class="tag tag-purple">地鐵東山線+Linimo</span></div>
-            <div class="timeline-desc">東山線至藤之丘站轉 Linimo 磁浮列車直達公園。</div>
+            <div class="timeline-desc">
+              • 08:30-08:58 名古屋站搭乘地鐵東山線至「藤之丘站」（車程 28 分鐘）<br>
+              • 08:58-09:05 月台轉乘 Linimo 磁浮列車（7 分鐘）<br>
+              • 09:05-09:20 Linimo 直達愛·地球博記念公園站（車程 15 分鐘）。
+            </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">09:20 - 09:40</div>
+            <div class="timeline-time">09:20 - 09:40 🚶 徒步 10mins</div>
             <div class="timeline-head"><span class="timeline-title">電梯樓 & 地球屋外圍打卡</span><span class="tag tag-yellow">空景拍照</span></div>
-            <div class="timeline-desc">趁一日遊大巴未到，先拍乾淨電梯樓與青春之丘黃色建築。</div>
+            <div class="timeline-desc">出站步行 5-10 分鐘至青春之丘，趁一日遊大巴未到先拍乾淨電梯樓與黃色建築。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">09:40 - 11:30</div>
+            <div class="timeline-time">09:40 - 11:30 🚶 徒步 15mins</div>
             <div class="timeline-head"><span class="timeline-title">反向進攻「魔女之谷」與「幽靈故里」</span><span class="tag tag-red">避開人潮</span></div>
-            <div class="timeline-desc">略過大倉庫，直接前往最新魔女之谷（哈爾移動城堡、OKI_NO邸）與幽靈故里。</div>
+            <div class="timeline-desc">略過大倉庫，徒步 15 分鐘前往最新魔女之谷（哈爾移動城堡、OKI_NO邸）與幽靈故里。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -312,21 +329,24 @@
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">12:30 - 13:30</div>
+            <div class="timeline-time">12:30 - 13:30 🚌 園區巴士 15mins</div>
             <div class="timeline-head"><span class="timeline-title">「DONDOKO之森」森林漫步</span><span class="tag tag-yellow">龍貓山頂</span></div>
-            <div class="timeline-desc">踏雪漫步至山頂，打卡巨型龍貓木造設施與小梅的家。</div>
+            <div class="timeline-desc">搭乘園區免費接駁巴士（15 分鐘）至山頂，打卡巨型龍貓木造設施與小梅的家。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">13:30 - 16:30</div>
+            <div class="timeline-time">13:30 - 16:30 🚌 園區巴士 15mins</div>
             <div class="timeline-head"><span class="timeline-title">空城計！殺回「吉卜力大倉庫」</span><span class="tag tag-red">核心精華</span></div>
-            <div class="timeline-desc">利用黃金空窗期進入大倉庫：排無臉男合照（只需15-20分）、拍巨型飛船與冒險飛行團手信店。</div>
+            <div class="timeline-desc">搭接駁車返回大倉庫，利用黃金空窗期排無臉男合照（只需15-20分）、拍飛船與買手信。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">17:00 之後</div>
+            <div class="timeline-time">17:00 之後 🚗 交通時間 50mins</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：麵家 獅子丸 (雞白湯拉麵)</span><span class="tag tag-red">名站排隊名店</span></div>
-            <div class="timeline-desc">搭乘 Linimo 返回市區，直奔名古屋站享用極順雞白湯拉麵。</div>
+            <div class="timeline-desc">
+              搭乘 Linimo 轉地鐵東山線返回名古屋站（車程 50 分鐘），直奔獅子丸享用極順雞白湯拉麵。<br>
+              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-shishimaru')">🔗 查看 麵家 獅子丸 詳情</span>
+            </div>
           </div>
         </div>
       </div>
@@ -336,39 +356,45 @@
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">07:20 - 10:02</div>
-            <div class="timeline-head"><span class="timeline-title">JR 名古屋 ➔ JR 高山站</span><span class="tag tag-purple">JR 特急 Hida 1號</span></div>
-            <div class="timeline-desc">搭乘 07:43 特急飛驒號沿途欣賞雪景直達高山。</div>
+            <div class="timeline-time">07:20 - 10:02 🚗 交通時間 139mins</div>
+            <div class="timeline-head"><span class="timeline-title">JR 名古屋 ➔ JR 高山站</span><span class="tag tag-purple">JR 特急 Hida 1號 (需預約)</span></div>
+            <div class="timeline-desc">搭乘 07:43 JR 特急飛驒號 1 號直達高山站（車程 2 小時 19 分鐘），沿途欣賞銀白雪景。⚠️ <b>需提早 1 個月於網上預訂指定席！</b></div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">10:02 - 10:30</div>
+            <div class="timeline-time">10:02 - 10:30 🚶 徒步 3mins</div>
             <div class="timeline-head"><span class="timeline-title">高山櫻庵 ➔ [行李寄存]</span><span class="tag tag-green">站旁3分鐘</span></div>
-            <div class="timeline-desc">抵達高山站快速將大行李寄存於高山櫻庵櫃台。</div>
+            <div class="timeline-desc">出高山站步行 3 分鐘至高山櫻庵寄存大行李箱，隨後步行 2 分鐘至濃飛巴士總站。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">10:40 - 14:30</div>
+            <div class="timeline-time">10:40 - 14:30 🚗 交通時間 100mins (單程)</div>
             <div class="timeline-head"><span class="timeline-title">新穗高雙層纜車 🚡❄️</span><span class="tag tag-red">2,156m 雪山屋脊</span></div>
-            <div class="timeline-desc">搭乘濃飛巴士至新穗高，乘坐雙層纜車登上西穗高口展望台俯瞰雪山連峰。</div>
+            <div class="timeline-desc">
+              • 10:40-12:20 搭乘濃飛巴士至新穗高纜車站（車程 1 小時 40 分鐘）<br>
+              • 12:20-14:30 搭乘雙層纜車登上西穗高口展望台俯瞰雪山連峰，14:30 搭巴士返回高山。
+            </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">16:15 - 17:30</div>
+            <div class="timeline-time">16:15 - 17:30 🚶 徒步 15mins</div>
             <div class="timeline-head"><span class="timeline-title">日枝神社 ➔ 舩坂酒造店</span><span class="tag tag-purple">清酒試飲</span></div>
-            <div class="timeline-desc">參拜雪中日枝神社，隨後至舩坂酒造店投幣試飲高山地酒。</div>
+            <div class="timeline-desc">巴士返抵高山總站後，步行 15 分鐘參拜雪中日枝神社，再散步至舩坂酒造店投幣試飲地酒。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">18:00</div>
+            <div class="timeline-time">18:00 🚶 徒步 10mins</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：丸明 高山店 (飛驒牛專門)</span><span class="tag tag-red">⚠️ 建議提早 Booking</span></div>
-            <div class="timeline-desc">享用極上 A5 飛驒牛壽喜燒或燒肉。</div>
+            <div class="timeline-desc">
+              古街步行 10 分鐘至丸明，享用極上 A5 飛驒牛壽喜燒或燒肉。<br>
+              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-maruaki')">🔗 查看 丸明 高山店 詳情</span>
+            </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">20:00</div>
+            <div class="timeline-time">20:00 🚶 徒步 8mins</div>
             <div class="timeline-head"><span class="timeline-title">高山櫻庵頂樓雪見溫泉 [Check-in]</span><span class="tag tag-green">夜鳴拉麵</span></div>
-            <div class="timeline-desc">入住全館榻榻米房間，享受頂樓露天雪見溫泉與免費夜鳴拉麵。</div>
+            <div class="timeline-desc">步行返回高山櫻庵辦理入住，享用頂樓露天雪見溫泉與免費夜鳴拉麵。</div>
           </div>
         </div>
       </div>
@@ -378,39 +404,42 @@
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">09:00 - 11:30</div>
+            <div class="timeline-time">09:00 - 11:30 🚶 徒步 10mins</div>
             <div class="timeline-head"><span class="timeline-title">宮川朝市 & 古街瘋狂掃街</span><span class="tag tag-yellow">飛驒牛握壽司</span></div>
-            <div class="timeline-desc">先在宮川朝市與古街吃飽飛驒牛握壽司、布丁，去白川鄉免排隊。</div>
+            <div class="timeline-desc">飯店步行 10 分鐘至宮川朝市與古街，吃飽飛驒牛握壽司與布丁，去白川鄉免排隊。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">11:50 - 12:40</div>
+            <div class="timeline-time">11:50 - 12:40 🚗 交通時間 50mins</div>
             <div class="timeline-head"><span class="timeline-title">高山總站 ➔ 白川鄉</span><span class="tag tag-purple">⚠️ 12/30 必搶車票</span></div>
-            <div class="timeline-desc">搭乘 11:50 濃飛巴士抵達白川鄉，背包鎖進巴士總站 Locker。</div>
+            <div class="timeline-desc">步行返回高山總站，搭乘 11:50 濃飛巴士抵達白川鄉（車程 50 分鐘），背包鎖進 Locker。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">12:40 - 15:00</div>
+            <div class="timeline-time">12:40 - 15:00 🚶 徒步 15mins</div>
             <div class="timeline-head"><span class="timeline-title">反向進村 ➔ 神田家室內取暖</span><span class="tag tag-gray">避開團客</span></div>
             <div class="timeline-desc">快步走至深處「三間小屋」拍無人雪景，隨後躲進神田家喝免費熱茶避開團客。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">15:00 - 16:15</div>
+            <div class="timeline-time">15:00 - 16:15 🚌 展望台巴士 10mins</div>
             <div class="timeline-head"><span class="timeline-title">空城計！上荻町城跡展望台 🌟</span><span class="tag tag-red">一日團撤離</span></div>
-            <div class="timeline-desc">一日團撤離後獨佔展望台，拍下零路人的冬日童話村全景。</div>
+            <div class="timeline-desc">搭乘接駁巴士（10 分鐘）上展望台，一日團撤離後獨佔展望台，拍下無人冬日童話村全景。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">16:45 - 17:35</div>
+            <div class="timeline-time">16:45 - 17:35 🚗 交通時間 50mins</div>
             <div class="timeline-head"><span class="timeline-title">白川鄉 ➔ 返回高山濃飛總站</span><span class="tag tag-purple">濃飛巴士</span></div>
-            <div class="timeline-desc">搭乘 16:45 回程巴士直達高山站。</div>
+            <div class="timeline-desc">搭乘 16:45 回程濃飛巴士直達高山總站（車程 50 分鐘）。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">17:35 - 19:30</div>
+            <div class="timeline-time">17:35 - 19:30 🚶 徒步 1min</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：味藏天國 (A5 飛驒牛燒肉)</span><span class="tag tag-red">⚠️ 17:35 現場撳飛</span></div>
-            <div class="timeline-desc">落車直奔隔壁味藏天國撳飛，大口品嚐滿滿油花的飛驒牛拼盤！續住高山櫻庵第 2 晚。</div>
+            <div class="timeline-desc">
+              落車步行 1 分鐘直奔隔壁味藏天國撳飛，大口品嚐滿滿油花的飛驒牛拼盤！續住高山櫻庵第 2 晚。<br>
+              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-ajikura')">🔗 查看 味藏天國 詳情</span>
+            </div>
           </div>
         </div>
       </div>
@@ -420,33 +449,40 @@
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">09:30 - 10:45</div>
+            <div class="timeline-time">09:30 - 10:45 🚶 徒步 3mins</div>
             <div class="timeline-head"><span class="timeline-title">高山櫻庵自然醒 [Check-out]</span><span class="tag tag-green">退房拉行李</span></div>
-            <div class="timeline-desc">睡到自然醒後 Check-out，步行至 JR 高山站。</div>
+            <div class="timeline-desc">睡到自然醒後辦理退房，步行 3 分鐘至 JR 高山站。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">11:19 - 14:30</div>
+            <div class="timeline-time">11:19 - 14:30 🚗 交通時間 191mins</div>
             <div class="timeline-head"><span class="timeline-title">高山 ➔ 金澤（行李跟車）🚂</span><span class="tag tag-purple">JR Hida 7號+新幹線</span></div>
-            <div class="timeline-desc">搭乘特急飛驒號於富山轉新幹線直達金澤，沿途看雪景。</div>
+            <div class="timeline-desc">
+              • 11:19-13:24 搭乘 JR 特急飛驒 7 號至富山站（車程 2 小時 5 分鐘，建議提前預訂）<br>
+              • 13:24-14:00 富山站月台轉乘北陸新幹線（轉乘 36 分鐘）<br>
+              • 14:00-14:23 北陸新幹線直達金澤站（車程 23 分鐘）。
+            </div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">14:30 - 15:30</div>
+            <div class="timeline-time">14:30 - 15:30 🚗 交通時間 10mins</div>
             <div class="timeline-head"><span class="timeline-title">金澤飯店 Check-in 🧳</span><span class="tag tag-yellow">HOTEL AO / 站前飯店</span></div>
-            <div class="timeline-desc">抵達金澤後直奔飯店 Check-in 安頓行李。</div>
+            <div class="timeline-desc">抵達金澤後搭乘公車或計程車（約 10 分鐘）至 HOTEL AO Kanazawa Check-in 放低行李。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">15:30 - 18:30</div>
+            <div class="timeline-time">15:30 - 18:30 🚶 徒步 10mins</div>
             <div class="timeline-head"><span class="timeline-title">21世紀美術館 ➔ 東茶屋街點燈</span><span class="tag tag-purple">藍調夜景</span></div>
-            <div class="timeline-desc">兩手空空拍泳池（Swimming Pool），傍晚漫步東茶屋街欣賞雪景與黃昏燈光。</div>
+            <div class="timeline-desc">飯店步行 8 分鐘拍泳池（Swimming Pool），傍晚搭公車（10 分鐘）至東茶屋街欣賞雪景藍調燈光。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">18:45</div>
+            <div class="timeline-time">18:45 🚗 交通時間 15mins</div>
             <div class="timeline-head"><span class="timeline-title">晚餐：麵屋大河 (Menya Taiga)</span><span class="tag tag-red">黑味噌拉麵</span></div>
-            <div class="timeline-desc">享用金澤第一濃郁、帶有柚子生薑香氣的黑味噌拉麵。</div>
+            <div class="timeline-desc">
+              搭公車返回金澤站前（15 分鐘），享用金澤第一濃郁、帶有柚子生薑香氣的黑味噌拉麵。<br>
+              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-taiga')">🔗 查看 麵屋大河 詳情</span>
+            </div>
           </div>
         </div>
       </div>
@@ -456,33 +492,36 @@
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">09:30 - 10:30</div>
+            <div class="timeline-time">09:30 - 10:30 🚗 交通時間 10mins</div>
             <div class="timeline-head"><span class="timeline-title">Check-out ➔ 金澤站鎖 Locker 🔑</span><span class="tag tag-gray">行李安頓</span></div>
-            <div class="timeline-desc">退房後將大行李箱鎖進金澤站內 Locker。</div>
+            <div class="timeline-desc">退房後搭計程車/公車（10 分鐘）至金澤站，將大行李箱鎖進站內 Locker。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">10:30 - 11:45</div>
+            <div class="timeline-time">10:30 - 11:45 🚗 交通時間 15mins</div>
             <div class="timeline-head"><span class="timeline-title">兼六園冬景（松樹雪吊）❄️</span><span class="tag tag-yellow">日本三大名園</span></div>
-            <div class="timeline-desc">漫步兼六園，欣賞冬天代表性唐崎松雪吊景致。</div>
+            <div class="timeline-desc">金澤站東口搭乘周遊巴士（15 分鐘）直達兼六園，欣賞冬天代表性唐崎松雪吊景致。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">11:45 - 14:15</div>
+            <div class="timeline-time">11:45 - 14:15 🚶 徒步 10mins</div>
             <div class="timeline-head"><span class="timeline-title">🦀 近江町市場 (地獄級海鮮爆食)</span><span class="tag tag-red">旬味黃金期</span></div>
-            <div class="timeline-desc">直奔海鮮名店爆食加能蟹、香箱蟹與入口即溶的寒鰤魚海鮮丼！</div>
+            <div class="timeline-desc">兼六園步行 10 分鐘直奔近江町市場，爆食加能蟹、香箱蟹與入口即溶的寒鰤魚海鮮丼！</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">14:48 - 17:48</div>
+            <div class="timeline-time">14:48 - 17:48 🚗 交通時間 180mins</div>
             <div class="timeline-head"><span class="timeline-title">JR 金澤 ➔ JR 名古屋</span><span class="tag tag-purple">JR 特急鷺號 (Shirasagi)</span></div>
-            <div class="timeline-desc">取回行李搭乘特急返回名古屋，車上休息。</div>
+            <div class="timeline-desc">公車返回金澤站取回行李，搭乘 14:48 JR 特急鷺號 12 號直達名古屋（車程 3 小時）。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">18:00 之後</div>
+            <div class="timeline-time">18:00 之後 🚗 交通時間 15mins</div>
             <div class="timeline-head"><span class="timeline-title">榮商圈衝刺 ➔ 晚餐：鰻魚飯三吃</span><span class="tag tag-red">登河 / 鰻木屋 / しら河</span></div>
-            <div class="timeline-desc">飯店 Check-in 後去榮商圈衝刺購物，晚上享用正宗炭燒鰻魚飯三吃。</div>
+            <div class="timeline-desc">
+              飯店 Check-in 後地鐵前往榮商圈購物，晚上享用正宗炭燒鰻魚飯三吃。<br>
+              <span class="btn-sm" style="margin-top:4px;" onclick="scrollToFood('food-unagi')">🔗 查看 登河 / 鰻魚飯 詳情</span>
+            </div>
           </div>
         </div>
       </div>
@@ -492,27 +531,27 @@
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">09:00 - 09:48</div>
-            <div class="timeline-head"><span class="timeline-title">名古屋站 ➔ 中部國際機場</span><span class="tag tag-purple">名鐵 μ-SKY (28mins)</span></div>
-            <div class="timeline-desc">搭乘 09:20 或 09:50 μ-SKY 列車直達機場。</div>
+            <div class="timeline-time">09:00 - 09:30 🚗 交通時間 25mins</div>
+            <div class="timeline-head"><span class="timeline-title">退房出發 ➔ 常滑快閃</span><span class="tag tag-purple">名鐵常滑線</span></div>
+            <div class="timeline-desc">名古屋站退房，搭乘名鐵常滑線直達常滑站（車程 25 分鐘）。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">09:50 - 10:20</div>
-            <div class="timeline-head"><span class="timeline-title">機場安頓行李 / 商務艙 Check-in</span><span class="tag tag-green">行李寄存</span></div>
-            <div class="timeline-desc">行李寄存於機場 Locker 或直接辦理國泰商務艙託運。</div>
+            <div class="timeline-time">09:30 - 11:45 🚶 徒步 5mins</div>
+            <div class="timeline-head"><span class="timeline-title">常滑陶瓷散步道 & 巨型招財貓</span><span class="tag tag-yellow">招財貓之鄉</span></div>
+            <div class="timeline-desc">常滑站出站步行 5 分鐘漫步陶瓷散步道，打卡 Tokonyan 巨型招財貓與老街。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">10:35 - 12:45</div>
-            <div class="timeline-head"><span class="timeline-title">常滑快閃 (陶瓷散步道 & 巨型招財貓)</span><span class="tag tag-yellow">反向 1 站</span></div>
-            <div class="timeline-desc">搭乘名鐵 1 站（3-5 分鐘）返回常滑站，兩手空空打卡招財貓 Tokonyan 與 AEON Mall。</div>
+            <div class="timeline-time">12:00 - 12:30 🚗 交通時間 5mins</div>
+            <div class="timeline-head"><span class="timeline-title">常滑 ➔ 中部國際機場 (NGO)</span><span class="tag tag-purple">名鐵線 (5mins)</span></div>
+            <div class="timeline-desc">由常滑站搭乘名鐵電車 1 站（5 分鐘）返回中部國際機場車站。</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">13:00 - 15:15</div>
-            <div class="timeline-head"><span class="timeline-title">機場掃蝦餅 ➔ 國泰商務艙貴賓室</span><span class="tag tag-green">🛫 15:15 CX539 返港</span></div>
-            <div class="timeline-desc">返回機場 4 樓藍天城買新特麗亞蝦餅，通關後至貴賓室享受餐飲等待登機。</div>
+            <div class="timeline-time">12:30 - 15:15</div>
+            <div class="timeline-head"><span class="timeline-title">商務艙 Check-in ➔ 貴賓室極致享受 🍷✨</span><span class="tag tag-green">🛫 15:15 CX539 返港</span></div>
+            <div class="timeline-desc"><b>提早 2.5 小時到達！</b> 輕鬆辦理商務艙託運與出關，直奔 JAL 櫻花 / 國泰貴賓室暢享精緻熱食與香檳，優雅地等待 15:15 登機返港。</div>
           </div>
         </div>
       </div>
@@ -520,13 +559,13 @@
   </div>
 
   <!-- 🍽️ 餐廳總整理 -->
-  <div class="card">
+  <div class="card" id="card-food-section">
     <div class="card-header-toggle" onclick="toggleCard('body-food', 'pill-food')">
       <div class="card-title">🍽️ 餐廳總整理 (訂枱與排隊指南)</div>
       <div class="toggle-pill" id="pill-food">▲</div>
     </div>
     <div class="card-body" id="body-food">
-      <div class="item-box">
+      <div class="item-box" id="food-bakuro">
         <span class="badge-top-right tag tag-red">Day 1 / 6 晚餐</span>
         <div class="item-box-title">🥩 飛騨牛一頭家 馬喰一代 (名驛 / 榮)</div>
         <div class="item-box-sub">• 狀態：極上飛驒牛燒肉、海膽生和牛刺身與牛肉他他</div>
@@ -536,7 +575,7 @@
         </div>
       </div>
 
-      <div class="item-box">
+      <div class="item-box" id="food-johnny">
         <span class="badge-top-right tag tag-red">Day 1 晚餐</span>
         <div class="item-box-title">🥩 とんかつジョニー (Tonkatsu Johnny)</div>
         <div class="item-box-sub">• 狀態：現場排隊 / 人氣在地炸豬扒專門店</div>
@@ -546,7 +585,7 @@
         </div>
       </div>
 
-      <div class="item-box">
+      <div class="item-box" id="food-shishimaru">
         <span class="badge-top-right tag tag-red">Day 2 晚餐</span>
         <div class="item-box-title">🍜 麵家 獅子丸 (Menya Shishimaru)</div>
         <div class="item-box-sub">• 狀態：現場排隊（不設預約，建議 18:00 前抵達）</div>
@@ -556,7 +595,7 @@
         </div>
       </div>
 
-      <div class="item-box">
+      <div class="item-box" id="food-maruaki">
         <span class="badge-top-right tag tag-red">Day 3 晚餐</span>
         <div class="item-box-title">🍲 丸明 高山店 (飛驒牛專門)</div>
         <div class="item-box-sub">• 狀態：⚠️ <b>建議 Check-in 時請飯店 Front Desk 協助電話代訂 18:00</b></div>
@@ -566,7 +605,7 @@
         </div>
       </div>
 
-      <div class="item-box">
+      <div class="item-box" id="food-ajikura">
         <span class="badge-top-right tag tag-red">Day 4 晚餐</span>
         <div class="item-box-title">🥩 味藏天國 (A5 飛驒牛燒肉)</div>
         <div class="item-box-sub">• 狀態：⚠️ <b>不設電話預訂！17:35 巴士落車即刻去現場撳飛</b></div>
@@ -576,7 +615,7 @@
         </div>
       </div>
 
-      <div class="item-box">
+      <div class="item-box" id="food-taiga">
         <span class="badge-top-right tag tag-red">Day 5 晚餐</span>
         <div class="item-box-title">🍜 麵屋大河 (Menya Taiga)</div>
         <div class="item-box-sub">• 狀態：金澤站前排隊名店（極致濃郁柚子生薑黑味噌拉麵）</div>
@@ -586,7 +625,7 @@
         </div>
       </div>
 
-      <div class="item-box">
+      <div class="item-box" id="food-unagi">
         <span class="badge-top-right tag tag-red">Day 6 晚餐</span>
         <div class="item-box-title">🍱 炭焼きうなぎ 登河 栄店 / うなぎのしら河</div>
         <div class="item-box-sub">• 狀態：⚠️ <b>建議出發前透過 Tabelog / 官網線上預訂席位</b></div>
@@ -609,7 +648,9 @@
         <div style="font-weight: 900; margin-bottom: 6px;">🎫 車票明細與線上購買連結：</div>
         <div style="font-size: 12px; line-height: 1.7;">
           • <b>JR 特急飛驒號 (Hida)</b> (名古屋 ⇄ 高山)：<br>
-          &nbsp;&nbsp;單程約 <b>¥6,100</b> (約 HK$310) <a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm" style="padding:1px 6px; font-size:10px;">🔗 JR 官網預訂</a><br><br>
+          &nbsp;&nbsp;單程約 <b>¥6,100</b> (約 HK$310)<br>
+          &nbsp;&nbsp;⚠️ <b>熱門雪季強烈建議提早 1 個月於網上預訂指定席！</b><br>
+          &nbsp;&nbsp;<a href="https://www.westjr.co.jp/global/tc/ticket/overview/" target="_blank" class="btn-sm" style="padding:1px 6px; font-size:10px;">🔗 JR 官網預訂</a><br><br>
 
           • <b>濃飛高速巴士</b> (高山 ➔ 白川鄉 ➔ 高山)：<br>
           &nbsp;&nbsp;⚠️ <b>12/30 09:00 (HKT) 必須上網搶票！</b><br>
@@ -711,6 +752,28 @@
       document.querySelectorAll('.day-tab').forEach(el => el.classList.remove('active'));
       document.getElementById('day-content-' + dayNum).style.display = 'block';
       event.target.classList.add('active');
+    }
+
+    function scrollToFood(foodId) {
+      const foodBody = document.getElementById('body-food');
+      const foodPill = document.getElementById('pill-food');
+      
+      if (foodBody.style.display === "none") {
+        foodBody.style.display = "block";
+        foodPill.innerText = "▲";
+      }
+
+      const targetEl = document.getElementById(foodId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetEl.style.transition = 'all 0.3s ease';
+        targetEl.style.transform = 'scale(1.03)';
+        targetEl.style.boxShadow = '0 0 12px rgba(232, 130, 130, 0.8)';
+        setTimeout(() => {
+          targetEl.style.transform = 'scale(1)';
+          targetEl.style.boxShadow = 'none';
+        }, 1200);
+      }
     }
   </script>
 </body>
