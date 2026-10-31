@@ -157,11 +157,48 @@
     .day-tab { border: 2px solid var(--border-color); border-radius: 14px; padding: 7px 12px; font-size: 13px; font-weight: 900; background: var(--card-bg); color: var(--text-main); cursor: pointer; white-space: nowrap; box-shadow: 0 2px 0px var(--border-color); }
     .day-tab.active { background: var(--tag-red); color: white; }
 
+    /* 每日備註欄樣式 */
+    .memo-box {
+      background: #FFF;
+      border: 2px solid var(--border-color);
+      border-radius: 14px;
+      margin-top: 20px;
+      box-shadow: 0 2px 0px var(--border-color);
+      overflow: hidden;
+    }
+    .memo-header {
+      padding: 10px 14px;
+      background: #F4F1EA;
+      font-size: 13.5px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+    .memo-content {
+      display: none;
+      padding: 12px;
+      border-top: 2px dashed #E0E0E0;
+    }
+    .memo-textarea {
+      width: 100%;
+      height: 80px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      padding: 8px;
+      font-size: 13.5px;
+      font-family: inherit;
+      resize: vertical;
+      background: var(--bg-color);
+    }
+
     /* 底部切換按鈕導航 */
     .day-nav-footer {
       display: flex;
       justify-content: space-between;
-      margin-top: 25px;
+      margin-top: 20px;
       padding-top: 15px;
       border-top: 2px dashed #E0E0E0;
     }
@@ -179,6 +216,41 @@
     .day-nav-btn:active {
       transform: translateY(2px);
       box-shadow: 0 0px 0px var(--border-color);
+    }
+
+    /* 全螢幕求助小卡 Modal 樣式 */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-card {
+      background: #FFF;
+      border: 3px solid var(--border-color);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 500px;
+      padding: 24px;
+      box-shadow: 0 8px 0px var(--border-color);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 15px; right: 15px;
+      background: var(--tag-red);
+      color: white;
+      border: 2px solid var(--border-color);
+      border-radius: 50%;
+      width: 32px; height: 32px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 0px var(--border-color);
     }
 
     .timeline { position: relative; padding-left: 12px; }
@@ -295,31 +367,33 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">18:30 🚗 交通時間 15mins</div>
-            <div class="timeline-head"><span class="timeline-title">晚餐：とんかつジョニー 或 馬喰一代</span><span class="tag tag-red">名站極上和牛 / 炸豬排</span></div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：とんかつジョニー (首選)</span><span class="tag tag-red">厚切炸豬排專門</span></div>
             <div class="timeline-desc">
               由商圈散步 10-15 分鐘至餐廳。
 
               <div class="food-inline-card">
-                <div style="font-weight:900; font-size:14.5px;">🥩 飛騨牛一頭家 馬喰一代 (名驛店)</div>
-                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：極上飛驒牛燒肉、海膽生和牛刺身與牛肉他他</div>
-                <div class="link-btns">
-                  <a href="https://tabelog.com/aichi/A2301/A230101/23065668/" target="_blank" class="btn-sm">🔗 Tabelog 預訂</a>
-                  <a href="https://www.google.com/maps/search/?api=1&query=馬喰一代+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
-                </div>
-              </div>
-
-              <div class="food-inline-card">
-                <div style="font-weight:900; font-size:14.5px;">🥩 とんかつジョニー (Tonkatsu Johnny)</div>
-                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：現場排隊 / 人氣在地厚切炸豬扒專門店</div>
+                <div style="font-weight:900; font-size:14.5px;">🥩 とんかつジョニー (Tonkatsu Johnny) [首選]</div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：人氣在地厚切炸豬排專門店 (馬喰一代作為後備)</div>
                 <div class="link-btns">
                   <a href="https://tabelog.com/aichi/A2301/A230103/23075253/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
                   <a href="https://www.google.com/maps/search/?api=1&query=とんかつジョニー+名古屋" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
+
+        <!-- 每日備註欄 -->
+        <div class="memo-box">
+          <div class="memo-header" onclick="toggleMemo(1)">
+            <span>📝 Day 1 隨身備註與修改</span>
+            <span id="memo-arrow-1">▼</span>
+          </div>
+          <div class="memo-content" id="memo-body-1">
+            <textarea class="memo-textarea" placeholder="點擊在此輸入或修改今日備註..." id="memo-text-1" oninput="saveMemo(1)"></textarea>
+          </div>
+        </div>
+
         <div class="day-nav-footer">
           <div></div>
           <button class="day-nav-btn" onclick="showDay(2)">後一日 (Day 2) ▶</button>
@@ -394,6 +468,18 @@
             </div>
           </div>
         </div>
+
+        <!-- 每日備註欄 -->
+        <div class="memo-box">
+          <div class="memo-header" onclick="toggleMemo(2)">
+            <span>📝 Day 2 隨身備註與修改</span>
+            <span id="memo-arrow-2">▼</span>
+          </div>
+          <div class="memo-content" id="memo-body-2">
+            <textarea class="memo-textarea" placeholder="點擊在此輸入或修改今日備註..." id="memo-text-2" oninput="saveMemo(2)"></textarea>
+          </div>
+        </div>
+
         <div class="day-nav-footer">
           <button class="day-nav-btn" onclick="showDay(1)">◀ 前一日 (Day 1)</button>
           <button class="day-nav-btn" onclick="showDay(3)">後一日 (Day 3) ▶</button>
@@ -433,14 +519,16 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">18:30 🚶 徒步 10mins</div>
-            <div class="timeline-head"><span class="timeline-title">晚餐：丸明 高山店 (飛驒牛專門)</span><span class="tag tag-red">⚠️ 建議提早 Booking</span></div>
+            <div class="timeline-head"><span class="timeline-title">晚餐：丸明 高山店 (飛驒牛專門)</span><span class="tag tag-red">⚠️ Check-in 時請前台代訂</span></div>
             <div class="timeline-desc">
               古街步行 10 分鐘至丸明，享用極上 A5 飛驒牛壽喜燒或燒肉。
 
               <div class="food-inline-card">
                 <div style="font-weight:900; font-size:14.5px;">🍲 丸明 高山店 (飛驒牛專門)</div>
-                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>建議 Check-in 時請飯店 Front Desk 協助電話代訂 18:30</b></div>
+                <div style="font-size:13px; color:var(--text-sub); margin:4px 0;">• 狀態：⚠️ <b>抵達高山櫻庵 Check-in 時，請出示下方求助日語小卡請前台代訂 18:30 席位</b></div>
                 <div class="link-btns">
+                  <!-- 觸發全螢幕求助小卡的按鈕 -->
+                  <button class="btn-sm" onclick="openModal()" style="background: var(--tag-yellow); color: var(--text-main);">🛎️ 點擊顯示：請前台代訂餐廳求助日語小卡</button>
                   <a href="https://tabelog.com/gifu/A2104/A210401/21000041/" target="_blank" class="btn-sm">🔗 Tabelog 頁面</a>
                   <a href="https://www.google.com/maps/search/?api=1&query=丸明+高山店" target="_blank" class="btn-sm">🗺️ Google 地圖</a>
                 </div>
@@ -455,6 +543,18 @@
             <div class="timeline-desc">步行返回高山櫻庵辦理入住，享用頂樓露天雪見溫泉與免費夜鳴拉麵。</div>
           </div>
         </div>
+
+        <!-- 每日備註欄 -->
+        <div class="memo-box">
+          <div class="memo-header" onclick="toggleMemo(3)">
+            <span>📝 Day 3 隨身備註與修改</span>
+            <span id="memo-arrow-3">▼</span>
+          </div>
+          <div class="memo-content" id="memo-body-3">
+            <textarea class="memo-textarea" placeholder="點擊在此輸入或修改今日備註..." id="memo-text-3" oninput="saveMemo(3)"></textarea>
+          </div>
+        </div>
+
         <div class="day-nav-footer">
           <button class="day-nav-btn" onclick="showDay(2)">◀ 前一日 (Day 2)</button>
           <button class="day-nav-btn" onclick="showDay(4)">後一日 (Day 4) ▶</button>
@@ -513,6 +613,18 @@
             </div>
           </div>
         </div>
+
+        <!-- 每日備註欄 -->
+        <div class="memo-box">
+          <div class="memo-header" onclick="toggleMemo(4)">
+            <span>📝 Day 4 隨身備註與修改</span>
+            <span id="memo-arrow-4">▼</span>
+          </div>
+          <div class="memo-content" id="memo-body-4">
+            <textarea class="memo-textarea" placeholder="點擊在此輸入或修改今日備註..." id="memo-text-4" oninput="saveMemo(4)"></textarea>
+          </div>
+        </div>
+
         <div class="day-nav-footer">
           <button class="day-nav-btn" onclick="showDay(3)">◀ 前一日 (Day 3)</button>
           <button class="day-nav-btn" onclick="showDay(5)">後一日 (Day 5) ▶</button>
@@ -572,6 +684,18 @@
             </div>
           </div>
         </div>
+
+        <!-- 每日備註欄 -->
+        <div class="memo-box">
+          <div class="memo-header" onclick="toggleMemo(5)">
+            <span>📝 Day 5 隨身備註與修改</span>
+            <span id="memo-arrow-5">▼</span>
+          </div>
+          <div class="memo-content" id="memo-body-5">
+            <textarea class="memo-textarea" placeholder="點擊在此輸入或修改今日備註..." id="memo-text-5" oninput="saveMemo(5)"></textarea>
+          </div>
+        </div>
+
         <div class="day-nav-footer">
           <button class="day-nav-btn" onclick="showDay(4)">◀ 前一日 (Day 4)</button>
           <button class="day-nav-btn" onclick="showDay(6)">後一日 (Day 6) ▶</button>
@@ -624,6 +748,18 @@
             </div>
           </div>
         </div>
+
+        <!-- 每日備註欄 -->
+        <div class="memo-box">
+          <div class="memo-header" onclick="toggleMemo(6)">
+            <span>📝 Day 6 隨身備註與修改</span>
+            <span id="memo-arrow-6">▼</span>
+          </div>
+          <div class="memo-content" id="memo-body-6">
+            <textarea class="memo-textarea" placeholder="點擊在此輸入或修改今日備註..." id="memo-text-6" oninput="saveMemo(6)"></textarea>
+          </div>
+        </div>
+
         <div class="day-nav-footer">
           <button class="day-nav-btn" onclick="showDay(5)">◀ 前一日 (Day 5)</button>
           <button class="day-nav-btn" onclick="showDay(7)">後一日 (Day 7) ▶</button>
@@ -666,10 +802,49 @@
             <div class="timeline-desc"><b>完美掌握時間！</b>輕鬆辦理商務艙託運與快速出關，直奔 JAL 櫻花 / 國泰貴賓室暢享精緻熱食與香檳，優雅地等待 15:15 商務艙登機返港。</div>
           </div>
         </div>
+
+        <!-- 每日備註欄 -->
+        <div class="memo-box">
+          <div class="memo-header" onclick="toggleMemo(7)">
+            <span>📝 Day 7 隨身備註與修改</span>
+            <span id="memo-arrow-7">▼</span>
+          </div>
+          <div class="memo-content" id="memo-body-7">
+            <textarea class="memo-textarea" placeholder="點擊在此輸入或修改今日備註..." id="memo-text-7" oninput="saveMemo(7)"></textarea>
+          </div>
+        </div>
+
         <div class="day-nav-footer">
           <button class="day-nav-btn" onclick="showDay(6)">◀ 前一日 (Day 6)</button>
           <div></div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 全螢幕求助小卡 Modal -->
+  <div class="modal-overlay" id="helpModal" onclick="closeModalOnOutside(event)">
+    <div class="modal-card">
+      <div class="modal-close" onclick="closeModal()">✕</div>
+      <div style="font-size: 18px; font-weight: 900; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+        <span>🛎️ 餐廳代訂求助小卡</span>
+      </div>
+      <div style="font-size: 13.5px; color: var(--text-sub); margin-bottom: 15px;">
+        (請將此畫面直接出示給飯店櫃台 Front Desk 職員觀看)
+      </div>
+      
+      <!-- 日語對話內容框 -->
+      <div style="background: var(--bg-color); border: 2px solid var(--border-color); border-radius: 14px; padding: 16px; font-size: 15px; line-height: 1.8; font-weight: 700;">
+        すみません、外国人観光客で日本の電話番号が無く、日本語も話せないため、大変恐縮ですがレストランの予約のお手伝いをお願いできませんでしょうか？<br><br>
+        【希望予約内容】<br>
+        • 店名：丸明 高山店<br>
+        • 日時：1月29日 (金) 18:30頃<br>
+        • 人数：2名<br><br>
+        お手数をおかけして申し訳ございませんが、よろしくお願いいたします。
+      </div>
+
+      <div style="margin-top: 15px; font-size: 12.5px; color: var(--text-sub); text-align: center;">
+        💡 翻譯：不好意思，因為我們是外國遊客，沒有日本電話也不會說日語，非常抱歉能否請您協助幫忙打電話預約餐廳？謝謝您的幫忙！
       </div>
     </div>
   </div>
@@ -788,13 +963,54 @@
       document.querySelectorAll('.day-details').forEach(el => el.style.display = 'none');
       document.querySelectorAll('.day-tab').forEach(el => el.classList.remove('active'));
       document.getElementById('day-content-' + dayNum).style.display = 'block';
-      const targetTab = document.getElementById('tab--' + dayNum) || document.getElementById('tab-' + dayNum);
+      const targetTab = document.getElementById('tab-' + dayNum);
       if(targetTab) {
         targetTab.classList.add('active');
         targetTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       }
       document.getElementById('body-itinerary').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    // 求助小卡 Modal 控制
+    function openModal() {
+      document.getElementById('helpModal').style.display = 'flex';
+    }
+    function closeModal() {
+      document.getElementById('helpModal').style.display = 'none';
+    }
+    function closeModalOnOutside(event) {
+      if (event.target.id === 'helpModal') {
+        closeModal();
+      }
+    }
+
+    // 每日備註收合與自動存檔功能 (LocalStorage)
+    function toggleMemo(dayNum) {
+      const body = document.getElementById('memo-body-' + dayNum);
+      const arrow = document.getElementById('memo-arrow-' + dayNum);
+      if (body.style.display === 'block') {
+        body.style.display = 'none';
+        arrow.innerText = '▼';
+      } else {
+        body.style.display = 'block';
+        arrow.innerText = '▲';
+      }
+    }
+
+    function saveMemo(dayNum) {
+      const text = document.getElementById('memo-text-' + dayNum).value;
+      localStorage.setItem('trip_memo_day_' + dayNum, text);
+    }
+
+    // 頁面載入時自動恢復儲存的備註
+    window.addEventListener('DOMContentLoaded', () => {
+      for (let i = 1; i <= 7; i++) {
+        const savedText = localStorage.getItem('trip_memo_day_' + i);
+        if (savedText !== null) {
+          document.getElementById('memo-text-' + i).value = savedText;
+        }
+      }
+    });
   </script>
 </body>
 </html>
